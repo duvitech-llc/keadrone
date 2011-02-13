@@ -22,7 +22,7 @@ typedef struct
 xSemaphoreHandle xSemaphore;
 GYRO_S gyro;
 
-acc_data accCurrent;
+sAcc_data accCurrent;
 void gyroGetDataFromChip(void);
 void gyroInit(void);
 

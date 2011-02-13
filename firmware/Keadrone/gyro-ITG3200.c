@@ -249,7 +249,7 @@ void gyroInit(void)
 	gpioIntEnable();
 }
 
-acc_data accCurrent;
+sAcc_data accCurrent;
 void gyroGetDataFromChip(void)
 {
 	// static to reduce interrupt stack
@@ -275,7 +275,7 @@ void gyroGetDataFromChip(void)
 	if (counter++ == 100)
 	{
 		counter = 0;
-		spiGet(&accCurrent);
+		spiGetAccelero(&accCurrent);
 		static signed portBASE_TYPE xHigherPriorityTaskWoken;
 		xHigherPriorityTaskWoken = pdFALSE;
 		/* Unblock the task by releasing the semaphore. */

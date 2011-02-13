@@ -1,12 +1,12 @@
 /*
- * bma180.h
+ * dAccelerometer_BMA180.h
  *
- *  Created on: 24 jan 2011
- *      Author: admin
+ *  Created on: 13 feb 2011
+ *      Author: Willem Pietersz
  */
 
-#ifndef BMA180_H_
-#define BMA180_H_
+#ifndef DACCELEROMETER_BMA180_H_
+#define DACCELEROMETER_BMA180_H_
 
 typedef struct
 {
@@ -14,13 +14,13 @@ typedef struct
 	int16_t Y;
 	int16_t Z;
 	uint8_t temp;
-} acc_data;
+} sAcc_data;
 
-acc_data acc[2];
+void spiGetAccelero(sAcc_data *p);
+void spiReqNewData_FromISR(void);
+void spiInit(void);
 
-void spiGet(acc_data *p);
-
-//Address defines for BMA180//
+/************Address defines for BMA180 *********/
 //====================//
 //ID and Version Registers
 #define ID 0x00
@@ -63,4 +63,4 @@ void spiGet(acc_data *p);
 // interrupt setting
 #define NEW_DATA_INT_SHIFT	1
 
-#endif /* BMA180_H_ */
+#endif /* DACCELEROMETER_BMA180_H_ */

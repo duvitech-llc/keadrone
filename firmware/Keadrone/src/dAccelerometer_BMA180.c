@@ -1,18 +1,24 @@
-#ifdef __USE_CMSIS
-#include "LPC17xx.h"
-#endif
+/*
+ * dAccelerometer_BMA180.c
+ *
+ *  Created on: 13 feb 2011
+ *      Author: Willem Pietersz
+ */
 
+#include "LPC17xx.h"
 #include "lpc17xx_ssp.h"
-#include "bma180.h"
+#include "dAccelerometer_BMA180.h"
 
 /* Kernel includes. */
 #include "FreeRTOS.h"
 #include "task.h"
-#include "queue.h"
 
 #define SSP_CHANNEL LPC_SSP0
 #define PORT_CS	LPC_GPIO0
 #define PIN_MASK_CS (1<<16)
+
+static volatile int intFillsBuffer = 0;
+static volatile sAcc_data acc[2];
 
 #define delay_1ms			( 1 / portTICK_RATE_MS )
 static void delay_ms(uint16_t value)
@@ -46,7 +52,7 @@ static char bmaRead(uint8_t address)
 	return rxBuff;
 }
 
-static void bmaReadMultiple(uint8_t address, uint8_t *data, uint8_t len)
+static void bmaReadMultiple_FromISR(uint8_t address, uint8_t *data, uint8_t len)
 {
 	//returns the contents of any 1 byte register from any address
 	//sets the MSB for every address byte (READ mode)
@@ -64,8 +70,8 @@ static void bmaReadMultiple(uint8_t address, uint8_t *data, uint8_t len)
 	sspDataConfig.length = 8;
 	sspDataConfig.tx_data = &address;
 	sspDataConfig.rx_data = &rxBuff;
-
-	SSP_ReadWriteWp(SSP_CHANNEL, &sspDataConfig);//, SSP_TRANSFER_POLLING);
+	/* todo: replace rx data for data directly, saves time */
+	SSP_ReadWriteBMA180(SSP_CHANNEL, &sspDataConfig);//, SSP_TRANSFER_POLLING);
 	static uint8_t counter;
 	for (counter = 0; counter < len; counter++)
 	{
@@ -103,10 +109,11 @@ static void bmaWrite(uint8_t address, char data)
 	PORT_CS->FIOSET |= PIN_MASK_CS; //CS High
 }
 
-// init_BMA180
-// Input: range is a 3-bit value between 0x00 and 0x06 will set the range as described in the BMA180 datasheet (pg. 27)
-// bw is a 4-bit value between 0x00 and 0x09.  Again described on pg. 27
-// Output: -1 on error, 0 on success
+/* init_BMA180
+ *  Input: range is a 3-bit value between 0x00 and 0x06 will set the
+ *  range as described in the BMA180 datasheet (pg. 27)
+ *  bw is a 4-bit value between 0x00 and 0x09.  Again described on pg. 27
+ *  Output: -1 on error, 0 on success*/
 static Bool bmaInit(uint8_t range, uint8_t bw)
 {
 	char temp, temp1;
@@ -151,19 +158,17 @@ static void gpioIntInit(void)
 {
 	//Enable rising edge interrupt for P0.8
 	LPC_GPIOINT->IO0IntEnR |= 1 << 8;//| 1<<9;
+	NVIC_SetPriority(EINT3_IRQn, 30);
 	NVIC_EnableIRQ(EINT3_IRQn);
 }
 
-static int intFillsBuffer = 0;
-acc_data acc[2];
-
-int spiPoll(void)
+void spiReqNewData_FromISR(void)
 {
 
 	static uint8_t regData[7];
 
 	// get 7 bytes starting from reg. ACCXLSB
-	bmaReadMultiple(ACCXLSB, &regData[0], 7);
+	bmaReadMultiple_FromISR(ACCXLSB, &regData[0], 7);
 
 	acc[intFillsBuffer].X = regData[0];
 	acc[intFillsBuffer].X |= (uint16_t) regData[1] << 8;
@@ -184,11 +189,9 @@ int spiPoll(void)
 		intFillsBuffer = 0;
 	else
 		intFillsBuffer = 1;
-
-	return 0;
 }
 
-void spiGet(acc_data *p)
+void spiGetAccelero(sAcc_data *p)
 {
 	/* note that the acc. meter gives data at 2.66kHz rate, and gyro at 2kHz.
 	 * Thats why we use dual buffer for mutual exclusion.
@@ -237,5 +240,5 @@ void spiInit(void)
 	printf("BMA180: Connected\n");
 
 	gpioIntInit();
-	spiPoll();
+	spiReqNewData_FromISR();
 }

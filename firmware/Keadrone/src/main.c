@@ -104,7 +104,7 @@ static void idleTask(void *pvParameters)
 		{
 			/* It is time to execute. */
 
-			static acc_data acc_copy;
+			static sAcc_data acc_copy;
 			static GYRO_S gyro_copy;
 
 			acc_copy = accCurrent;
@@ -129,7 +129,7 @@ void EINT3_IRQHandler(void)
 	if (LPC_GPIOINT->IO0IntStatR & (1 << 8)) // GPIO 0.8
 	{
 		LPC_GPIOINT->IO0IntClr = 1 << 8;
-		spiPoll();
+		spiReqNewData_FromISR();
 	}
 	// gyro data ready interrupt
 	else if (LPC_GPIOINT->IO0IntStatR & (1 << 7)) //GPIO 0.7

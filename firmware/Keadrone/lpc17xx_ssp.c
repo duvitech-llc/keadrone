@@ -587,7 +587,7 @@ int32_t SSP_ReadWrite(LPC_SSP_TypeDef *SSPx, SSP_DATA_SETUP_Type *dataCfg,
  * 				Return (-1) if error.
  * Note: This function can be used in both master and slave mode.
  ***********************************************************************/
-int32_t SSP_ReadWriteWp(LPC_SSP_TypeDef *SSPx, SSP_DATA_SETUP_Type *dataCfg)
+int32_t SSP_ReadWriteBMA180(LPC_SSP_TypeDef *SSPx, SSP_DATA_SETUP_Type *dataCfg)
 {
 	uint8_t *rdata8;
 	uint8_t *wdata8;
