@@ -9,7 +9,7 @@
 
 // Include stdio.h to pull in __REDLIB_INTERFACE_VERSION__
 #include <stdio.h>
-#include "type.h"
+#include "lpc_types.h"
 #define SEMIHOST_ENABLED
 #ifdef SEMIHOST_ENABLED
 #if (__REDLIB_INTERFACE_VERSION__ >= 20000)

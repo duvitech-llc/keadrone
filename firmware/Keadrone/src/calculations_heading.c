@@ -9,11 +9,13 @@
 #include "semphr.h"
 
 #include "LPC17xx.h"
+#include "lpc17xx_clkpwr.h"
 #include "dAccelerometer_BMA180.h"
 #include "dGyro_ITG-3200.h"
 
 xSemaphoreHandle xSemaphore;
 sAcc_data accCurrent;
+#define LONG_TIME 0xffff
 
 static void calculations_heading(void *pvParameters)
 {
@@ -34,8 +36,8 @@ static void calculations_heading(void *pvParameters)
 			static sAcc_data acc_copy;
 			static GYRO_S gyro_copy;
 
-			acc_copy = accCurrent;
-			gyro_copy = gyro;
+			//acc_copy = accCurrent;
+			//gyro_copy = gyro;
 			printf("%d,%d,%d,%d,%d,%d\n", acc_copy.X, acc_copy.Y, acc_copy.Z,
 					gyro_copy.x, gyro_copy.y, gyro_copy.z);
 		}

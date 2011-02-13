@@ -9,6 +9,7 @@
 #include "dGyro_ITG-3200.h"
 
 /* Kernel includes. */
+#include "FreeRTOS.h"
 #include "task.h"
 
 // rx/tx buffer used for i2c

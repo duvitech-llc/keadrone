@@ -1,4 +1,5 @@
-src/main.d src/main.o: ../src/main.c \
+src/calculations_heading.d src/calculations_heading.o:  \
+ ../src/calculations_heading.c \
   C:\Users\admin\Documents\lpcxpresso_3.6\workspace\FreeRTOS_Library\include/FreeRTOS.h \
   C:\Users\admin\Documents\lpcxpresso_3.6\workspace\FreeRTOS_Library\include/projdefs.h \
   C:\Users\admin\Documents\lpcxpresso_3.6\workspace\Keadrone/FreeRTOSConfig.h \
@@ -10,7 +11,11 @@ src/main.d src/main.o: ../src/main.c \
   C:\Users\admin\Documents\lpcxpresso_3.6\workspace\FreeRTOS_Library\include/mpu_wrappers.h \
   C:\Users\admin\Documents\lpcxpresso_3.6\workspace\FreeRTOS_Library\include/task.h \
   C:\Users\admin\Documents\lpcxpresso_3.6\workspace\FreeRTOS_Library\include/list.h \
-  ../src/calculations_heading.h
+  C:\Users\admin\Documents\lpcxpresso_3.6\workspace\FreeRTOS_Library\include/semphr.h \
+  C:\Users\admin\Documents\lpcxpresso_3.6\workspace\FreeRTOS_Library\include/queue.h \
+  C:\Users\admin\Documents\lpcxpresso_3.6\workspace\Keadrone/lpc17xx_clkpwr.h \
+  C:\Users\admin\Documents\lpcxpresso_3.6\workspace\Keadrone/lpc_types.h \
+  ../src/dAccelerometer_BMA180.h ../src/dGyro_ITG-3200.h
 
 C:\Users\admin\Documents\lpcxpresso_3.6\workspace\FreeRTOS_Library\include/FreeRTOS.h:
 
@@ -34,4 +39,14 @@ C:\Users\admin\Documents\lpcxpresso_3.6\workspace\FreeRTOS_Library\include/task.
 
 C:\Users\admin\Documents\lpcxpresso_3.6\workspace\FreeRTOS_Library\include/list.h:
 
-../src/calculations_heading.h:
+C:\Users\admin\Documents\lpcxpresso_3.6\workspace\FreeRTOS_Library\include/semphr.h:
+
+C:\Users\admin\Documents\lpcxpresso_3.6\workspace\FreeRTOS_Library\include/queue.h:
+
+C:\Users\admin\Documents\lpcxpresso_3.6\workspace\Keadrone/lpc17xx_clkpwr.h:
+
+C:\Users\admin\Documents\lpcxpresso_3.6\workspace\Keadrone/lpc_types.h:
+
+../src/dAccelerometer_BMA180.h:
+
+../src/dGyro_ITG-3200.h:

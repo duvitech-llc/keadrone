@@ -2,8 +2,8 @@
 * GENERATED FILE - DO NOT EDIT
 * (C) Code Red Technologies Ltd, 2008-10
 * Generated linker script file for LPC1754
-* Created from nxp_lpc17_c.ld (vLPCXpresso v3.6 (2 [Build 279] [29/01/2011] ))
-* By LPCXpresso v3.6.2 [Build 279] [29/01/2011]  on Sun Feb 13 14:13:45 CET 2011
+* Created from nxp_lpc17_c.ld (vLPCXpresso v3.6 (0 [Build 253] [13/12/2010] ))
+* By LPCXpresso v3.6.0 [Build 253] [13/12/2010]  on Sun Feb 13 22:09:06 CET 2011
 */
 
 
@@ -45,27 +45,24 @@ SECTIONS
 		*(.after_vectors*)
 		
 		*(.text*)
-		*(.rodata .rodata.*)
-		. = ALIGN(4);
+		*(.rodata*)
 		
 	} > MFlash128
 
-	/*
-	 * for exception handling/unwind - some Newlib functions (in common
-	 * with C++ and STDC++) use this.
-	 */
-	.ARM.extab : ALIGN(4)
+
+	/* for exception handling/unwind - some Newlib functions (in common with C++ and STDC++) use this. */
+	.ARM.extab : 
 	{
 		*(.ARM.extab* .gnu.linkonce.armextab.*)
 	} > MFlash128
+
 	__exidx_start = .;
-	
-	.ARM.exidx : ALIGN(4)
+	.ARM.exidx :
 	{
 		*(.ARM.exidx* .gnu.linkonce.armexidx.*)
 	} > MFlash128
 	__exidx_end = .;
-	
+
 	_etext = .;
 		
 	
@@ -74,7 +71,6 @@ SECTIONS
 	   FILL(0xff)
 		*(.data.$RAM2*)
 		*(.data.$RamAHB16*)
-	   . = ALIGN(4) ;
 	} > RamAHB16 AT>MFlash128
 	
 	/* MAIN DATA SECTION */
@@ -90,7 +86,6 @@ SECTIONS
 		_data = .;
 		*(vtable)
 		*(.data*)
-		. = ALIGN(4) ;
 		_edata = .;
 	} > RamLoc16 AT>MFlash128
 
@@ -99,7 +94,6 @@ SECTIONS
 	{
 		*(.bss.$RAM2*)
 		*(.bss.$RamAHB16*)
-	   . = ALIGN(4) ;
 	} > RamAHB16
 
 	/* MAIN BSS SECTION */
@@ -108,7 +102,6 @@ SECTIONS
 		_bss = .;
 		*(.bss*)
 		*(COMMON)
-		. = ALIGN(4) ;
 		_ebss = .;
 		PROVIDE(end = .);
 	} > RamLoc16

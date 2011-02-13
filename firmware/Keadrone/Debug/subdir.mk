@@ -5,28 +5,31 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../cr_startup_lpc17.c \
-../gyro-ITG3200.c \
 ../i2c.c \
-../retargetPrintf.c 
+../lpc17xx_clkpwr.c \
+../lpc17xx_libcfg_default.c \
+../lpc17xx_ssp.c 
 
 OBJS += \
 ./cr_startup_lpc17.o \
-./gyro-ITG3200.o \
 ./i2c.o \
-./retargetPrintf.o 
+./lpc17xx_clkpwr.o \
+./lpc17xx_libcfg_default.o \
+./lpc17xx_ssp.o 
 
 C_DEPS += \
 ./cr_startup_lpc17.d \
-./gyro-ITG3200.d \
 ./i2c.d \
-./retargetPrintf.d 
+./lpc17xx_clkpwr.d \
+./lpc17xx_libcfg_default.d \
+./lpc17xx_ssp.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
 %.o: ../%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: MCU C Compiler'
-	arm-none-eabi-gcc -DDEBUG -D__USE_CMSIS=CMSISv1p30_LPC17xx -D__CODE_RED -D__REDLIB__ -I"C:\Users\admin\Desktop\Keadrone\CMSISv1p30_LPC17xx\inc" -I"C:\Users\admin\Desktop\Keadrone\SimpleDemo" -I"C:\Users\admin\Desktop\Keadrone\SimpleDemo\src" -I"C:\Users\admin\Desktop\Keadrone\SimpleDemo\HAL_SPI" -I"C:\Users\admin\Desktop\Keadrone\SimpleDemo\HAL_UART" -I"C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\include" -I"C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\portable" -I"C:\Users\admin\Desktop\Keadrone\SimpleDemo\HAL_Analog" -O0 -g3 -fsigned-char -c -fmessage-length=0 -fno-builtin -ffunction-sections -mcpu=cortex-m3 -mthumb -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	arm-none-eabi-gcc -DDEBUG -D__USE_CMSIS=CMSISv1p30_LPC17xx -D__CODE_RED -D__REDLIB__ -I"C:\Users\admin\Documents\lpcxpresso_3.6\workspace\CMSISv1p30_LPC17xx\inc" -I"C:\Users\admin\Documents\lpcxpresso_3.6\workspace\FreeRTOS_Library\include" -I"C:\Users\admin\Documents\lpcxpresso_3.6\workspace\FreeRTOS_Library\portable" -I"C:\Users\admin\Documents\lpcxpresso_3.6\workspace\Keadrone" -I"C:\Users\admin\Documents\lpcxpresso_3.6\workspace\Keadrone\HAL_UART" -I"C:\Users\admin\Documents\lpcxpresso_3.6\workspace\Keadrone\src" -O0 -g3 -fsigned-char -c -fmessage-length=0 -fno-builtin -ffunction-sections -mcpu=cortex-m3 -mthumb -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

@@ -19,7 +19,7 @@ typedef struct
 	volatile int16_t temp;
 } GYRO_S;
 
-void gyroGetDataFromChip(void);
+void gyroGetDataFromChip(GYRO_S *p);
 void gyroInit(void);
 
 #endif /* DGYRO_ITG3200_H_ */

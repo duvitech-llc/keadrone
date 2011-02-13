@@ -11,8 +11,6 @@ RM := rm -rf
 -include subdir.mk
 -include src/subdir.mk
 -include HAL_UART/subdir.mk
--include HAL_SPI/subdir.mk
--include HAL_Analog/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -32,7 +30,7 @@ all: SimpleDemo.axf
 SimpleDemo.axf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU Linker'
-	arm-none-eabi-gcc -nostdlib -L"C:\Users\admin\Desktop\Keadrone\CMSISv1p30_LPC17xx\Debug" -L"C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug" -Xlinker --gc-sections -Xlinker -Map=SimpleDemo.map -mcpu=cortex-m3 -mthumb -T "SimpleDemo_Debug.ld" -o"SimpleDemo.axf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-gcc -nostdlib -L"C:\Users\admin\Documents\lpcxpresso_3.6\workspace\CMSISv1p30_LPC17xx\Debug" -L"C:\Users\admin\Documents\lpcxpresso_3.6\workspace\FreeRTOS_Library\Debug" -Xlinker --gc-sections -Xlinker -Map=SimpleDemo.map -mcpu=cortex-m3 -mthumb -T "SimpleDemo_Debug.ld" -o"SimpleDemo.axf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
