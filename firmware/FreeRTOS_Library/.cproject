@@ -31,8 +31,8 @@
 <option id="gnu.c.compiler.option.include.paths.788503487" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
 <listOptionValue builtIn="false" value="&quot;${workspace_loc:/FreeRTOS_Library/include}&quot;"/>
 <listOptionValue builtIn="false" value="&quot;${workspace_loc:/FreeRTOS_Library/portable}&quot;"/>
-<listOptionValue builtIn="false" value="&quot;${workspace_loc:/SimpleDemo}&quot;"/>
 <listOptionValue builtIn="false" value="&quot;${workspace_loc:/CMSISv1p30_LPC17xx/inc}&quot;"/>
+<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Keadrone}&quot;"/>
 </option>
 <option id="com.crt.advproject.gcc.hdrlib.694633535" name="Use headers for C library" superClass="com.crt.advproject.gcc.hdrlib" value="com.crt.advproject.gcc.hdrlib.codered" valueType="enumerated"/>
 <option id="com.crt.advproject.gcc.arch.2024673784" name="Architecture" superClass="com.crt.advproject.gcc.arch" value="com.crt.advproject.gcc.target.cm3" valueType="enumerated"/>
