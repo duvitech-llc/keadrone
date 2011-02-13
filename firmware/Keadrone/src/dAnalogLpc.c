@@ -1,5 +1,5 @@
 /*
- * analog.c
+ * dAnalogLpc.c
  *
  *  Created on: 28 jan 2011
  *      Author: Willem (wnpd.nl)

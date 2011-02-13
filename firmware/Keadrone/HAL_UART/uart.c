@@ -28,7 +28,7 @@
  *
 ******************************************************************************/
 #include "LPC17xx.h"
-#include "type.h"
+#include "lpc_types.h"
 #include "uart.h"
 
 volatile uint32_t UART0Status, UART1Status, UART3Status;

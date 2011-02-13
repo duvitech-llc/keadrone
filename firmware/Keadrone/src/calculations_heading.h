@@ -8,5 +8,6 @@
 #ifndef CALCULATIONS_HEADING_H_
 #define CALCULATIONS_HEADING_H_
 
+void calculations_heading_init(void);
 
 #endif /* CALCULATIONS_HEADING_H_ */

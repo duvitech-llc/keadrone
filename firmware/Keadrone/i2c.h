@@ -17,13 +17,6 @@
 #define I2CMASTER		0x01
 #define I2CSLAVE		0x02
 
-/* For more info, read Philips's LM95 datasheet */
-#define LM75_ADDR		0x90
-#define LM75_TEMP		0x00
-#define LM75_CONFIG		0x01
-#define LM75_THYST		0x02
-#define LM75_TOS		0x03
-
 #define RD_BIT			0x01
 
 typedef struct
