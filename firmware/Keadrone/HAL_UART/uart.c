@@ -436,8 +436,8 @@ void UARTSend( uint32_t portNum, uint8_t *BufferPtr, uint32_t Length )
     {
 	  /* THRE status, contain valid data */
 	  while ( !(UART3TxEmpty & 0x01) );
-	  LPC_UART3->THR = *BufferPtr;
 	  UART3TxEmpty = 0;	/* not empty in the THR until it shifts out */
+	  LPC_UART3->THR = *BufferPtr;
 	  BufferPtr++;
 	  Length--;
 	}

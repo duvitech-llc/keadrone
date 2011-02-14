@@ -13,9 +13,9 @@ typedef struct
 	volatile int16_t x;
 	volatile int16_t y;
 	volatile int16_t z;
-	int16_t x_offset;
-	int16_t y_offset;
-	int16_t z_offset;
+	float x_offset;
+	float y_offset;
+	float z_offset;
 	volatile int16_t temp;
 } GYRO_S;
 

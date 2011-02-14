@@ -10,6 +10,8 @@ static void mainTask(void *pvParameters);
 
 int main(void)
 {
+	timerInit();
+
 	/* Start the two tasks as described in the accompanying application
 	 note. */
 	calculations_heading_init();
@@ -40,7 +42,7 @@ void EINT3_IRQHandler(void)
 	else if (LPC_GPIOINT->IO0IntStatR & (1 << 7)) //GPIO 0.7
 	{
 		LPC_GPIOINT->IO0IntClr = 1 << 7;
-		gyroGetDataFromChip();
+		calculations_heading_FromISR();
 	}
 }
 /*-----------------------------------------------------------*/

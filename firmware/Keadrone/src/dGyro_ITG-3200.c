@@ -139,9 +139,9 @@ static void gyroCalculateOffset(void)
 		counter++;
 		if (counter == 2046)
 		{
-			gyro.x_offset = sumX / 2047;
-			gyro.y_offset = sumY / 2047;
-			gyro.z_offset = sumZ / 2047;
+			gyro.x_offset = ((float) sumX / 2047);
+			gyro.y_offset = (float) sumY / 2047;
+			gyro.z_offset = (float) sumZ / 2047;
 			break;
 		}
 
@@ -152,8 +152,9 @@ static void gpioIntEnable(void)
 {
 	//Enable rising edge interrupt for P0.7
 	LPC_GPIOINT->IO0IntEnR |= 1 << 7;//| 1<<9;
-	NVIC_EnableIRQ(EINT3_IRQn);
 	NVIC_SetPriority(EINT3_IRQn, 30);
+	NVIC_EnableIRQ(EINT3_IRQn);
+
 }
 
 void gyroInit(void)
