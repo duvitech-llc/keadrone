@@ -1,10 +1,7 @@
 #include "calculations.h"
+#include "math.h"
 #include "vector.h"
 #include "stdint.h"
-
-static int accel_x; // gecompenseerd met off-set
-static int accel_y;// gecompenseerd met off-set
-static int accel_z;// gecompenseerd met off-set
 
 static float Accel_Vector[3] =
 { 0, 0, 0 }; //Store the acceleration in a vector
@@ -54,7 +51,7 @@ void updateAccelero(uint16_t *values)
 }
 
 /*******************Matrix.c		************************/
-void Matrix_Multiply(float *a, float *b, float* mat)
+static void Matrix_Multiply(float *a, float *b, float* mat)
 {
 	int x, y, w;
 	float op[3];
@@ -170,16 +167,25 @@ void Drift_correction(void)
  }
  */
 /**************************************************/
-
-void Matrix_update(void)
+typedef struct
 {
-	Gyro_Vector[0] = Gyro_Scaled_X(read_adc(0)); //gyro x roll
-	Gyro_Vector[1] = Gyro_Scaled_Y(read_adc(1)); //gyro y pitch
-	Gyro_Vector[2] = Gyro_Scaled_Z(read_adc(2)); //gyro Z yaw
+	int accel_x; // gecompenseerd met off-set
+	int accel_y;// gecompenseerd met off-set
+	int accel_z;// gecompenseerd met off-set
+	float gyro_x;// raw data of the gyro in radians per second, use:
+	float gyro_y;//  #define ToRad(x) (x*0.01745329252)  // *pi/180
+	float gyro_z;// for this calculation
+} MATRIX_UPDATE_STRUCT;
 
-	Accel_Vector[0] = accel_x;
-	Accel_Vector[1] = accel_y;
-	Accel_Vector[2] = accel_z;
+void Matrix_update(MATRIX_UPDATE_STRUCT *p)
+{
+	Gyro_Vector[0] = p->gyro_x;//Gyro_Scaled_X(read_adc(0)); //gyro x roll
+	Gyro_Vector[1] = p->gyro_y;//Gyro_Scaled_Y(read_adc(1)); //gyro y pitch
+	Gyro_Vector[2] = p->gyro_z;//Gyro_Scaled_Z(read_adc(2)); //gyro Z yaw
+
+	Accel_Vector[0] = p->accel_x;
+	Accel_Vector[1] = p->accel_y;
+	Accel_Vector[2] = p->accel_z;
 
 	Vector_Add(&Omega[0], &Gyro_Vector[0], &Omega_I[0]); //adding proportional term
 	Vector_Add(&Omega_Vector[0], &Omega[0], &Omega_P[0]); //adding Integrator term
@@ -220,16 +226,13 @@ void Matrix_update(void)
 	}
 }
 
-/* Not used below?? */
 // Euler angles
-static float roll;
-static float pitch;
-static float yaw;
+GYRO_STRUCT gyro;
 
 void Euler_angles(void)
 {
-	pitch = -asin(DCM_Matrix[2][0]);
-	roll = atan2(DCM_Matrix[2][1], DCM_Matrix[2][2]);
-	yaw = atan2(DCM_Matrix[1][0], DCM_Matrix[0][0]);
+	gyro.pitch = -asin(DCM_Matrix[2][0]);
+	gyro.roll = atan2(DCM_Matrix[2][1], DCM_Matrix[2][2]);
+	gyro.yaw = atan2(DCM_Matrix[1][0], DCM_Matrix[0][0]);
 }
 
