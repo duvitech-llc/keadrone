@@ -1,3 +1,6 @@
+#include "stdint.h"
+#include "calculations.h"
+
 /* ******************************************************* */
 /* I2C code for ADXL345 accelerometer                      */
 /* and HMC5843 magnetometer                                */
@@ -11,9 +14,6 @@ static int AN_OFFSET[6] =
 { 0, 0, 0, 0, 0, 0 }; //Array that stores the Offset of the sensors
 static int ACC[3]; //array that store the accelerometers data
 
-int accel_x; // gecompenseerd met off-set
-int accel_y;// gecompenseerd met off-set
-int accel_z;// gecompenseerd met off-set
 
 // komt van adc.c file, echter is de AN[0..6] array gecombineerd met acc. en dus hier geplaatst
 float read_adc(int select)
@@ -37,7 +37,7 @@ void initi2c2(void)
 	for (y = 0; y < 6; y++)
 		AN_OFFSET[y] = AN_OFFSET[y] / 32;
 
-	AN_OFFSET[5] -= GRAVITY * SENSOR_SIGN[5];
+	AN_OFFSET[5] -= GRAVITY_DIV * SENSOR_SIGN[5];
 
 #ifdef NOT_USED_WP
 	//Serial.println("Offset:");
@@ -79,7 +79,7 @@ void Accel_Init()
 void Read_Accel()
 {
 	int i = 0;
-	byte buff[6];
+	uint8_t buff[6];
 
 	ACC[1] = (((int) buff[1]) << 8) | buff[0]; // Y axis (internal sensor x axis)
 	ACC[0] = (((int) buff[3]) << 8) | buff[2]; // X axis (internal sensor y axis)
@@ -88,8 +88,12 @@ void Read_Accel()
 	AN[3] = ACC[0];
 	AN[4] = ACC[1];
 	AN[5] = ACC[2];
-	accel_x = SENSOR_SIGN[3] * (ACC[0] - AN_OFFSET[3]);
-	accel_y = SENSOR_SIGN[4] * (ACC[1] - AN_OFFSET[4]);
-	accel_z = SENSOR_SIGN[5] * (ACC[2] - AN_OFFSET[5]);
+
+	uint16_t accelero[3];
+
+	accelero[0] = SENSOR_SIGN[3] * (ACC[0] - AN_OFFSET[3]);
+	accelero[1] = SENSOR_SIGN[4] * (ACC[1] - AN_OFFSET[4]);
+	accelero[2] = SENSOR_SIGN[5] * (ACC[2] - AN_OFFSET[5]);
+	updateAccelero(accelero);
 
 }

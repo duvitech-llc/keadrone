@@ -10,8 +10,8 @@
 
 // ADXL345 Sensitivity(from datasheet) => 4mg/LSB   1G => 1000mg/4mg = 256 steps
 // Tested value : 248
-#define GRAVITY 248  //this equivalent to 1G in the raw data coming from the accelerometer
-#define Accel_Scale(x) x*(GRAVITY/9.81)//Scaling the raw data of the accel to actual acceleration in meters for seconds square
+#define GRAVITY_DIV 248  //this equivalent to 1G in the raw data coming from the accelerometer
+#define Accel_Scale(x) x*(GRAVITY_DIV/9.81)//Scaling the raw data of the accel to actual acceleration in meters for seconds square
 /********************************/
 /********************************/
 #define ToRad(x) (x*0.01745329252)  // *pi/180
@@ -37,12 +37,5 @@
 //OUTPUTMODE=1 will print the corrected data,
 //OUTPUTMODE=0 will print uncorrected data of the gyros (with drift)
 #define OUTPUTMODE 1
-
-//#define PRINT_DCM 0     //Will print the whole direction cosine matrix
-#define PRINT_ANALOGS 0 //Will print the analog raw data
-#define PRINT_EULER 1   //Will print the Euler angles Roll, Pitch and Yaw
-
-#define ADC_WARM_CYCLES 50
-#define STATUS_LED 13
 
 #endif /* CALCULATIONS_H_ */

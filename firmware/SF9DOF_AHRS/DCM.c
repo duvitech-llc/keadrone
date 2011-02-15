@@ -1,26 +1,27 @@
 #include "calculations.h"
+#include "vector.h"
+#include "stdint.h"
 
-float Accel_Vector[3] =
+static int accel_x; // gecompenseerd met off-set
+static int accel_y;// gecompenseerd met off-set
+static int accel_z;// gecompenseerd met off-set
+
+static float Accel_Vector[3] =
 { 0, 0, 0 }; //Store the acceleration in a vector
-float Gyro_Vector[3] =
+static float Gyro_Vector[3] =
 { 0, 0, 0 };//Store the gyros turn rate in a vector
-float Omega_Vector[3] =
+static float Omega_Vector[3] =
 { 0, 0, 0 }; //Corrected Gyro_Vector data
-float Omega_P[3] =
+static float Omega_P[3] =
 { 0, 0, 0 };//Omega Proportional correction
-float Omega_I[3] =
+static float Omega_I[3] =
 { 0, 0, 0 };//Omega Integrator
-float Omega[3] =
+static float Omega[3] =
 { 0, 0, 0 };
 
-// Euler angles
-float roll;
-float pitch;
-float yaw;
-
-float errorRollPitch[3] =
+static float errorRollPitch[3] =
 { 0, 0, 0 };
-float errorYaw[3] =
+static float errorYaw[3] =
 { 0, 0, 0 };
 
 static float DCM_Matrix[3][3] =
@@ -34,7 +35,6 @@ static float Update_Matrix[3][3] =
 { 3, 4, 5 },
 { 6, 7, 8 } }; //Gyros here
 
-
 static float Temporary_Matrix[3][3] =
 {
 { 0, 0, 0 },
@@ -42,6 +42,16 @@ static float Temporary_Matrix[3][3] =
 { 0, 0, 0 } };
 
 static float G_Dt = 0.02; // Integration time (DCM algorithm)  We will run the integration loop at 50Hz if possible
+
+/******************Gyro / Acc. updates ********************/
+
+// parameter is pointer to array with 3xAccelerometer data in x/y/z format
+void updateAccelero(uint16_t *values)
+{
+	accel_x = *values;
+	accel_y = *(values + 1);
+	accel_z = *(values + 2);
+}
 
 /*******************Matrix.c		************************/
 void Matrix_Multiply(float *a, float *b, float* mat)
@@ -55,11 +65,11 @@ void Matrix_Multiply(float *a, float *b, float* mat)
 		{
 			for (w = 0; w < 3; w++)
 			{
-				op[w] = (*(a((x*3)+w))) * (*(b[w][y]((x*3)+w)));
+				op[w] = (*(a + ((x * 3) + w))) * (*(b + ((x * 3) + w)));
 			}
 
-			*(mat((x*3)+y)) = 0;
-			*(mat((x*3)+y)) = op[0] + op[1] + op[2];
+			*(mat + ((x * 3) + y)) = 0;
+			*(mat + ((x * 3) + y)) = op[0] + op[1] + op[2];
 
 			//float test = mat[x][y];
 		}
@@ -70,7 +80,7 @@ void Matrix_Multiply(float *a, float *b, float* mat)
 
 void dcmElapsedTime(uint16_t timeSinceLastRun)
 {
-	G_Dt = (timer - timer_old) / 1000.0; // Real time of loop run. We use this on the DCM algorithm (gyro integration time)
+	//G_Dt = (timer - timer_old) / 1000.0; // Real time of loop run. We use this on the DCM algorithm (gyro integration time)
 	/*		// timer zal altijd groter zijn tenzij bij init. 1000 == mS
 	 if (timer > timer_old)
 	 G_Dt = (timer - timer_old) / 1000.0; // Real time of loop run. We use this on the DCM algorithm (gyro integration time)
@@ -117,7 +127,7 @@ void Drift_correction(void)
 	// Calculate the magnitude of the accelerometer vector
 	Accel_magnitude = sqrt(Accel_Vector[0] * Accel_Vector[0] + Accel_Vector[1]
 			* Accel_Vector[1] + Accel_Vector[2] * Accel_Vector[2]);
-	Accel_magnitude = Accel_magnitude / GRAVITY; // Scale to gravity.
+	Accel_magnitude = Accel_magnitude / GRAVITY_DIV; // Scale to gravity.
 	// Dynamic weighting of accelerometer info (reliability filter)
 	// Weight for accelerometer info (<0.5G = 0.0, 1G = 1.0 , >1.5G = 0.0)
 	Accel_weight = constrain(1 - 2 * abs(1 - Accel_magnitude), 0, 1); //
@@ -209,6 +219,12 @@ void Matrix_update(void)
 		}
 	}
 }
+
+/* Not used below?? */
+// Euler angles
+static float roll;
+static float pitch;
+static float yaw;
 
 void Euler_angles(void)
 {

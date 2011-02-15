@@ -20,6 +20,7 @@
  Programmer : 3.3v FTDI
  Arduino IDE : Select board  "Arduino Duemilanove w/ATmega328"
  */
+#include "stdint.h"
 #include "calculations.h"
 
 int8_t sensors[3] =
@@ -34,6 +35,7 @@ float MAG_Heading;
 
 void setup()
 {
+	/*
 	Serial.begin(57600);
 	pinMode(STATUS_LED, OUTPUT); // Status LED
 
@@ -70,10 +72,12 @@ void setup()
 	timer = millis();
 	delay(20);
 	counter = 0;
+	*/
 }
 
 void loop() //Main Loop
 {
+#ifdef OLD
 	if ((millis() - timer) >= 20) // Main loop runs at 50Hz
 	{
 		counter++;
@@ -129,5 +133,6 @@ void loop() //Main Loop
 		 digitalWrite(STATUS_LED, HIGH);
 		 */
 	}
+#endif
 
 }
