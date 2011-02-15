@@ -1,3 +1,5 @@
+#include "calculations.h"
+
 float Accel_Vector[3] =
 { 0, 0, 0 }; //Store the acceleration in a vector
 float Gyro_Vector[3] =
@@ -41,6 +43,31 @@ static float Temporary_Matrix[3][3] =
 
 static float G_Dt = 0.02; // Integration time (DCM algorithm)  We will run the integration loop at 50Hz if possible
 
+/*******************Matrix.c		************************/
+void Matrix_Multiply(float *a, float *b, float* mat)
+{
+	int x, y, w;
+	float op[3];
+#ifdef TO_BE_PORTED
+	//todo
+	for (x = 0; x < 3; x++)
+	{
+		for (y = 0; y < 3; y++)
+		{
+			for (w = 0; w < 3; w++)
+			{
+				op[w] = a[x][w] * b[w][y];
+			}
+			mat[x][y] = 0;
+			mat[x][y] = op[0] + op[1] + op[2];
+
+			float test = mat[x][y];
+		}
+	}
+#endif
+}
+/*******************End Matrix.c		********************/
+
 void dcmElapsedTime(uint16_t timeSinceLastRun)
 {
 	G_Dt = (timer - timer_old) / 1000.0; // Real time of loop run. We use this on the DCM algorithm (gyro integration time)
@@ -80,11 +107,7 @@ void Normalize(void)
 /**************************************************/
 void Drift_correction(void)
 {
-	float mag_heading_x;
-	float mag_heading_y;
-	float errorCourse;
 	//Compensation the Roll, Pitch and Yaw drift.
-	static float Scaled_Omega_P[3];
 	static float Scaled_Omega_I[3];
 	float Accel_magnitude;
 	float Accel_weight;
@@ -107,6 +130,11 @@ void Drift_correction(void)
 			* Accel_weight);
 	Vector_Add(Omega_I, Omega_I, Scaled_Omega_I);
 
+#ifdef NO_MAGNETOMETER
+	float mag_heading_x;
+	float mag_heading_y;
+	float errorCourse;
+	static float Scaled_Omega_P[3];
 	//*****YAW***************
 	// We make the gyro YAW drift correction based on compass magnetic heading
 
@@ -121,6 +149,7 @@ void Drift_correction(void)
 
 	Vector_Scale(&Scaled_Omega_I[0], &errorYaw[0], Ki_YAW);//.00001Integrator
 	Vector_Add(Omega_I, Omega_I, Scaled_Omega_I);//adding integrator to the Omega_I
+#endif
 }
 /**************************************************/
 /*
@@ -148,15 +177,15 @@ void Matrix_update(void)
 	//Accel_adjust();    //Remove centrifugal acceleration.   We are not using this function in this version - we have no speed measurement
 
 #if OUTPUTMODE==1
-	Update_Matrix[0][0]=0;
-	Update_Matrix[0][1]=-G_Dt*Omega_Vector[2];//-z
-	Update_Matrix[0][2]=G_Dt*Omega_Vector[1];//y
-	Update_Matrix[1][0]=G_Dt*Omega_Vector[2];//z
-	Update_Matrix[1][1]=0;
-	Update_Matrix[1][2]=-G_Dt*Omega_Vector[0];//-x
-	Update_Matrix[2][0]=-G_Dt*Omega_Vector[1];//-y
-	Update_Matrix[2][1]=G_Dt*Omega_Vector[0];//x
-	Update_Matrix[2][2]=0;
+	Update_Matrix[0][0] = 0;
+	Update_Matrix[0][1] = -G_Dt * Omega_Vector[2];//-z
+	Update_Matrix[0][2] = G_Dt * Omega_Vector[1];//y
+	Update_Matrix[1][0] = G_Dt * Omega_Vector[2];//z
+	Update_Matrix[1][1] = 0;
+	Update_Matrix[1][2] = -G_Dt * Omega_Vector[0];//-x
+	Update_Matrix[2][0] = -G_Dt * Omega_Vector[1];//-y
+	Update_Matrix[2][1] = G_Dt * Omega_Vector[0];//x
+	Update_Matrix[2][2] = 0;
 #else                    // Uncorrected data (no drift correction)
 	Update_Matrix[0][0] = 0;
 	Update_Matrix[0][1] = -G_Dt * Gyro_Vector[2];//-z
@@ -171,9 +200,10 @@ void Matrix_update(void)
 
 	Matrix_Multiply(DCM_Matrix, Update_Matrix, Temporary_Matrix); //a*b=c
 
-	for (int x = 0; x < 3; x++) //Matrix Addition (update)
+	int x, y;
+	for (x = 0; x < 3; x++) //Matrix Addition (update)
 	{
-		for (int y = 0; y < 3; y++)
+		for (y = 0; y < 3; y++)
 		{
 			DCM_Matrix[x][y] += Temporary_Matrix[x][y];
 		}

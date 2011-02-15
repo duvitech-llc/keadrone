@@ -5,17 +5,24 @@
 //todo: put the init in a #define
 static int SENSOR_SIGN[9] =
 { -1, 1, -1, 1, 1, 1, -1, -1, -1 }; //Correct directions x,y,z - gyros, accels, magnetormeter
+//blijkbaar AN[0..2] = x,y,z van acc. meter (ruwe, oversampled data) kwam van ADC
 static int AN[6]; //array that store the 3 ADC filtered data (gyros)
 static int AN_OFFSET[6] =
 { 0, 0, 0, 0, 0, 0 }; //Array that stores the Offset of the sensors
 static int ACC[3]; //array that store the accelerometers data
 
-int accel_x;
-int accel_y;
-int accel_z;
-int magnetom_x;
-int magnetom_y;
-int magnetom_z;
+int accel_x; // gecompenseerd met off-set
+int accel_y;// gecompenseerd met off-set
+int accel_z;// gecompenseerd met off-set
+
+// komt van adc.c file, echter is de AN[0..6] array gecombineerd met acc. en dus hier geplaatst
+float read_adc(int select)
+{
+	if (SENSOR_SIGN[select] < 0)
+		return (AN_OFFSET[select] - AN[select]);
+	else
+		return (AN[select] - AN_OFFSET[select]);
+}
 
 void initi2c1(void)
 {
@@ -23,6 +30,7 @@ void initi2c1(void)
 	for (y = 0; y < 6; y++) // Cumulate values
 		AN_OFFSET[y] += AN[y];
 }
+
 void initi2c2(void)
 {
 	int y;
@@ -39,8 +47,8 @@ void initi2c2(void)
 }
 
 int AccelAddress = 0x53;
-int CompassAddress = 0x1E; //0x3C //0x3D;  //(0x42>>1);
 
+#ifdef INITS_OF_PERIP
 void I2C_Init()
 {
 	Wire.begin();
@@ -65,6 +73,7 @@ void Accel_Init()
 	Wire.endTransmission();
 	delay(5);
 }
+#endif
 
 // Reads x,y and z accelerometer registers
 void Read_Accel()
@@ -72,70 +81,15 @@ void Read_Accel()
 	int i = 0;
 	byte buff[6];
 
-	Wire.beginTransmission(AccelAddress);
-	Wire.send(0x32); //sends address to read from
-	Wire.endTransmission(); //end transmission
+	ACC[1] = (((int) buff[1]) << 8) | buff[0]; // Y axis (internal sensor x axis)
+	ACC[0] = (((int) buff[3]) << 8) | buff[2]; // X axis (internal sensor y axis)
+	ACC[2] = (((int) buff[5]) << 8) | buff[4]; // Z axis
+	// hieronder wordt de gyro data naar de juiste plekken in AN array gegooit
+	AN[3] = ACC[0];
+	AN[4] = ACC[1];
+	AN[5] = ACC[2];
+	accel_x = SENSOR_SIGN[3] * (ACC[0] - AN_OFFSET[3]);
+	accel_y = SENSOR_SIGN[4] * (ACC[1] - AN_OFFSET[4]);
+	accel_z = SENSOR_SIGN[5] * (ACC[2] - AN_OFFSET[5]);
 
-	Wire.beginTransmission(AccelAddress); //start transmission to device
-	Wire.requestFrom(AccelAddress, 6); // request 6 bytes from device
-
-	while (Wire.available()) // ((Wire.available())&&(i<6))
-	{
-		buff[i] = Wire.receive(); // receive one byte
-		i++;
-	}
-	Wire.endTransmission(); //end transmission
-
-	if (i == 6) // All bytes received?
-	{
-		ACC[1] = (((int) buff[1]) << 8) | buff[0]; // Y axis (internal sensor x axis)
-		ACC[0] = (((int) buff[3]) << 8) | buff[2]; // X axis (internal sensor y axis)
-		ACC[2] = (((int) buff[5]) << 8) | buff[4]; // Z axis
-		AN[3] = ACC[0];
-		AN[4] = ACC[1];
-		AN[5] = ACC[2];
-		accel_x = SENSOR_SIGN[3] * (ACC[0] - AN_OFFSET[3]);
-		accel_y = SENSOR_SIGN[4] * (ACC[1] - AN_OFFSET[4]);
-		accel_z = SENSOR_SIGN[5] * (ACC[2] - AN_OFFSET[5]);
-	}
-	else
-		Serial.println("!ERR: Acc data");
 }
-
-void Compass_Init()
-{
-	Wire.beginTransmission(CompassAddress);
-	Wire.send(0x02);
-	Wire.send(0x00); // Set continouos mode (default to 10Hz)
-	Wire.endTransmission(); //end transmission
-}
-
-void Read_Compass()
-{
-	int i = 0;
-	byte buff[6];
-
-	Wire.beginTransmission(CompassAddress);
-	Wire.send(0x03); //sends address to read from
-	Wire.endTransmission(); //end transmission
-
-	//Wire.beginTransmission(CompassAddress);
-	Wire.requestFrom(CompassAddress, 6); // request 6 bytes from device
-	while (Wire.available()) // ((Wire.available())&&(i<6))
-	{
-		buff[i] = Wire.receive(); // receive one byte
-		i++;
-	}
-	Wire.endTransmission(); //end transmission
-
-	if (i == 6) // All bytes received?
-	{
-		// MSB byte first, then LSB, X,Y,Z
-		magnetom_x = SENSOR_SIGN[6] * ((((int) buff[2]) << 8) | buff[3]); // X axis (internal sensor y axis)
-		magnetom_y = SENSOR_SIGN[7] * ((((int) buff[0]) << 8) | buff[1]); // Y axis (internal sensor x axis)
-		magnetom_z = SENSOR_SIGN[8] * ((((int) buff[4]) << 8) | buff[5]); // Z axis
-	}
-	else
-		Serial.println("!ERR: Mag data");
-}
-

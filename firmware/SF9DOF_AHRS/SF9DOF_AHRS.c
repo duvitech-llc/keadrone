@@ -32,7 +32,6 @@ static unsigned int counter = 0;
 //unused??(not using magnetometer)
 float MAG_Heading;
 
-
 void setup()
 {
 	Serial.begin(57600);
@@ -82,20 +81,24 @@ void loop() //Main Loop
 		timer = millis();
 		dcmElapsedTime((timer - timer_old);
 
-
 		// *** DCM algorithm
 		// Data adquisition
+		// port gedeelte voor ARM
+
+		// haalt alleen adc readings op van acc. meter en plaatst deze in AN[0..2] array
 		Read_adc_raw(); // This read gyro data
+
 		Read_Accel(); // Read I2C accelerometer
 
-		if (counter > 5) // Read compass data at 10Hz... (5 loop runs)
+		/* File = removed
+		 if (counter > 5) // Read compass data at 10Hz... (5 loop runs)
 
-		{
-			counter = 0;
-			Read_Compass(); // Read I2C magnetometer
-			Compass_Heading(); // Calculate magnetic heading
-		}
-
+		 {
+		 counter = 0;
+		 Read_Compass(); // Read I2C magnetometer
+		 Compass_Heading(); // Calculate magnetic heading
+		 }
+		 */
 		// Calculations...
 		Matrix_update();
 		Normalize();
