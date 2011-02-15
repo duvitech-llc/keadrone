@@ -48,23 +48,23 @@ void Matrix_Multiply(float *a, float *b, float* mat)
 {
 	int x, y, w;
 	float op[3];
-#ifdef TO_BE_PORTED
-	//todo
+
 	for (x = 0; x < 3; x++)
 	{
 		for (y = 0; y < 3; y++)
 		{
 			for (w = 0; w < 3; w++)
 			{
-				op[w] = a[x][w] * b[w][y];
+				op[w] = (*(a((x*3)+w))) * (*(b[w][y]((x*3)+w)));
 			}
-			mat[x][y] = 0;
-			mat[x][y] = op[0] + op[1] + op[2];
 
-			float test = mat[x][y];
+			*(mat((x*3)+y)) = 0;
+			*(mat((x*3)+y)) = op[0] + op[1] + op[2];
+
+			//float test = mat[x][y];
 		}
 	}
-#endif
+
 }
 /*******************End Matrix.c		********************/
 
