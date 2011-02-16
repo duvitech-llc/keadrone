@@ -10,7 +10,8 @@ static void mainTask(void *pvParameters);
 
 int main(void)
 {
-	timerInit();
+	initPwmServos();
+	//timerInit();
 
 	/* Start the two tasks as described in the accompanying application
 	 note. */

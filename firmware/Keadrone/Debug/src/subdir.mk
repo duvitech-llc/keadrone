@@ -4,24 +4,39 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../src/DCM.c \
+../src/Vector.c \
+../src/calculations.c \
 ../src/calculations_heading.c \
 ../src/dAccelerometer_BMA180.c \
 ../src/dAnalogLpc.c \
 ../src/dGyro_ITG-3200.c \
+../src/dServoPwm.c \
+../src/dServoTimers.c \
 ../src/main.c 
 
 OBJS += \
+./src/DCM.o \
+./src/Vector.o \
+./src/calculations.o \
 ./src/calculations_heading.o \
 ./src/dAccelerometer_BMA180.o \
 ./src/dAnalogLpc.o \
 ./src/dGyro_ITG-3200.o \
+./src/dServoPwm.o \
+./src/dServoTimers.o \
 ./src/main.o 
 
 C_DEPS += \
+./src/DCM.d \
+./src/Vector.d \
+./src/calculations.d \
 ./src/calculations_heading.d \
 ./src/dAccelerometer_BMA180.d \
 ./src/dAnalogLpc.d \
 ./src/dGyro_ITG-3200.d \
+./src/dServoPwm.d \
+./src/dServoTimers.d \
 ./src/main.d 
 
 

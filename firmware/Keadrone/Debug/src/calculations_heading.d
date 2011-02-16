@@ -15,7 +15,8 @@ src/calculations_heading.d src/calculations_heading.o:  \
   C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\include/queue.h \
   C:\Users\admin\Desktop\Keadrone\Keadrone/lpc17xx_clkpwr.h \
   C:\Users\admin\Desktop\Keadrone\Keadrone/lpc_types.h \
-  ../src/dAccelerometer_BMA180.h ../src/dGyro_ITG-3200.h
+  ../src/dAccelerometer_BMA180.h ../src/dGyro_ITG-3200.h ../src/DCM.h \
+  ../src/calculations.h
 
 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\include/FreeRTOS.h:
 
@@ -50,3 +51,7 @@ C:\Users\admin\Desktop\Keadrone\Keadrone/lpc_types.h:
 ../src/dAccelerometer_BMA180.h:
 
 ../src/dGyro_ITG-3200.h:
+
+../src/DCM.h:
+
+../src/calculations.h:

@@ -12,6 +12,8 @@
 #include "lpc17xx_clkpwr.h"
 #include "dAccelerometer_BMA180.h"
 #include "dGyro_ITG-3200.h"
+#include "DCM.h"
+#include "calculations.h"
 
 xSemaphoreHandle xSemaphore;
 sAcc_data accCurrent;
@@ -39,12 +41,12 @@ static void calculations_heading(void *pvParameters)
 
 	for (;;)
 	{
-		static uint16_t value = 0;
-		value += 98;
-		if (value >= (781))
-			value = 0;
-		servoSet(0, value);
-
+		/*static uint16_t value = 0;
+		 value += 98;
+		 if (value >= (781))
+		 value = 0;
+		 servoSet(1, value);
+		 */
 		/*Block waiting for the semaphore to become available. */
 		if (xSemaphoreTake( xSemaphore, LONG_TIME ) == pdTRUE)
 		{
@@ -55,10 +57,46 @@ static void calculations_heading(void *pvParameters)
 
 			acc_copy = accCurrent;
 			gyro_copy = gyroCurrent;
+
+			static Bool initDone = TRUE;
+			if (initDone)
+			{
+				static uint16_t initIteration = 0;
+				if (initIteration++ == 32)
+				{
+					initDone = FALSE;
+					initi2c2();
+				}
+				else
+				{
+					initi2c1();
+				}
+			}
+			else
+			{
+				static MATRIX_UPDATE_STRUCT data;
+				data.gyro_x = ToRad(((float)read_adc(0) / 14.375));
+				data.gyro_y = ToRad(((float)read_adc(1) / 14.375));
+				data.gyro_z = ToRad(((float)read_adc(2) / 14.375));
+
+				Matrix_update(&data);
+				Normalize();
+				Drift_correction();
+				Euler_angles();
+				float temp;
+				temp = (ToDeg(gyro_true.pitch) * 22);
+				servoSet(1, ((uint16_t) temp));
+			}
+
+
+			//printf("%f,%f,%f\n", gyro.x, gyro.y, gyro.z);
+			printf("%4.2f,%4.2f,%4.2f,", ToDeg(gyro_true.pitch),
+					ToDeg(gyro_true.roll), ToDeg(gyro_true.yaw));
+
 			printf("%d,%d,%d,%d,%d,%d,\n", acc_copy.X, acc_copy.Y, acc_copy.Z,
 					gyro_copy.x, gyro_copy.y, gyro_copy.z);
 
-			//printf("%f,%f,%f\n", gyro.x, gyro.y, gyro.z);
+			//	printf("\n");
 		}
 	}
 }
@@ -71,7 +109,6 @@ void calculations_heading_init(void)
 	while (xSemaphore == NULL)
 		;
 }
-#include "math.h"
 
 void calculations_heading_FromISR(void)
 {
@@ -82,28 +119,29 @@ void calculations_heading_FromISR(void)
 	spiGetAccelero(&accCurrent);
 	gyroGetDataFromChip(&gyroCurrent);
 
-	// convert to degrees/sec
-	static float Gyro[3];
-	Gyro[0] += (((float) gyroCurrent.x - gyroCurrent.x_offset) / 14.375) / 2000;
-	Gyro[1] += (((float) gyroCurrent.y - gyroCurrent.y_offset) / 14.375) / 2000;
-	Gyro[2] += (((float) gyroCurrent.z - gyroCurrent.z_offset) / 14.375) / 2000;
+#define FILTER 1
+	static int16_t array[6];
+	array[3] += ((accCurrent.X >> 2) - (array[3] >> 2)) >> FILTER;
+	array[4] += ((accCurrent.Y >> 2) - (array[4] >> 2)) >> FILTER;
+	array[5] += ((accCurrent.Z >> 2) - (array[5] >> 2)) >> FILTER;
 
-	float AaccXZ;
+	array[0] += ((gyroCurrent.x >> 2) - (array[0] >> 2)) >> FILTER;
+	array[1] += ((gyroCurrent.y >> 2) - (array[1] >> 2)) >> FILTER;
+	array[2] += ((gyroCurrent.z >> 2) - (array[2] >> 2)) >> FILTER;
 
-	if (abs(accCurrent.Z) != 0)
-	{
-		AaccXZ = atan2(accCurrent.X, accCurrent.Z);
-		Gyro[0] = AaccXZ * 180 / PI;
-		Gyro[1] = Gyro[1] * 0.96 + Gyro[0] * 0.04;
-	}
+	/* convert to degrees/sec
+	 static float Gyro[3];
+	 Gyro[0] += (((float) gyroCurrent.x - gyroCurrent.x_offset) / 14.375) / 2000;
+	 Gyro[1] += (((float) gyroCurrent.y - gyroCurrent.y_offset) / 14.375) / 2000;
+	 Gyro[2] += (((float) gyroCurrent.z - gyroCurrent.z_offset) / 14.375) / 2000;
+	 */
 
-	if (counter++ == 200)
+	if (counter++ == 40)//50hz
 	{
 		counter = 0;
+		update_sensor_data(array);
 		xHigherPriorityTaskWoken = pdFALSE;
-		gyro.x = Gyro[0];
-		gyro.y = Gyro[1];
-		gyro.z = Gyro[2];
+
 		/* Unblock the task by releasing the semaphore. */
 		xSemaphoreGiveFromISR(xSemaphore, &xHigherPriorityTaskWoken);
 		portEND_SWITCHING_ISR( xHigherPriorityTaskWoken );

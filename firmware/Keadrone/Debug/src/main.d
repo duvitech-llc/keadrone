@@ -10,9 +10,7 @@ src/main.d src/main.o: ../src/main.c \
   C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\include/mpu_wrappers.h \
   C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\include/task.h \
   C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\include/list.h \
-  ../src/calculations_heading.h \
-  C:\Users\admin\Desktop\Keadrone\Keadrone/lpc17xx_clkpwr.h \
-  C:\Users\admin\Desktop\Keadrone\Keadrone/lpc_types.h
+  ../src/calculations_heading.h
 
 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\include/FreeRTOS.h:
 
@@ -37,7 +35,3 @@ C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\include/task.h:
 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\include/list.h:
 
 ../src/calculations_heading.h:
-
-C:\Users\admin\Desktop\Keadrone\Keadrone/lpc17xx_clkpwr.h:
-
-C:\Users\admin\Desktop\Keadrone\Keadrone/lpc_types.h:

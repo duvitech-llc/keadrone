@@ -19,7 +19,7 @@ struct
 } SERVO_TIMERS;
 
 /* 10 bit value */
-void servoSet(uint8_t servoNo, uint16_t value)
+void servoSetx(uint8_t servoNo, uint16_t value)
 {
 	switch (servoNo)
 	{
