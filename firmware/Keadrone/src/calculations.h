@@ -29,8 +29,8 @@ float read_adc(int select);
 #define Gyro_Scaled_Z(x) x*ToRad(Gyro_Gain_Z) //Return the scaled ADC raw data of the gyro in radians for second
 /********************************/
 /********************************/
-#define Kp_ROLLPITCH 0.001
-#define Ki_ROLLPITCH 0.00002
+#define Kp_ROLLPITCH 0.000
+#define Ki_ROLLPITCH 0.00000
 #define Kp_YAW 1.2
 #define Ki_YAW 0.00002
 

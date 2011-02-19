@@ -114,6 +114,9 @@ void Normalize(void)
 }
 
 /**************************************************/
+float Kp_ROLLPITCHa = 0.00002;
+float Ki_ROLLPITCHa = 0.000;
+
 void Drift_correction(void)
 {
 	//Compensation the Roll, Pitch and Yaw drift.
@@ -139,9 +142,9 @@ void Drift_correction(void)
 
 	Vector_Cross_Product(&errorRollPitch[0], &Accel_Vector[0],
 			&DCM_Matrix[2][0]); //adjust the ground of reference
-	Vector_Scale(&Omega_P[0], &errorRollPitch[0], Kp_ROLLPITCH * Accel_weight);
+	Vector_Scale(&Omega_P[0], &errorRollPitch[0], Kp_ROLLPITCHa * Accel_weight);
 
-	Vector_Scale(&Scaled_Omega_I[0], &errorRollPitch[0], Ki_ROLLPITCH
+	Vector_Scale(&Scaled_Omega_I[0], &errorRollPitch[0], Ki_ROLLPITCHa
 			* Accel_weight);
 	Vector_Add(Omega_I, Omega_I, Scaled_Omega_I);
 

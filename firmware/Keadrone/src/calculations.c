@@ -17,7 +17,7 @@
 //todo: put the init in a #define
 static int SENSOR_SIGN[9] =
 {
-		-1, -1, -1, 1, 1, 1, -1, -1, -1 }; //Correct directions x,y,z - gyros, accels, magnetormeter
+		1, -1, -1, -1, 1, 1, -1, -1, -1 }; //Correct directions x,y,z - gyros, accels, magnetormeter
 //blijkbaar AN[0..2] = x,y,z van acc. meter (ruwe, oversampled data) kwam van ADC
 static int AN[6]; //array that store the 3 ADC filtered data (gyros)
 static int AN_OFFSET[6] =
