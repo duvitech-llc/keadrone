@@ -104,7 +104,7 @@ void Normalize(void)
 
 /**************************************************/
 float Kp_ROLLPITCHa = 0.0002;
-float Ki_ROLLPITCHa = 0.000;
+float Ki_ROLLPITCHa = 0.000000;
 
 void Drift_correction(void)
 {

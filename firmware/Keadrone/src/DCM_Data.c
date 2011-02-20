@@ -10,8 +10,8 @@
 
 //todo: put the init in a #define
 static int16_t SENSOR_SIGN[LAST_ELEMENT] =
-{ -1, 1, 1, 1, -1, -1 }; //Correct directions x,y,z - gyros, accels, magnetormeter
-//{ 1, -1, -1, -1, 1, 1 }; //Correct directions x,y,z - gyros, accels, magnetormeter
+//{ -1, 1, 1, 1, -1, -1 }; //Correct directions x,y,z - gyros, accels, magnetormeter
+{ 1, -1, -1, 1, -1, -1 }; //Correct directions x,y,z - gyros, accels, magnetormeter
 static int32_t AN_OFFSET[LAST_ELEMENT] =
 { 0, 0, 0, 0, 0, 0 }; //Array that stores the Offset of the sensors
 static int16_t AN_DATA[LAST_ELEMENT];
@@ -41,7 +41,7 @@ void imuInit_2(void)
 	for (y = 0; y < 6; y++)
 		AN_OFFSET[y] = AN_OFFSET[y] / 32;
 
-	AN_OFFSET[ACC_Z] -= GRAVITY_DIV * SENSOR_SIGN[ACC_Z];
+	AN_OFFSET[ACC_Z] += GRAVITY_DIV * SENSOR_SIGN[ACC_Z];
 }
 
 /* Parameters are given in grad/s */

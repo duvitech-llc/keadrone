@@ -14,9 +14,37 @@
 #include "dGyro_ITG-3200.h"
 #include "DCM_Data.h"
 
-static xSemaphoreHandle xSemaphore;
+static xSemaphoreHandle xSemaphore, xSemaphoreTerminal;
 static sAcc_data accCurrent;
 static GYRO_S gyroCurrent;
+
+static void terminal(void *pvParameters)
+{
+	for (;;)
+	{
+		/*Block waiting for the semaphore to become available. */
+		if (xSemaphoreTake( xSemaphoreTerminal, 0xffff ) == pdTRUE)
+		{
+
+			static sAcc_data acc_copy;
+			static GYRO_S gyro_copy;
+
+			acc_copy = accCurrent;
+			gyro_copy = gyroCurrent;
+
+			float roll, pitch;
+			roll = ToDeg(currentHeading.roll);
+			pitch = ToDeg(currentHeading.pitch);
+			printf("%d,%d,%d,%d,%d,%d,", acc_copy.X, acc_copy.Y, acc_copy.Z,
+					gyro_copy.x, gyro_copy.y, gyro_copy.z);
+
+			/* Printout section */
+			printf("%4.2f,", roll );
+			printf("%4.2f\n", pitch);
+
+		}
+	}
+}
 
 static void calculations_heading(void *pvParameters)
 {
@@ -83,20 +111,14 @@ static void calculations_heading(void *pvParameters)
 				else if (calc > 600)
 					calc = 600;
 				servoSet(1, calc);
-			}
 
-			/* Printout section */
-			static int32_t subparts = 0;
-			if (subparts == 0)
-			{
-				subparts++;
-				printf("%4.2f,", ToDeg(currentHeading.roll) );
-
-			}
-			else if (subparts == 1)
-			{
-				subparts = 0;
-				printf("%4.2f\n", ToDeg(currentHeading.pitch));
+				static uint16_t counter = 0;
+				counter++;
+				if (counter == 4)
+				{
+					counter = 0;
+					xSemaphoreGive(xSemaphoreTerminal);
+				}
 
 			}
 
@@ -112,7 +134,10 @@ void calculations_heading_init(void)
 	LPC_GPIO1->FIODIR |= (1 << 1);
 
 	vSemaphoreCreateBinary( xSemaphore );
-	xTaskCreate( calculations_heading, ( signed char * ) "UART", (300), NULL, tskIDLE_PRIORITY+1, NULL );
+	vSemaphoreCreateBinary( xSemaphoreTerminal );
+
+	xTaskCreate( terminal, ( signed char * ) "terminal", (300), NULL, tskIDLE_PRIORITY+1, NULL );
+	xTaskCreate( calculations_heading, ( signed char * ) "UART", (200), NULL, tskIDLE_PRIORITY+2, NULL );
 	// block on error creating semaphore
 	while (xSemaphore == NULL)
 		;

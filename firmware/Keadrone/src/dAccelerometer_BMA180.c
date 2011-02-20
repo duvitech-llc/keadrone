@@ -161,9 +161,37 @@ static void gpioIntInit(void)
 	NVIC_SetPriority(EINT3_IRQn, 30);
 	NVIC_EnableIRQ(EINT3_IRQn);
 }
+#define HISTORY_IIR 256
+
+typedef struct
+{
+	int32_t IIR_Sum;
+	int32_t currReading;
+} IIR_DATA;
+uint16_t IIR_Average(IIR_DATA *p)
+{
+	// on boot-up, for touch, our value is never 0
+	if (p->IIR_Sum == 0)
+		p->IIR_Sum = (int32_t) p->currReading * HISTORY_IIR;
+
+	// baseline is always higher or equal to currReading
+	if (p->IIR_Sum < (int32_t) p->currReading * HISTORY_IIR)
+		p->IIR_Sum = (int32_t) p->currReading * HISTORY_IIR;
+
+	p->IIR_Sum -= (int32_t)(p->IIR_Sum / HISTORY_IIR);
+	p->IIR_Sum += p->currReading;
+
+	// note, this filter has an gain of HISTERY
+	// therefore we must devide the average value
+	// with HISTORY to get our current average
+	return (uint16_t)(p->IIR_Sum / HISTORY_IIR);
+}
 
 void spiReqNewData_FromISR(void)
 {
+	static IIR_DATA x;
+	static IIR_DATA y;
+	static IIR_DATA z;
 
 	static uint8_t regData[7];
 
@@ -172,15 +200,18 @@ void spiReqNewData_FromISR(void)
 
 	acc[ISR_FillsBuffer].X = regData[0];
 	acc[ISR_FillsBuffer].X |= (uint16_t) regData[1] << 8;
-	acc[ISR_FillsBuffer].X = acc[ISR_FillsBuffer].X >> 2; // Get rid of two non-value bits in LSB
+	x.currReading = acc[ISR_FillsBuffer].X >> 2; // Get rid of two non-value bits in LSB
+	acc[ISR_FillsBuffer].X = IIR_Average(&x);
 
 	acc[ISR_FillsBuffer].Y = regData[2];
 	acc[ISR_FillsBuffer].Y |= (uint16_t) regData[3] << 8;
-	acc[ISR_FillsBuffer].Y = acc[ISR_FillsBuffer].Y >> 2; // Get rid of two non-value bits in LSB
+	y.currReading = acc[ISR_FillsBuffer].Y >> 2; // Get rid of two non-value bits in LSB
+	acc[ISR_FillsBuffer].Y = IIR_Average(&y);
 
 	acc[ISR_FillsBuffer].Z = regData[4];
 	acc[ISR_FillsBuffer].Z |= (uint16_t) regData[5] << 8;
-	acc[ISR_FillsBuffer].Z = acc[ISR_FillsBuffer].Z >> 2; // Get rid of two non-value bits in LSB
+	z.currReading = acc[ISR_FillsBuffer].Z >> 2; // Get rid of two non-value bits in LSB
+	acc[ISR_FillsBuffer].Z = IIR_Average(&z);
 
 	acc[ISR_FillsBuffer].temp = (uint8_t) regData[6];
 
