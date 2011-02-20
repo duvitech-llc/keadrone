@@ -45,22 +45,22 @@ void servoSet(uint8_t servoNo, uint16_t value)
 	case 0:
 		LPC_PWM1->MR2 = 25000 + (value * 24);
 		// LATCH VALUES FROM MATCH REGISTERS TO PWM REGISTERS
-		LPC_PWM1->LER = (1 << 2);
+		LPC_PWM1->LER |= (1 << 2);
 		break;
 	case 1:
 		LPC_PWM1->MR4 = 25000 + (value * 24);
 		// LATCH VALUES FROM MATCH REGISTERS TO PWM REGISTERS
-		LPC_PWM1->LER = (1 << 4);
+		LPC_PWM1->LER |= (1 << 4);
 		break;
 	case 2:
 		LPC_PWM1->MR5 = 25000 + (value * 24);
 		// LATCH VALUES FROM MATCH REGISTERS TO PWM REGISTERS
-		LPC_PWM1->LER = (1 << 5);
+		LPC_PWM1->LER |= (1 << 5);
 		break;
 	case 3:
 		LPC_PWM1->MR6 = 25000 + (value * 24);
 		// LATCH VALUES FROM MATCH REGISTERS TO PWM REGISTERS
-		LPC_PWM1->LER = (1 << 6);
+		LPC_PWM1->LER |= (1 << 6);
 		break;
 	default:
 		return;

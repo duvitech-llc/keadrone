@@ -58,10 +58,47 @@ static void calculations_heading(void *pvParameters)
 				Normalize();
 				Drift_correction();
 				Euler_angles();
+
+				static int32_t valueY = 0;
+				static int32_t powerVal = 300;
+				static int32_t pTerm = 8;
+				static int32_t setpoint = 0;
+				static int32_t error = 0;
+
+				error = ToDeg(currentHeading.roll) - setpoint;
+				valueY = error * pTerm;
+
+				int32_t calc;
+
+				calc = powerVal - valueY;
+				if (calc < 0)
+					calc = 0;
+				else if (calc > 600)
+					calc = 600;
+				servoSet(3, calc);
+
+				calc = powerVal + valueY;
+				if (calc < 0)
+					calc = 0;
+				else if (calc > 600)
+					calc = 600;
+				servoSet(1, calc);
 			}
 
-			printf("%4.2f,%4.2f\n", ToDeg(currentHeading.roll),
-					ToDeg(currentHeading.pitch) );
+			/* Printout section */
+			static int32_t subparts = 0;
+			if (subparts == 0)
+			{
+				subparts++;
+				printf("%4.2f,", ToDeg(currentHeading.roll) );
+
+			}
+			else if (subparts == 1)
+			{
+				subparts = 0;
+				printf("%4.2f\n", ToDeg(currentHeading.pitch));
+
+			}
 
 			LPC_GPIO1->FIOCLR = (1 << 1);
 		}
