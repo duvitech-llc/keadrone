@@ -17,7 +17,7 @@
 #define PORT_CS	LPC_GPIO0
 #define PIN_MASK_CS (1<<16)
 
-static volatile int intFillsBuffer = 0;
+static volatile int ISR_FillsBuffer = 0;
 static volatile sAcc_data acc[2];
 
 #define delay_1ms			( 1 / portTICK_RATE_MS )
@@ -170,25 +170,25 @@ void spiReqNewData_FromISR(void)
 	// get 7 bytes starting from reg. ACCXLSB
 	bmaReadMultiple_FromISR(ACCXLSB, &regData[0], 7);
 
-	acc[intFillsBuffer].X = regData[0];
-	acc[intFillsBuffer].X |= (uint16_t) regData[1] << 8;
-	acc[intFillsBuffer].X = acc[intFillsBuffer].X >> 2; // Get rid of two non-value bits in LSB
+	acc[ISR_FillsBuffer].X = regData[0];
+	acc[ISR_FillsBuffer].X |= (uint16_t) regData[1] << 8;
+	acc[ISR_FillsBuffer].X = acc[ISR_FillsBuffer].X >> 2; // Get rid of two non-value bits in LSB
 
-	acc[intFillsBuffer].Y = regData[2];
-	acc[intFillsBuffer].Y |= (uint16_t) regData[3] << 8;
-	acc[intFillsBuffer].Y = acc[intFillsBuffer].Y >> 2; // Get rid of two non-value bits in LSB
+	acc[ISR_FillsBuffer].Y = regData[2];
+	acc[ISR_FillsBuffer].Y |= (uint16_t) regData[3] << 8;
+	acc[ISR_FillsBuffer].Y = acc[ISR_FillsBuffer].Y >> 2; // Get rid of two non-value bits in LSB
 
-	acc[intFillsBuffer].Z = regData[4];
-	acc[intFillsBuffer].Z |= (uint16_t) regData[5] << 8;
-	acc[intFillsBuffer].Z = acc[intFillsBuffer].Z >> 2; // Get rid of two non-value bits in LSB
+	acc[ISR_FillsBuffer].Z = regData[4];
+	acc[ISR_FillsBuffer].Z |= (uint16_t) regData[5] << 8;
+	acc[ISR_FillsBuffer].Z = acc[ISR_FillsBuffer].Z >> 2; // Get rid of two non-value bits in LSB
 
-	acc[intFillsBuffer].temp = (uint8_t) regData[6];
+	acc[ISR_FillsBuffer].temp = (uint8_t) regData[6];
 
 	/* Switch buffer to latest new data */
-	if (intFillsBuffer)
-		intFillsBuffer = 0;
+	if (ISR_FillsBuffer)
+		ISR_FillsBuffer = 0;
 	else
-		intFillsBuffer = 1;
+		ISR_FillsBuffer = 1;
 }
 
 void spiGetAccelero(sAcc_data *p)
@@ -199,7 +199,7 @@ void spiGetAccelero(sAcc_data *p)
 
 	int currBuffer;
 	// Get the buffer that is currently filled by the interrupt
-	currBuffer = intFillsBuffer;
+	currBuffer = ISR_FillsBuffer;
 
 	/* Switch buffer to latest new data that is not being filled (toggle)*/
 	if (currBuffer)

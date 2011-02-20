@@ -1,12 +1,8 @@
-#include "calculations.h"
-#include "math.h"
-#include "vector.h"
 #include "stdint.h"
-#include "DCM.h"
+#include "math.h"
 
-static int16_t accel_x;
-static int16_t accel_y;
-static int16_t accel_z;
+#include "DCM_Data.h"
+#include "vector.h"
 
 static float Accel_Vector[3] =
 { 0, 0, 0 }; //Store the acceleration in a vector
@@ -43,14 +39,7 @@ static float Temporary_Matrix[3][3] =
 { 0, 0, 0 },
 { 0, 0, 0 } };
 
-static float G_Dt = 0.02; // Integration time (DCM algorithm)  We will run the integration loop at 50Hz if possible
-
-void updateAcc(int16_t *data)
-{
-	accel_x = *(data + 0);
-	accel_y = *(data + 1);
-	accel_z = *(data + 2);
-}
+static float G_Dt = 0.004;//008;//0.02; // Integration time (DCM algorithm)  We will run the integration loop at 50Hz if possible
 
 /*******************Matrix.c		************************/
 static void Matrix_Multiply(float *a, float *b, float* mat)
@@ -114,7 +103,7 @@ void Normalize(void)
 }
 
 /**************************************************/
-float Kp_ROLLPITCHa = 0.00002;
+float Kp_ROLLPITCHa = 0.0002;
 float Ki_ROLLPITCHa = 0.000;
 
 void Drift_correction(void)
@@ -179,15 +168,16 @@ void Drift_correction(void)
  */
 /**************************************************/
 
-void Matrix_update(MATRIX_UPDATE_STRUCT *p)
+void Matrix_update(void)
 {
-	Gyro_Vector[0] = p->gyro_x;//Gyro_Scaled_X(read_adc(0)); //gyro x roll
-	Gyro_Vector[1] = p->gyro_y;//Gyro_Scaled_Y(read_adc(1)); //gyro y pitch
-	Gyro_Vector[2] = p->gyro_z;//Gyro_Scaled_Z(read_adc(2)); //gyro Z yaw
+	// maybe make the values EXTERN to reduce function calls
+	Gyro_Vector[0] = ToRad(((float)imu_read_sensor(GYRO_X)/ 14.375)); //gyro x roll // 14.375 = Gyro RAW to Grad/s
+	Gyro_Vector[1] = ToRad(((float)imu_read_sensor(GYRO_Y)/ 14.375)); //gyro y pitch
+	Gyro_Vector[2] = ToRad(((float)imu_read_sensor(GYRO_Z)/ 14.375)); //gyro Z yaw
 
-	Accel_Vector[0] = accel_x;
-	Accel_Vector[1] = accel_y;
-	Accel_Vector[2] = accel_z;
+	Accel_Vector[0] = imu_read_sensor(ACC_X);
+	Accel_Vector[1] = imu_read_sensor(ACC_Y);
+	Accel_Vector[2] = imu_read_sensor(ACC_Z);
 
 	Vector_Add(&Omega[0], &Gyro_Vector[0], &Omega_I[0]); //adding proportional term
 	Vector_Add(&Omega_Vector[0], &Omega[0], &Omega_P[0]); //adding Integrator term
@@ -229,13 +219,9 @@ void Matrix_update(MATRIX_UPDATE_STRUCT *p)
 	}
 }
 
-// Euler angles
-GYRO_STRUCT gyro_true;
-
 void Euler_angles(void)
 {
-	gyro_true.pitch = -asin(DCM_Matrix[2][0]);
-	gyro_true.roll = atan2(DCM_Matrix[2][1], DCM_Matrix[2][2]);
-	gyro_true.yaw = atan2(DCM_Matrix[1][0], DCM_Matrix[0][0]);
+	imuHeadingUpdate(-asin(DCM_Matrix[2][0]), atan2(DCM_Matrix[2][1],
+			DCM_Matrix[2][2]), atan2(DCM_Matrix[1][0], DCM_Matrix[0][0]));
 }
 

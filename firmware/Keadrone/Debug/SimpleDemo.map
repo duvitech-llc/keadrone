@@ -29,7 +29,7 @@ c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-n
 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(initio.o)
                               c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_nohost.a(_cr__main.o) (_terminateio)
 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(memcpy.o)
-                              ./src/calculations_heading.o (memcpy)
+                              ./src/dAccelerometer_BMA180.o (memcpy)
 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(memset.o)
                               C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(tasks.o) (memset)
 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(printf.o)
@@ -120,22 +120,18 @@ I2CReadLength       0x4               ./i2c.o
 errno               0x4               c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_nohost.a(_cr__main.o)
 _extra              0x4               c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(initio.o)
 UART1Buffer         0x40              ./HAL_UART/uart.o
-xSemaphore          0x4               ./src/calculations_heading.o
 UART3Status         0x4               ./HAL_UART/uart.o
 UART0Buffer         0x40              ./HAL_UART/uart.o
 _error_recursion    0x4               c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_nohost.a(_cr__main.o)
 SERVO_TIMERS        0x14              ./src/dServoTimers.o
 UART1Status         0x4               ./HAL_UART/uart.o
 _exitvector         0x84              c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(stdlib.o)
-gyro                0xc               ./src/calculations_heading.o
 I2CCmd              0x4               ./i2c.o
 UART3Buffer         0x40              ./HAL_UART/uart.o
-gyroCurrent         0x18              ./src/calculations_heading.o
 I2CWriteLength      0x4               ./i2c.o
-accCurrent          0x8               ./src/calculations_heading.o
 _number_of_exit_functions
                     0x4               c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(stdlib.o)
-gyro_true           0xc               ./src/DCM.o
+currentHeading      0xc               ./src/DCM.o
 __heaps             0x4               c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(__init_alloc.o)
 __end_of_heap       0x4               c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(__init_alloc.o)
 LPC_I2Cx            0x4               ./i2c.o
@@ -198,10 +194,10 @@ Discarded input sections
  .text          0x00000000        0x0 ./src/DCM.o
  .text.dcmElapsedTime
                 0x00000000        0x0 ./src/DCM.o
+ .text          0x00000000        0x0 ./src/DCM_Data.o
  .text          0x00000000        0x0 ./src/Vector.o
  .data          0x00000000        0x0 ./src/Vector.o
  .bss           0x00000000        0x0 ./src/Vector.o
- .text          0x00000000        0x0 ./src/calculations.o
  .text          0x00000000        0x0 ./src/calculations_heading.o
  .text          0x00000000        0x0 ./src/dAccelerometer_BMA180.o
  .data          0x00000000        0x0 ./src/dAccelerometer_BMA180.o
@@ -216,6 +212,8 @@ Discarded input sections
  .text          0x00000000        0x0 ./src/dServoPwm.o
  .data          0x00000000        0x0 ./src/dServoPwm.o
  .bss           0x00000000        0x0 ./src/dServoPwm.o
+ .text.servoSet
+                0x00000000        0x0 ./src/dServoPwm.o
  .text          0x00000000        0x0 ./src/dServoTimers.o
  .data          0x00000000        0x0 ./src/dServoTimers.o
  .bss           0x00000000        0x0 ./src/dServoTimers.o
@@ -596,6 +594,8 @@ Discarded input sections
                 0x00000000        0x0 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(float.o)
  .text.__aeabi_f2iz
                 0x00000000        0x0 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(float.o)
+ .text.__aeabi_f2uiz
+                0x00000000        0x0 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(float.o)
  .text.__aeabi_f2lz
                 0x00000000        0x0 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(float.o)
  .text.__aeabi_f2ulz
@@ -708,8 +708,8 @@ LOAD ./lpc17xx_clkpwr.o
 LOAD ./lpc17xx_libcfg_default.o
 LOAD ./lpc17xx_ssp.o
 LOAD ./src/DCM.o
+LOAD ./src/DCM_Data.o
 LOAD ./src/Vector.o
-LOAD ./src/calculations.o
 LOAD ./src/calculations_heading.o
 LOAD ./src/dAccelerometer_BMA180.o
 LOAD ./src/dAnalogLpc.o
@@ -730,7 +730,7 @@ END GROUP
                 0x10004000                __top_RamLoc16 = 0x10004000
                 0x20080000                __top_RamAHB16 = 0x20080000
 
-.text           0x00000000     0xa608
+.text           0x00000000     0x9f60
  FILL mask 0xff
  *(.isr_vector)
  .isr_vector    0x00000000       0xcc ./cr_startup_lpc17.o
@@ -738,16 +738,16 @@ END GROUP
                 0x000000cc                . = ALIGN (0x4)
                 0x000000cc                __section_table_start = .
                 0x000000cc                __data_section_table = .
-                0x000000cc        0x4 LONG 0xa608 LOADADDR (.data)
+                0x000000cc        0x4 LONG 0x9f60 LOADADDR (.data)
                 0x000000d0        0x4 LONG 0x10000000 ADDR (.data)
-                0x000000d4        0x4 LONG 0x288 SIZEOF (.data)
-                0x000000d8        0x4 LONG 0xa608 LOADADDR (.data_RAM2)
+                0x000000d4        0x4 LONG 0x270 SIZEOF (.data)
+                0x000000d8        0x4 LONG 0x9f60 LOADADDR (.data_RAM2)
                 0x000000dc        0x4 LONG 0x2007c000 ADDR (.data_RAM2)
                 0x000000e0        0x4 LONG 0x0 SIZEOF (.data_RAM2)
                 0x000000e4                __data_section_table_end = .
                 0x000000e4                __bss_section_table = .
-                0x000000e4        0x4 LONG 0x10000288 ADDR (.bss)
-                0x000000e8        0x4 LONG 0x1360 SIZEOF (.bss)
+                0x000000e4        0x4 LONG 0x10000270 ADDR (.bss)
+                0x000000e8        0x4 LONG 0x1308 SIZEOF (.bss)
                 0x000000ec        0x4 LONG 0x2007c000 ADDR (.bss_RAM2)
                 0x000000f0        0x4 LONG 0x0 SIZEOF (.bss_RAM2)
                 0x000000f4                __bss_section_table_end = .
@@ -865,464 +865,459 @@ END GROUP
  .text.SSP_ReadWriteBMA180
                 0x000012d0       0xc4 ./lpc17xx_ssp.o
                 0x000012d0                SSP_ReadWriteBMA180
- .text.updateAcc
-                0x00001394       0x44 ./src/DCM.o
-                0x00001394                updateAcc
  .text.Matrix_Multiply
-                0x000013d8       0xf4 ./src/DCM.o
+                0x00001394       0xf4 ./src/DCM.o
  .text.Normalize
-                0x000014cc      0x19c ./src/DCM.o
-                0x000014cc                Normalize
+                0x00001488      0x19c ./src/DCM.o
+                0x00001488                Normalize
  .text.Drift_correction
-                0x00001668      0x1d8 ./src/DCM.o
-                0x00001668                Drift_correction
+                0x00001624      0x1d8 ./src/DCM.o
+                0x00001624                Drift_correction
+ *fill*         0x000017fc        0x4 00
  .text.Matrix_update
-                0x00001840      0x2a4 ./src/DCM.o
-                0x00001840                Matrix_update
+                0x00001800      0x398 ./src/DCM.o
+                0x00001800                Matrix_update
  .text.Euler_angles
-                0x00001ae4       0xd0 ./src/DCM.o
-                0x00001ae4                Euler_angles
+                0x00001b98       0xc0 ./src/DCM.o
+                0x00001b98                Euler_angles
+ .text.imuHeadingUpdate
+                0x00001c58       0x3c ./src/DCM_Data.o
+                0x00001c58                imuHeadingUpdate
+ .text.imu_read_sensor
+                0x00001c94       0x40 ./src/DCM_Data.o
+                0x00001c94                imu_read_sensor
+ .text.imuInit_1
+                0x00001cd4       0x58 ./src/DCM_Data.o
+                0x00001cd4                imuInit_1
+ .text.imuInit_2
+                0x00001d2c       0x7c ./src/DCM_Data.o
+                0x00001d2c                imuInit_2
+ .text.imuUpdate
+                0x00001da8       0xdc ./src/DCM_Data.o
+                0x00001da8                imuUpdate
  .text.Vector_Dot_Product
-                0x00001bb4       0x68 ./src/Vector.o
-                0x00001bb4                Vector_Dot_Product
+                0x00001e84       0x68 ./src/Vector.o
+                0x00001e84                Vector_Dot_Product
  .text.Vector_Cross_Product
-                0x00001c1c       0xdc ./src/Vector.o
-                0x00001c1c                Vector_Cross_Product
+                0x00001eec       0xdc ./src/Vector.o
+                0x00001eec                Vector_Cross_Product
  .text.Vector_Scale
-                0x00001cf8       0x50 ./src/Vector.o
-                0x00001cf8                Vector_Scale
+                0x00001fc8       0x50 ./src/Vector.o
+                0x00001fc8                Vector_Scale
  .text.Vector_Add
-                0x00001d48       0x5c ./src/Vector.o
-                0x00001d48                Vector_Add
- .text.read_adc
-                0x00001da4       0x78 ./src/calculations.o
-                0x00001da4                read_adc
- .text.initi2c1
-                0x00001e1c       0x54 ./src/calculations.o
-                0x00001e1c                initi2c1
- .text.initi2c2
-                0x00001e70       0x7c ./src/calculations.o
-                0x00001e70                initi2c2
- .text.update_sensor_data
-                0x00001eec      0x148 ./src/calculations.o
-                0x00001eec                update_sensor_data
- *fill*         0x00002034        0x4 00
+                0x00002018       0x5c ./src/Vector.o
+                0x00002018                Vector_Add
+ *fill*         0x00002074        0x4 00
  .text.calculations_heading
-                0x00002038      0x3d8 ./src/calculations_heading.o
+                0x00002078      0x150 ./src/calculations_heading.o
  .text.calculations_heading_init
-                0x00002410       0x90 ./src/calculations_heading.o
-                0x00002410                calculations_heading_init
+                0x000021c8       0xc0 ./src/calculations_heading.o
+                0x000021c8                calculations_heading_init
  .text.calculations_heading_FromISR
-                0x000024a0      0x488 ./src/calculations_heading.o
-                0x000024a0                calculations_heading_FromISR
+                0x00002288      0x248 ./src/calculations_heading.o
+                0x00002288                calculations_heading_FromISR
  .text.delay_ms
-                0x00002928       0x20 ./src/dAccelerometer_BMA180.o
- .text.bmaRead  0x00002948       0x9c ./src/dAccelerometer_BMA180.o
+                0x000024d0       0x20 ./src/dAccelerometer_BMA180.o
+ .text.bmaRead  0x000024f0       0x9c ./src/dAccelerometer_BMA180.o
  .text.bmaReadMultiple_FromISR
-                0x000029e4       0xf4 ./src/dAccelerometer_BMA180.o
+                0x0000258c       0xf4 ./src/dAccelerometer_BMA180.o
  .text.bmaWrite
-                0x00002ad8       0xac ./src/dAccelerometer_BMA180.o
- .text.bmaInit  0x00002b84       0xfc ./src/dAccelerometer_BMA180.o
+                0x00002680       0xac ./src/dAccelerometer_BMA180.o
+ .text.bmaInit  0x0000272c       0xfc ./src/dAccelerometer_BMA180.o
  .text.gpioIntInit
-                0x00002c80       0x34 ./src/dAccelerometer_BMA180.o
+                0x00002828       0x34 ./src/dAccelerometer_BMA180.o
  .text.NVIC_SetPriority
-                0x00002cb4       0x5c ./src/dAccelerometer_BMA180.o
+                0x0000285c       0x5c ./src/dAccelerometer_BMA180.o
  .text.NVIC_EnableIRQ
-                0x00002d10       0x38 ./src/dAccelerometer_BMA180.o
+                0x000028b8       0x38 ./src/dAccelerometer_BMA180.o
  .text.spiReqNewData_FromISR
-                0x00002d48      0x260 ./src/dAccelerometer_BMA180.o
-                0x00002d48                spiReqNewData_FromISR
+                0x000028f0      0x260 ./src/dAccelerometer_BMA180.o
+                0x000028f0                spiReqNewData_FromISR
  .text.spiGetAccelero
-                0x00002fa8       0x50 ./src/dAccelerometer_BMA180.o
-                0x00002fa8                spiGetAccelero
- .text.spiInit  0x00002ff8      0x108 ./src/dAccelerometer_BMA180.o
-                0x00002ff8                spiInit
+                0x00002b50       0x50 ./src/dAccelerometer_BMA180.o
+                0x00002b50                spiGetAccelero
+ .text.spiInit  0x00002ba0      0x108 ./src/dAccelerometer_BMA180.o
+                0x00002ba0                spiInit
  .text.slewRateLimit
-                0x00003100       0x58 ./src/dGyro_ITG-3200.o
+                0x00002ca8       0x58 ./src/dGyro_ITG-3200.o
  .text.gyroCalculateOffset
-                0x00003158      0x1e0 ./src/dGyro_ITG-3200.o
+                0x00002d00      0x1e0 ./src/dGyro_ITG-3200.o
  .text.gpioIntEnable
-                0x00003338       0x34 ./src/dGyro_ITG-3200.o
+                0x00002ee0       0x34 ./src/dGyro_ITG-3200.o
  .text.NVIC_SetPriority
-                0x0000336c       0x5c ./src/dGyro_ITG-3200.o
+                0x00002f14       0x5c ./src/dGyro_ITG-3200.o
  .text.NVIC_EnableIRQ
-                0x000033c8       0x38 ./src/dGyro_ITG-3200.o
+                0x00002f70       0x38 ./src/dGyro_ITG-3200.o
  .text.gyroInit
-                0x00003400      0x324 ./src/dGyro_ITG-3200.o
-                0x00003400                gyroInit
+                0x00002fa8      0x324 ./src/dGyro_ITG-3200.o
+                0x00002fa8                gyroInit
  .text.gyroGetDataFromChip
-                0x00003724      0x1e8 ./src/dGyro_ITG-3200.o
-                0x00003724                gyroGetDataFromChip
+                0x000032cc       0xe0 ./src/dGyro_ITG-3200.o
+                0x000032cc                gyroGetDataFromChip
  .text.initPwmServos
-                0x0000390c      0x104 ./src/dServoPwm.o
-                0x0000390c                initPwmServos
- .text.servoSet
-                0x00003a10       0xf4 ./src/dServoPwm.o
-                0x00003a10                servoSet
+                0x000033ac      0x104 ./src/dServoPwm.o
+                0x000033ac                initPwmServos
  .text.TIMER0_IRQHandler
-                0x00003b04       0x90 ./src/dServoTimers.o
-                0x00003b04                TIMER0_IRQHandler
- .text.main     0x00003b94       0x14 ./src/main.o
-                0x00003b94                main
+                0x000034b0       0x90 ./src/dServoTimers.o
+                0x000034b0                TIMER0_IRQHandler
+ .text.main     0x00003540       0x14 ./src/main.o
+                0x00003540                main
  .text.EINT3_IRQHandler
-                0x00003ba8       0x54 ./src/main.o
-                0x00003ba8                EINT3_IRQHandler
- .text.__write  0x00003bfc       0x28 ./HAL_UART/retargetPrintf.o
-                0x00003bfc                __write
- .text.__readc  0x00003c24       0x10 ./HAL_UART/retargetPrintf.o
-                0x00003c24                __readc
+                0x00003554       0x54 ./src/main.o
+                0x00003554                EINT3_IRQHandler
+ .text.__write  0x000035a8       0x28 ./HAL_UART/retargetPrintf.o
+                0x000035a8                __write
+ .text.__readc  0x000035d0       0x10 ./HAL_UART/retargetPrintf.o
+                0x000035d0                __readc
  .text.UART0_IRQHandler
-                0x00003c34      0x17c ./HAL_UART/uart.o
-                0x00003c34                UART0_IRQHandler
+                0x000035e0      0x17c ./HAL_UART/uart.o
+                0x000035e0                UART0_IRQHandler
  .text.UART1_IRQHandler
-                0x00003db0      0x17c ./HAL_UART/uart.o
-                0x00003db0                UART1_IRQHandler
+                0x0000375c      0x17c ./HAL_UART/uart.o
+                0x0000375c                UART1_IRQHandler
  .text.UART3_IRQHandler
-                0x00003f2c      0x17c ./HAL_UART/uart.o
-                0x00003f2c                UART3_IRQHandler
+                0x000038d8      0x17c ./HAL_UART/uart.o
+                0x000038d8                UART3_IRQHandler
  .text.UARTInit
-                0x000040a8      0x390 ./HAL_UART/uart.o
-                0x000040a8                UARTInit
+                0x00003a54      0x390 ./HAL_UART/uart.o
+                0x00003a54                UARTInit
  .text.NVIC_EnableIRQ
-                0x00004438       0x38 ./HAL_UART/uart.o
+                0x00003de4       0x38 ./HAL_UART/uart.o
  .text.UARTSend
-                0x00004470      0x104 ./HAL_UART/uart.o
-                0x00004470                UARTSend
+                0x00003e1c      0x104 ./HAL_UART/uart.o
+                0x00003e1c                UARTSend
  .text.SystemInit
-                0x00004574      0x224 C:\Users\admin\Desktop\Keadrone\CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
-                0x00004574                SystemInit
- .text          0x00004798      0x4e8 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(queue.o)
-                0x00004a60                xQueueGenericSendFromISR
-                0x00004bf4                xQueueCreate
-                0x000047b8                vQueueDelete
-                0x00004abc                xQueueGenericSend
-                0x00004808                xQueueReceiveFromISR
-                0x00004c68                xQueueCreateCountingSemaphore
-                0x000047a8                xQueueIsQueueFullFromISR
-                0x000047cc                uxQueueMessagesWaiting
-                0x000048dc                xQueueGenericReceive
-                0x00004798                uxQueueMessagesWaitingFromISR
-                0x0000479c                xQueueIsQueueEmptyFromISR
-                0x00004ba8                xQueueCreateMutex
- .text          0x00004c80      0xc64 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(tasks.o)
-                0x00005118                uxTaskPriorityGet
-                0x000053d0                vTaskPrioritySet
-                0x00005614                vTaskEndScheduler
-                0x0000513c                vTaskPlaceOnEventList
-                0x0000569c                xTaskGenericCreate
-                0x00004c80                xTaskIsTaskSuspended
-                0x0000500c                xTaskResumeFromISR
-                0x00005100                xTaskGetTickCount
-                0x00004e90                xTaskRemoveFromEventList
-                0x00005594                vTaskDelete
-                0x00005088                xTaskCheckForTimeOut
-                0x00004cac                vTaskSuspendAll
-                0x00004cc0                xTaskGetTickCountFromISR
-                0x00004da8                vTaskPriorityDisinherit
-                0x00004dfc                vTaskPriorityInherit
-                0x000052c0                vTaskResume
-                0x00004cd8                vTaskSwitchContext
-                0x0000533c                vTaskSuspend
-                0x00004ccc                uxTaskGetNumberOfTasks
-                0x00004f18                vTaskIncrementTick
-                0x000054e8                vTaskDelayUntil
-                0x00004d98                xTaskGetCurrentTaskHandle
-                0x000051c4                xTaskResumeAll
-                0x00005890                vTaskStartScheduler
-                0x00004d84                vTaskMissedYield
-                0x00005484                vTaskDelay
-                0x00004d70                vTaskSetTimeOutState
- .text          0x000058e4      0x130 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(heap_2.o)
-                0x000058e4                xPortGetFreeHeapSize
-                0x000058f4                vPortFree
-                0x00005930                pvPortMalloc
-                0x000058f0                vPortInitialiseBlocks
- .text          0x00005a14      0x16c C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(port.o)
-                0x00005a94                vPortExitCritical
-                0x00005aec                xPortStartScheduler
-                0x00005b54                xPortSysTickHandler
-                0x00005ab0                xPortPendSVHandler
-                0x00005a64                vPortEndScheduler
-                0x00005a58                vPortStartFirstTask
-                0x00005a38                vPortSVCHandler
-                0x00005a68                vPortYieldFromISR
-                0x00005a14                pxPortInitialiseStack
-                0x00005a78                vPortEnterCritical
- .text          0x00005b80       0xa8 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(list.o)
-                0x00005ba0                vListInsertEnd
-                0x00005c00                vListRemove
-                0x00005b98                vListInitialiseItem
-                0x00005b80                vListInitialise
-                0x00005bc0                vListInsert
- .text          0x00005c28       0x54 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_nohost.a(_cr__main.o)
-                0x00005c28                __main
+                0x00003f20      0x224 C:\Users\admin\Desktop\Keadrone\CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
+                0x00003f20                SystemInit
+ .text          0x00004144      0x4e8 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(queue.o)
+                0x0000440c                xQueueGenericSendFromISR
+                0x000045a0                xQueueCreate
+                0x00004164                vQueueDelete
+                0x00004468                xQueueGenericSend
+                0x000041b4                xQueueReceiveFromISR
+                0x00004614                xQueueCreateCountingSemaphore
+                0x00004154                xQueueIsQueueFullFromISR
+                0x00004178                uxQueueMessagesWaiting
+                0x00004288                xQueueGenericReceive
+                0x00004144                uxQueueMessagesWaitingFromISR
+                0x00004148                xQueueIsQueueEmptyFromISR
+                0x00004554                xQueueCreateMutex
+ .text          0x0000462c      0xc64 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(tasks.o)
+                0x00004ac4                uxTaskPriorityGet
+                0x00004d7c                vTaskPrioritySet
+                0x00004fc0                vTaskEndScheduler
+                0x00004ae8                vTaskPlaceOnEventList
+                0x00005048                xTaskGenericCreate
+                0x0000462c                xTaskIsTaskSuspended
+                0x000049b8                xTaskResumeFromISR
+                0x00004aac                xTaskGetTickCount
+                0x0000483c                xTaskRemoveFromEventList
+                0x00004f40                vTaskDelete
+                0x00004a34                xTaskCheckForTimeOut
+                0x00004658                vTaskSuspendAll
+                0x0000466c                xTaskGetTickCountFromISR
+                0x00004754                vTaskPriorityDisinherit
+                0x000047a8                vTaskPriorityInherit
+                0x00004c6c                vTaskResume
+                0x00004684                vTaskSwitchContext
+                0x00004ce8                vTaskSuspend
+                0x00004678                uxTaskGetNumberOfTasks
+                0x000048c4                vTaskIncrementTick
+                0x00004e94                vTaskDelayUntil
+                0x00004744                xTaskGetCurrentTaskHandle
+                0x00004b70                xTaskResumeAll
+                0x0000523c                vTaskStartScheduler
+                0x00004730                vTaskMissedYield
+                0x00004e30                vTaskDelay
+                0x0000471c                vTaskSetTimeOutState
+ .text          0x00005290      0x130 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(heap_2.o)
+                0x00005290                xPortGetFreeHeapSize
+                0x000052a0                vPortFree
+                0x000052dc                pvPortMalloc
+                0x0000529c                vPortInitialiseBlocks
+ .text          0x000053c0      0x16c C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(port.o)
+                0x00005440                vPortExitCritical
+                0x00005498                xPortStartScheduler
+                0x00005500                xPortSysTickHandler
+                0x0000545c                xPortPendSVHandler
+                0x00005410                vPortEndScheduler
+                0x00005404                vPortStartFirstTask
+                0x000053e4                vPortSVCHandler
+                0x00005414                vPortYieldFromISR
+                0x000053c0                pxPortInitialiseStack
+                0x00005424                vPortEnterCritical
+ .text          0x0000552c       0xa8 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(list.o)
+                0x0000554c                vListInsertEnd
+                0x000055ac                vListRemove
+                0x00005544                vListInitialiseItem
+                0x0000552c                vListInitialise
+                0x0000556c                vListInsert
+ .text          0x000055d4       0x54 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_nohost.a(_cr__main.o)
+                0x000055d4                __main
  .text._init_alloc
-                0x00005c7c       0x18 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(__init_alloc.o)
-                0x00005c7c                _init_alloc
- .text.asin     0x00005c94        0xc c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(asin.o)
-                0x00005c94                asin
- .text.atan2    0x00005ca0      0x128 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(atan2.o)
-                0x00005ca0                atan2
- .text          0x00005dc8      0x36c c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(ctype.o)
-                0x00005dc8                _start_module_ctype
-                0x00005e9c                islower
-                0x00005f8c                tolower
-                0x00005eec                ispunct
-                0x00005f14                isspace
-                0x00006128                _end_module_ctype
-                0x00005f64                isxdigit
-                0x000060a4                _ctype_init
-                0x00005f3c                isupper
-                0x00005dfc                isalpha
-                0x00005e74                isgraph
-                0x00005dd4                isalnum
-                0x00005ec4                isprint
-                0x00006004                _set_ctype_8859
-                0x00005e4c                isdigit
-                0x00005e24                iscntrl
-                0x00005fc8                toupper
- .text.fabs     0x00006134       0x1c c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(fabs.o)
-                0x00006134                fabs
+                0x00005628       0x18 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(__init_alloc.o)
+                0x00005628                _init_alloc
+ .text.asin     0x00005640        0xc c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(asin.o)
+                0x00005640                asin
+ *fill*         0x0000564c        0x4 00
+ .text.atan2    0x00005650      0x128 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(atan2.o)
+                0x00005650                atan2
+ .text          0x00005778      0x36c c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(ctype.o)
+                0x00005778                _start_module_ctype
+                0x0000584c                islower
+                0x0000593c                tolower
+                0x0000589c                ispunct
+                0x000058c4                isspace
+                0x00005ad8                _end_module_ctype
+                0x00005914                isxdigit
+                0x00005a54                _ctype_init
+                0x000058ec                isupper
+                0x000057ac                isalpha
+                0x00005824                isgraph
+                0x00005784                isalnum
+                0x00005874                isprint
+                0x000059b4                _set_ctype_8859
+                0x000057fc                isdigit
+                0x000057d4                iscntrl
+                0x00005978                toupper
+ .text.fabs     0x00005ae4       0x1c c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(fabs.o)
+                0x00005ae4                fabs
  .text.fp_round
-                0x00006150       0x68 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(fpprintf.o)
- .text.sprintf  0x000061b8       0x70 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(fpprintf.o)
-                0x000061b8                sprintf
+                0x00005b00       0x68 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(fpprintf.o)
+ .text.sprintf  0x00005b68       0x70 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(fpprintf.o)
+                0x00005b68                sprintf
  .text.fp_display
-                0x00006228      0xc68 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(fpprintf.o)
- .text.printf   0x00006e90       0x38 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(fpprintf.o)
-                0x00006e90                printf
+                0x00005bd8      0xc68 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(fpprintf.o)
+ .text.printf   0x00006840       0x38 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(fpprintf.o)
+                0x00006840                printf
  .text._terminateio
-                0x00006ec8       0x44 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(initio.o)
-                0x00006ec8                _terminateio
- .text._initio  0x00006f0c       0xc0 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(initio.o)
-                0x00006f0c                _initio
- .text.memcpy   0x00006fcc       0x3c c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(memcpy.o)
-                0x00006fcc                memcpy
- .text.memset   0x00007008       0x50 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(memset.o)
-                0x00007008                memset
+                0x00006878       0x44 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(initio.o)
+                0x00006878                _terminateio
+ .text._initio  0x000068bc       0xc0 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(initio.o)
+                0x000068bc                _initio
+ .text.memcpy   0x0000697c       0x3c c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(memcpy.o)
+                0x0000697c                memcpy
+ .text.memset   0x000069b8       0x50 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(memset.o)
+                0x000069b8                memset
  .text.__vfprintf
-                0x00007058     0x10fc c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(printf.o)
-                0x00007058                __vfprintf
- .text.setvbuf  0x00008154       0x50 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(setvbuf.o)
-                0x00008154                setvbuf
- *fill*         0x000081a4        0x4 00
- .text.sqrt     0x000081a8      0x138 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(sqrt.o)
-                0x000081a8                sqrt
+                0x00006a08     0x10fc c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(printf.o)
+                0x00006a08                __vfprintf
+ .text.setvbuf  0x00007b04       0x50 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(setvbuf.o)
+                0x00007b04                setvbuf
+ *fill*         0x00007b54        0x4 00
+ .text.sqrt     0x00007b58      0x138 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(sqrt.o)
+                0x00007b58                sqrt
  .text._exit_init
-                0x000082e0       0x10 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(stdlib.o)
-                0x000082e0                _exit_init
- .text.exit     0x000082f0       0x38 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(stdlib.o)
-                0x000082f0                exit
- .text.strcpy   0x00008328       0x60 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(strcpy.o)
-                0x00008328                strcpy
- .text.strlen   0x00008388       0x58 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(strlen.o)
-                0x00008388                strlen
- .text.strncpy  0x000083e0       0x78 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(strncpy.o)
-                0x000083e0                strncpy
+                0x00007c90       0x10 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(stdlib.o)
+                0x00007c90                _exit_init
+ .text.exit     0x00007ca0       0x38 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(stdlib.o)
+                0x00007ca0                exit
+ .text.strcpy   0x00007cd8       0x60 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(strcpy.o)
+                0x00007cd8                strcpy
+ .text.strlen   0x00007d38       0x58 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(strlen.o)
+                0x00007d38                strlen
+ .text.strncpy  0x00007d90       0x78 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(strncpy.o)
+                0x00007d90                strncpy
  .text._asinacos
-                0x00008458      0x2b8 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(_asinacos.o)
-                0x00008458                _asinacos
+                0x00007e08      0x2b8 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(_asinacos.o)
+                0x00007e08                _asinacos
  .text._deferredlazyseek
-                0x00008710       0x44 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(_deferredlazyseek.o)
-                0x00008710                _deferredlazyseek
+                0x000080c0       0x44 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(_deferredlazyseek.o)
+                0x000080c0                _deferredlazyseek
  .text.__flsbuf
-                0x00008754      0x19c c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(_deferredlazyseek.o)
-                0x00008754                __flsbuf
- .text._fdopen  0x000088f0       0x70 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(_fdopen.o)
-                0x000088f0                _fdopen
- .text._fflush  0x00008960       0x60 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(_fflush.o)
-                0x00008960                _fflush
- .text._frexpl  0x000089c0       0x54 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(_frexpl.o)
-                0x000089c0                _frexpl
- .text._ldexpl  0x00008a14       0x50 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(_ldexpl.o)
-                0x00008a14                _ldexpl
+                0x00008104      0x19c c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(_deferredlazyseek.o)
+                0x00008104                __flsbuf
+ .text._fdopen  0x000082a0       0x70 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(_fdopen.o)
+                0x000082a0                _fdopen
+ .text._fflush  0x00008310       0x60 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(_fflush.o)
+                0x00008310                _fflush
+ .text._frexpl  0x00008370       0x54 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(_frexpl.o)
+                0x00008370                _frexpl
+ .text._ldexpl  0x000083c4       0x50 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(_ldexpl.o)
+                0x000083c4                _ldexpl
  .text._Cwritebuf
-                0x00008a64       0xa0 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(_writebuf.o)
-                0x00008a64                _Cwritebuf
- .text.free     0x00008b04        0xc c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(alloc.o)
-                0x00008b04                free
- .text.malloc   0x00008b10       0xe8 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(alloc.o)
-                0x00008b10                malloc
+                0x00008414       0xa0 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(_writebuf.o)
+                0x00008414                _Cwritebuf
+ .text.free     0x000084b4        0xc c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(alloc.o)
+                0x000084b4                free
+ .text.malloc   0x000084c0       0xe8 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(alloc.o)
+                0x000084c0                malloc
  .text._Csys_alloc
-                0x00008bf8       0x30 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(alloc.o)
-                0x00008bf8                _Csys_alloc
- .text.calloc   0x00008c28       0x68 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(alloc.o)
-                0x00008c28                calloc
- .text.atan     0x00008c90      0x230 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(atan.o)
-                0x00008c90                atan
+                0x000085a8       0x30 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(alloc.o)
+                0x000085a8                _Csys_alloc
+ .text.calloc   0x000085d8       0x68 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(alloc.o)
+                0x000085d8                calloc
+ .text.atan     0x00008640      0x230 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(atan.o)
+                0x00008640                atan
  .text._Csysdie
-                0x00008ec0       0x3c c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(error.o)
-                0x00008ec0                _Csysdie
- .text.fclose   0x00008efc       0x80 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(fclose.o)
-                0x00008efc                fclose
- .text.fflush   0x00008f7c       0x34 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(fflush.o)
-                0x00008f7c                fflush
- .text.fseek    0x00008fb0      0x110 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(fseek.o)
-                0x00008fb0                fseek
- .text.ftell    0x000090c0       0x54 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(ftell.o)
-                0x000090c0                ftell
- .text.remove   0x00009114        0xc c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(remove.o)
-                0x00009114                remove
+                0x00008870       0x3c c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(error.o)
+                0x00008870                _Csysdie
+ .text.fclose   0x000088ac       0x80 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(fclose.o)
+                0x000088ac                fclose
+ .text.fflush   0x0000892c       0x34 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(fflush.o)
+                0x0000892c                fflush
+ .text.fseek    0x00008960      0x110 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(fseek.o)
+                0x00008960                fseek
+ .text.ftell    0x00008a70       0x54 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(ftell.o)
+                0x00008a70                ftell
+ .text.remove   0x00008ac4        0xc c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(remove.o)
+                0x00008ac4                remove
  .text._do_fflush
-                0x00009120       0x48 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(_do_fflush.o)
-                0x00009120                _do_fflush
+                0x00008ad0       0x48 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(_do_fflush.o)
+                0x00008ad0                _do_fflush
  .text.__aeabi_dmul
-                0x00009168      0x178 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(double.o)
-                0x00009168                __aeabi_dmul
+                0x00008b18      0x178 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(double.o)
+                0x00008b18                __aeabi_dmul
  .text.__aeabi_ddiv
-                0x000092e0      0x20c c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(double.o)
-                0x000092e0                __aeabi_ddiv
+                0x00008c90      0x20c c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(double.o)
+                0x00008c90                __aeabi_ddiv
  .text.__aeabi_dsub
-                0x000094ec      0x230 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(double.o)
-                0x000094ec                __aeabi_dsub
+                0x00008e9c      0x230 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(double.o)
+                0x00008e9c                __aeabi_dsub
  .text.__aeabi_dadd
-                0x0000971c      0x160 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(double.o)
-                0x0000971c                __aeabi_dadd
+                0x000090cc      0x160 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(double.o)
+                0x000090cc                __aeabi_dadd
  .text.__aeabi_d2f
-                0x0000987c       0x5c c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(double.o)
-                0x0000987c                __aeabi_d2f
+                0x0000922c       0x5c c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(double.o)
+                0x0000922c                __aeabi_d2f
  .text.__aeabi_d2iz
-                0x000098d8       0x50 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(double.o)
-                0x000098d8                __aeabi_d2iz
+                0x00009288       0x50 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(double.o)
+                0x00009288                __aeabi_d2iz
  .text.__aeabi_dcmpeq
-                0x00009928       0x4c c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(double.o)
-                0x00009928                __aeabi_dcmpeq
+                0x000092d8       0x4c c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(double.o)
+                0x000092d8                __aeabi_dcmpeq
  .text.__aeabi_dcmplt
-                0x00009974       0x74 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(double.o)
-                0x00009974                __aeabi_dcmplt
+                0x00009324       0x74 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(double.o)
+                0x00009324                __aeabi_dcmplt
  .text.__aeabi_dcmpgt
-                0x000099e8       0x78 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(double.o)
-                0x000099e8                __aeabi_dcmpgt
+                0x00009398       0x78 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(double.o)
+                0x00009398                __aeabi_dcmpgt
  .text.__aeabi_dcmple
-                0x00009a60       0x7c c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(double.o)
-                0x00009a60                __aeabi_dcmple
+                0x00009410       0x7c c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(double.o)
+                0x00009410                __aeabi_dcmple
  .text.__aeabi_dcmpge
-                0x00009adc       0x80 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(double.o)
-                0x00009adc                __aeabi_dcmpge
+                0x0000948c       0x80 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(double.o)
+                0x0000948c                __aeabi_dcmpge
  .text.__aeabi_i2d
-                0x00009b5c       0x50 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(double.o)
-                0x00009b5c                __aeabi_i2d
+                0x0000950c       0x50 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(double.o)
+                0x0000950c                __aeabi_i2d
  .text.__aeabi_fmul
-                0x00009bac       0xd8 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(float.o)
-                0x00009bac                __aeabi_fmul
+                0x0000955c       0xd8 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(float.o)
+                0x0000955c                __aeabi_fmul
  .text.__aeabi_fdiv
-                0x00009c84      0x14c c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(float.o)
-                0x00009c84                __aeabi_fdiv
+                0x00009634      0x14c c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(float.o)
+                0x00009634                __aeabi_fdiv
  .text.__aeabi_fsub
-                0x00009dd0      0x144 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(float.o)
-                0x00009dd0                __aeabi_fsub
+                0x00009780      0x144 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(float.o)
+                0x00009780                __aeabi_fsub
  .text.__aeabi_fadd
-                0x00009f14       0xd0 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(float.o)
-                0x00009f14                __aeabi_fadd
- .text.__aeabi_f2uiz
-                0x00009fe4       0x38 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(float.o)
-                0x00009fe4                __aeabi_f2uiz
+                0x000098c4       0xd0 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(float.o)
+                0x000098c4                __aeabi_fadd
  .text.__aeabi_f2d
-                0x0000a01c       0x3c c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(float.o)
-                0x0000a01c                __aeabi_f2d
+                0x00009994       0x3c c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(float.o)
+                0x00009994                __aeabi_f2d
  .text.__aeabi_fcmplt
-                0x0000a058       0x50 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(float.o)
-                0x0000a058                __aeabi_fcmplt
+                0x000099d0       0x50 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(float.o)
+                0x000099d0                __aeabi_fcmplt
  .text.__aeabi_fcmpgt
-                0x0000a0a8       0x50 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(float.o)
-                0x0000a0a8                __aeabi_fcmpgt
+                0x00009a20       0x50 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(float.o)
+                0x00009a20                __aeabi_fcmpgt
  .text.__aeabi_i2f
-                0x0000a0f8       0x54 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(float.o)
-                0x0000a0f8                __aeabi_i2f
- .text          0x0000a14c       0x24 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_nohost.a(_cr_sbrk.o)
-                0x0000a14c                _sbrk
- .text          0x0000a170      0x13c c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_nohost.a(cr_sys.o)
-                0x0000a1d4                _Csys_read_
-                0x0000a23c                _Csyscall2
-                0x0000a170                _Csyscall0
-                0x0000a194                _Csys_tmpnam_
-                0x0000a18c                _Csys_open
-                0x0000a1f4                _Csyscall3
-                0x0000a25c                _Csyscall1
- .text          0x0000a2ac        0x4 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_nohost.a(cr__close.o)
-                0x0000a2ac                __close
- .text          0x0000a2b0        0x4 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_nohost.a(cr__exit.o)
-                0x0000a2b0                __exit
- .text          0x0000a2b4        0x8 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_nohost.a(cr__open.o)
-                0x0000a2b4                __open
- .text          0x0000a2bc        0x8 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_nohost.a(cr__read.o)
-                0x0000a2bc                __read
- .text          0x0000a2c4        0x8 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_nohost.a(cr__unlink.o)
-                0x0000a2c4                __unlink
- .text          0x0000a2cc       0x18 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_nohost.a(cr_dummy_stubs.o)
-                0x0000a2d4                _stub_istty
-                0x0000a2d0                _stub_clock
-                0x0000a2dc                _stub_read
-                0x0000a2cc                _stub_tmpnam
-                0x0000a2d8                _stub_seek
-                0x0000a2e0                _stub_time
+                0x00009a70       0x54 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/thumb2\libcr_eabihelpers.a(float.o)
+                0x00009a70                __aeabi_i2f
+ .text          0x00009ac4       0x24 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_nohost.a(_cr_sbrk.o)
+                0x00009ac4                _sbrk
+ .text          0x00009ae8      0x13c c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_nohost.a(cr_sys.o)
+                0x00009b4c                _Csys_read_
+                0x00009bb4                _Csyscall2
+                0x00009ae8                _Csyscall0
+                0x00009b0c                _Csys_tmpnam_
+                0x00009b04                _Csys_open
+                0x00009b6c                _Csyscall3
+                0x00009bd4                _Csyscall1
+ .text          0x00009c24        0x4 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_nohost.a(cr__close.o)
+                0x00009c24                __close
+ .text          0x00009c28        0x4 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_nohost.a(cr__exit.o)
+                0x00009c28                __exit
+ .text          0x00009c2c        0x8 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_nohost.a(cr__open.o)
+                0x00009c2c                __open
+ .text          0x00009c34        0x8 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_nohost.a(cr__read.o)
+                0x00009c34                __read
+ .text          0x00009c3c        0x8 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_nohost.a(cr__unlink.o)
+                0x00009c3c                __unlink
+ .text          0x00009c44       0x18 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_nohost.a(cr_dummy_stubs.o)
+                0x00009c4c                _stub_istty
+                0x00009c48                _stub_clock
+                0x00009c54                _stub_read
+                0x00009c44                _stub_tmpnam
+                0x00009c50                _stub_seek
+                0x00009c58                _stub_time
  *(.rodata .rodata.*)
- .rodata        0x0000a2e4       0x14 ./lpc17xx_ssp.o
- .rodata        0x0000a2f8       0x50 ./src/calculations_heading.o
-                0x0000a2f8                PI
- .rodata        0x0000a348       0x34 ./src/dAccelerometer_BMA180.o
- .rodata        0x0000a37c       0x2c ./src/dGyro_ITG-3200.o
+ .rodata        0x00009c5c       0x14 ./lpc17xx_ssp.o
+ .rodata        0x00009c70       0x2c ./src/calculations_heading.o
+ .rodata        0x00009c9c       0x34 ./src/dAccelerometer_BMA180.o
+ .rodata        0x00009cd0       0x2c ./src/dGyro_ITG-3200.o
  .rodata.str1.4
-                0x0000a3a8        0x5 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(tasks.o)
+                0x00009cfc        0x5 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(tasks.o)
                                   0x8 (size before relaxing)
- *fill*         0x0000a3ad        0x3 00
+ *fill*         0x00009d01        0x3 00
  .rodata.str1.4
-                0x0000a3b0       0x43 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(fpprintf.o)
+                0x00009d04       0x43 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(fpprintf.o)
                                  0x48 (size before relaxing)
- *fill*         0x0000a3f3        0x1 00
+ *fill*         0x00009d47        0x1 00
  .rodata.str1.4
-                0x0000a3f4        0x6 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(initio.o)
+                0x00009d48        0x6 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(initio.o)
                                   0x8 (size before relaxing)
- *fill*         0x0000a3fa        0x2 00
+ *fill*         0x00009d4e        0x2 00
  .rodata.str1.4
-                0x0000a3fc       0x3a c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(printf.o)
+                0x00009d50       0x3a c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(printf.o)
                                  0x4c (size before relaxing)
- *fill*         0x0000a436        0x2 00
+ *fill*         0x00009d8a        0x6 00
  .rodata.b.1383
-                0x0000a438       0x10 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(_asinacos.o)
+                0x00009d90       0x10 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(_asinacos.o)
  .rodata.a.1382
-                0x0000a448       0x10 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(_asinacos.o)
+                0x00009da0       0x10 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(_asinacos.o)
  .rodata.__huge_val
-                0x0000a458        0x8 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(_hugeval.o)
-                0x0000a458                __huge_val
+                0x00009db0        0x8 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(_hugeval.o)
+                0x00009db0                __huge_val
  .rodata.__huge_vall
-                0x0000a460        0x8 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(_hugeval.o)
-                0x0000a460                __huge_vall
+                0x00009db8        0x8 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(_hugeval.o)
+                0x00009db8                __huge_vall
  .rodata.str1.4
-                0x0000a468       0x63 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(alloc.o)
+                0x00009dc0       0x63 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(alloc.o)
                                  0x64 (size before relaxing)
- *fill*         0x0000a4cb        0x5 00
+ *fill*         0x00009e23        0x5 00
  .rodata.a.1379
-                0x0000a4d0       0x20 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(atan.o)
+                0x00009e28       0x20 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(atan.o)
  .rodata.str1.4
-                0x0000a4f0      0x10c c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(error.o)
+                0x00009e48      0x10c c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(error.o)
                                 0x110 (size before relaxing)
  .rodata.str1.1
-                0x0000a5fc        0xc c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_nohost.a(cr_sys.o)
-                0x0000a608                . = ALIGN (0x4)
+                0x00009f54        0xc c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_nohost.a(cr_sys.o)
+                0x00009f60                . = ALIGN (0x4)
 
-.glue_7         0x0000a608        0x0
+.glue_7         0x00009f60        0x0
  .glue_7        0x00000000        0x0 linker stubs
 
-.glue_7t        0x0000a608        0x0
+.glue_7t        0x00009f60        0x0
  .glue_7t       0x00000000        0x0 linker stubs
 
-.vfp11_veneer   0x0000a608        0x0
+.vfp11_veneer   0x00009f60        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x0000a608        0x0
+.v4_bx          0x00009f60        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0000a608                __exidx_start = .
+                0x00009f60                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x0000a608                __exidx_end = .
-                0x0000a608                _etext = .
+                0x00009f60                __exidx_end = .
+                0x00009f60                _etext = .
 
-.data_RAM2      0x2007c000        0x0 load address 0x0000a608
+.data_RAM2      0x2007c000        0x0 load address 0x00009f60
  FILL mask 0xff
  *(.data.$RAM2*)
  *(.data.$RamAHB16*)
@@ -1331,176 +1326,171 @@ END GROUP
 .uninit_RESERVED
  *(.bss.$RESERVED*)
 
-.data           0x10000000      0x288 load address 0x0000a608
+.data           0x10000000      0x270 load address 0x00009f60
  FILL mask 0xff
                 0x10000000                _data = .
  *(vtable)
  *(.data*)
  .data          0x10000000       0x50 ./src/DCM.o
                 0x1000004c                Kp_ROLLPITCHa
- .data          0x10000050       0x24 ./src/calculations.o
- .data          0x10000074        0x1 ./src/calculations_heading.o
- .data          0x10000075        0x3 ./HAL_UART/uart.o
-                0x10000077                UART3TxEmpty
-                0x10000075                UART0TxEmpty
-                0x10000076                UART1TxEmpty
- .data          0x10000078        0x4 C:\Users\admin\Desktop\Keadrone\CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
-                0x10000078                SystemCoreClock
- .data          0x1000007c        0x4 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(heap_2.o)
- .data          0x10000080        0x4 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(port.o)
- .data          0x10000084      0x204 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(ctype.o)
-                0x10000084                __ctype
-                0x10000288                . = ALIGN (0x4)
-                0x10000288                _edata = .
+ .data          0x10000050        0xc ./src/DCM_Data.o
+ .data          0x1000005c        0x1 ./src/calculations_heading.o
+ .data          0x1000005d        0x3 ./HAL_UART/uart.o
+                0x1000005f                UART3TxEmpty
+                0x1000005d                UART0TxEmpty
+                0x1000005e                UART1TxEmpty
+ .data          0x10000060        0x4 C:\Users\admin\Desktop\Keadrone\CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
+                0x10000060                SystemCoreClock
+ .data          0x10000064        0x4 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(heap_2.o)
+ .data          0x10000068        0x4 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(port.o)
+ .data          0x1000006c      0x204 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(ctype.o)
+                0x1000006c                __ctype
+                0x10000270                . = ALIGN (0x4)
+                0x10000270                _edata = .
 
 .bss_RAM2       0x2007c000        0x0
  *(.bss.$RAM2*)
  *(.bss.$RamAHB16*)
                 0x2007c000                . = ALIGN (0x4)
 
-.bss            0x10000288     0x1360
-                0x10000288                _bss = .
+.bss            0x10000270     0x1308
+                0x10000270                _bss = .
  *(.bss*)
- .bss           0x10000288       0x18 ./i2c.o
-                0x10000294                RdIndex
-                0x10000288                I2CMasterState
-                0x10000290                I2CCount
-                0x10000298                WrIndex
- .bss           0x100002a0       0x9c ./src/DCM.o
-                0x10000324                Ki_ROLLPITCHa
- .bss           0x1000033c       0x3c ./src/calculations.o
- .bss           0x10000378       0x5c ./src/calculations_heading.o
- .bss           0x100003d4       0x30 ./src/dAccelerometer_BMA180.o
- .bss           0x10000404       0x34 ./src/dGyro_ITG-3200.o
- .bss           0x10000438        0xc ./HAL_UART/uart.o
-                0x10000438                UART0Count
-                0x10000440                UART3Count
-                0x1000043c                UART1Count
- .bss           0x10000444      0x100 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(tasks.o)
-                0x100004e4                pxCurrentTCB
- *fill*         0x10000544        0x4 00
- .bss           0x10000548      0xc18 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(heap_2.o)
+ .bss           0x10000270       0x18 ./i2c.o
+                0x1000027c                RdIndex
+                0x10000270                I2CMasterState
+                0x10000278                I2CCount
+                0x10000280                WrIndex
+ .bss           0x10000288       0x94 ./src/DCM.o
+                0x1000030c                Ki_ROLLPITCHa
+ .bss           0x1000031c       0x24 ./src/DCM_Data.o
+ .bss           0x10000340       0x54 ./src/calculations_heading.o
+ .bss           0x10000394       0x30 ./src/dAccelerometer_BMA180.o
+ .bss           0x100003c4       0x34 ./src/dGyro_ITG-3200.o
+ .bss           0x100003f8        0xc ./HAL_UART/uart.o
+                0x100003f8                UART0Count
+                0x10000400                UART3Count
+                0x100003fc                UART1Count
+ .bss           0x10000404      0x100 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(tasks.o)
+                0x100004a4                pxCurrentTCB
+ *fill*         0x10000504        0x4 00
+ .bss           0x10000508      0xc18 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(heap_2.o)
  .bss.sys_message
-                0x10001160       0x3c c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(alloc.o)
- .bss           0x1000119c        0x4 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_nohost.a(cr_sys.o)
+                0x10001120       0x3c c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(alloc.o)
+ .bss           0x1000115c        0x4 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_nohost.a(cr_sys.o)
  *(COMMON)
- COMMON         0x100011a0       0x10 ./i2c.o
-                0x100011a0                I2CReadLength
-                0x100011a4                I2CCmd
-                0x100011a8                I2CWriteLength
-                0x100011ac                LPC_I2Cx
- COMMON         0x100011b0        0xc ./src/DCM.o
-                0x100011b0                gyro_true
- COMMON         0x100011bc       0x30 ./src/calculations_heading.o
-                0x100011bc                xSemaphore
-                0x100011c0                gyro
-                0x100011cc                gyroCurrent
-                0x100011e4                accCurrent
- COMMON         0x100011ec       0x14 ./src/dServoTimers.o
-                0x100011ec                SERVO_TIMERS
- COMMON         0x10001200       0xcc ./HAL_UART/uart.o
-                0x10001200                UART1Buffer
-                0x10001240                UART3Status
-                0x10001244                UART0Buffer
-                0x10001284                UART1Status
-                0x10001288                UART3Buffer
-                0x100012c8                UART0Status
- COMMON         0x100012cc        0x8 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_nohost.a(_cr__main.o)
-                0x100012cc                errno
-                0x100012d0                _error_recursion
- COMMON         0x100012d4        0x8 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(__init_alloc.o)
-                0x100012d4                __heaps
-                0x100012d8                __end_of_heap
- COMMON         0x100012dc        0x4 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(initio.o)
-                0x100012dc                _extra
- COMMON         0x100012e0      0x280 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(stdio.o)
-                0x100012e0                __Ciob
- COMMON         0x10001560       0x88 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(stdlib.o)
-                0x10001560                _exitvector
-                0x100015e4                _number_of_exit_functions
-                0x100015e8                . = ALIGN (0x4)
-                0x100015e8                _ebss = .
-                0x100015e8                PROVIDE (end, .)
-                0x100015e8                PROVIDE (_pvHeapStart, .)
+ COMMON         0x10001160       0x10 ./i2c.o
+                0x10001160                I2CReadLength
+                0x10001164                I2CCmd
+                0x10001168                I2CWriteLength
+                0x1000116c                LPC_I2Cx
+ COMMON         0x10001170        0xc ./src/DCM.o
+                0x10001170                currentHeading
+ COMMON         0x1000117c       0x14 ./src/dServoTimers.o
+                0x1000117c                SERVO_TIMERS
+ COMMON         0x10001190       0xcc ./HAL_UART/uart.o
+                0x10001190                UART1Buffer
+                0x100011d0                UART3Status
+                0x100011d4                UART0Buffer
+                0x10001214                UART1Status
+                0x10001218                UART3Buffer
+                0x10001258                UART0Status
+ COMMON         0x1000125c        0x8 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_nohost.a(_cr__main.o)
+                0x1000125c                errno
+                0x10001260                _error_recursion
+ COMMON         0x10001264        0x8 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(__init_alloc.o)
+                0x10001264                __heaps
+                0x10001268                __end_of_heap
+ COMMON         0x1000126c        0x4 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(initio.o)
+                0x1000126c                _extra
+ COMMON         0x10001270      0x280 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(stdio.o)
+                0x10001270                __Ciob
+ COMMON         0x100014f0       0x88 c:/nxp/lpcxpresso_3.6/tools/bin/../lib/gcc/arm-none-eabi/4.3.3/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(stdlib.o)
+                0x100014f0                _exitvector
+                0x10001574                _number_of_exit_functions
+                0x10001578                . = ALIGN (0x4)
+                0x10001578                _ebss = .
+                0x10001578                PROVIDE (end, .)
+                0x10001578                PROVIDE (_pvHeapStart, .)
                 0x10004000                PROVIDE (_vStackTop, (__top_RamLoc16 - 0x0))
 OUTPUT(SimpleDemo.axf elf32-littlearm)
 
-.debug_abbrev   0x00000000     0x1de8
+.debug_abbrev   0x00000000     0x1e2c
  .debug_abbrev  0x00000000       0xbd ./cr_startup_lpc17.o
  .debug_abbrev  0x000000bd      0x1f5 ./i2c.o
  .debug_abbrev  0x000002b2      0x17d ./lpc17xx_clkpwr.o
  .debug_abbrev  0x0000042f       0x6a ./lpc17xx_libcfg_default.o
  .debug_abbrev  0x00000499      0x1a6 ./lpc17xx_ssp.o
- .debug_abbrev  0x0000063f      0x118 ./src/DCM.o
- .debug_abbrev  0x00000757       0xa9 ./src/Vector.o
- .debug_abbrev  0x00000800       0xf8 ./src/calculations.o
- .debug_abbrev  0x000008f8      0x15b ./src/calculations_heading.o
- .debug_abbrev  0x00000a53      0x210 ./src/dAccelerometer_BMA180.o
- .debug_abbrev  0x00000c63      0x104 ./src/dAnalogLpc.o
- .debug_abbrev  0x00000d67      0x1f5 ./src/dGyro_ITG-3200.o
- .debug_abbrev  0x00000f5c      0x10d ./src/dServoPwm.o
- .debug_abbrev  0x00001069      0x176 ./src/dServoTimers.o
- .debug_abbrev  0x000011df       0xbd ./src/main.o
- .debug_abbrev  0x0000129c       0x85 ./HAL_UART/retargetPrintf.o
- .debug_abbrev  0x00001321      0x1ea ./HAL_UART/uart.o
- .debug_abbrev  0x0000150b       0xc6 C:\Users\admin\Desktop\Keadrone\CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
- .debug_abbrev  0x000015d1      0x1bf C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(queue.o)
- .debug_abbrev  0x00001790      0x270 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(tasks.o)
- .debug_abbrev  0x00001a00      0x1a3 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(heap_2.o)
- .debug_abbrev  0x00001ba3      0x159 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(port.o)
- .debug_abbrev  0x00001cfc       0xec C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(list.o)
+ .debug_abbrev  0x0000063f      0x12e ./src/DCM.o
+ .debug_abbrev  0x0000076d      0x11d ./src/DCM_Data.o
+ .debug_abbrev  0x0000088a       0xa9 ./src/Vector.o
+ .debug_abbrev  0x00000933      0x164 ./src/calculations_heading.o
+ .debug_abbrev  0x00000a97      0x210 ./src/dAccelerometer_BMA180.o
+ .debug_abbrev  0x00000ca7      0x104 ./src/dAnalogLpc.o
+ .debug_abbrev  0x00000dab      0x1f5 ./src/dGyro_ITG-3200.o
+ .debug_abbrev  0x00000fa0      0x10d ./src/dServoPwm.o
+ .debug_abbrev  0x000010ad      0x176 ./src/dServoTimers.o
+ .debug_abbrev  0x00001223       0xbd ./src/main.o
+ .debug_abbrev  0x000012e0       0x85 ./HAL_UART/retargetPrintf.o
+ .debug_abbrev  0x00001365      0x1ea ./HAL_UART/uart.o
+ .debug_abbrev  0x0000154f       0xc6 C:\Users\admin\Desktop\Keadrone\CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
+ .debug_abbrev  0x00001615      0x1bf C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(queue.o)
+ .debug_abbrev  0x000017d4      0x270 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(tasks.o)
+ .debug_abbrev  0x00001a44      0x1a3 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(heap_2.o)
+ .debug_abbrev  0x00001be7      0x159 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(port.o)
+ .debug_abbrev  0x00001d40       0xec C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(list.o)
 
-.debug_info     0x00000000     0x87a9
+.debug_info     0x00000000     0x8b22
  .debug_info    0x00000000      0x1ec ./cr_startup_lpc17.o
  .debug_info    0x000001ec      0xb7c ./i2c.o
  .debug_info    0x00000d68      0x641 ./lpc17xx_clkpwr.o
  .debug_info    0x000013a9       0xcd ./lpc17xx_libcfg_default.o
  .debug_info    0x00001476      0x823 ./lpc17xx_ssp.o
- .debug_info    0x00001c99      0x445 ./src/DCM.o
- .debug_info    0x000020de      0x173 ./src/Vector.o
- .debug_info    0x00002251      0x210 ./src/calculations.o
- .debug_info    0x00002461      0x44e ./src/calculations_heading.o
- .debug_info    0x000028af      0xf01 ./src/dAccelerometer_BMA180.o
- .debug_info    0x000037b0      0x5eb ./src/dAnalogLpc.o
- .debug_info    0x00003d9b      0xb63 ./src/dGyro_ITG-3200.o
- .debug_info    0x000048fe      0x42c ./src/dServoPwm.o
- .debug_info    0x00004d2a      0x895 ./src/dServoTimers.o
- .debug_info    0x000055bf      0x1a2 ./src/main.o
- .debug_info    0x00005761       0xf5 ./HAL_UART/retargetPrintf.o
- .debug_info    0x00005856      0xf16 ./HAL_UART/uart.o
- .debug_info    0x0000676c      0x362 C:\Users\admin\Desktop\Keadrone\CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
- .debug_info    0x00006ace      0x7ee C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(queue.o)
- .debug_info    0x000072bc      0xd54 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(tasks.o)
- .debug_info    0x00008010      0x2c6 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(heap_2.o)
- .debug_info    0x000082d6      0x21a C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(port.o)
- .debug_info    0x000084f0      0x2b9 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(list.o)
+ .debug_info    0x00001c99      0x392 ./src/DCM.o
+ .debug_info    0x0000202b      0x25f ./src/DCM_Data.o
+ .debug_info    0x0000228a      0x173 ./src/Vector.o
+ .debug_info    0x000023fd      0x82b ./src/calculations_heading.o
+ .debug_info    0x00002c28      0xf01 ./src/dAccelerometer_BMA180.o
+ .debug_info    0x00003b29      0x5eb ./src/dAnalogLpc.o
+ .debug_info    0x00004114      0xb63 ./src/dGyro_ITG-3200.o
+ .debug_info    0x00004c77      0x42c ./src/dServoPwm.o
+ .debug_info    0x000050a3      0x895 ./src/dServoTimers.o
+ .debug_info    0x00005938      0x1a2 ./src/main.o
+ .debug_info    0x00005ada       0xf5 ./HAL_UART/retargetPrintf.o
+ .debug_info    0x00005bcf      0xf16 ./HAL_UART/uart.o
+ .debug_info    0x00006ae5      0x362 C:\Users\admin\Desktop\Keadrone\CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
+ .debug_info    0x00006e47      0x7ee C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(queue.o)
+ .debug_info    0x00007635      0xd54 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(tasks.o)
+ .debug_info    0x00008389      0x2c6 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(heap_2.o)
+ .debug_info    0x0000864f      0x21a C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(port.o)
+ .debug_info    0x00008869      0x2b9 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(list.o)
 
-.debug_line     0x00000000     0x5882
+.debug_line     0x00000000     0x5833
  .debug_line    0x00000000      0x33d ./cr_startup_lpc17.o
  .debug_line    0x0000033d      0x3ad ./i2c.o
  .debug_line    0x000006ea      0x37f ./lpc17xx_clkpwr.o
  .debug_line    0x00000a69      0x272 ./lpc17xx_libcfg_default.o
  .debug_line    0x00000cdb      0x516 ./lpc17xx_ssp.o
- .debug_line    0x000011f1      0x38d ./src/DCM.o
- .debug_line    0x0000157e       0x83 ./src/Vector.o
- .debug_line    0x00001601      0x311 ./src/calculations.o
- .debug_line    0x00001912      0x51c ./src/calculations_heading.o
- .debug_line    0x00001e2e      0x57e ./src/dAccelerometer_BMA180.o
- .debug_line    0x000023ac      0x2c1 ./src/dAnalogLpc.o
- .debug_line    0x0000266d      0x526 ./src/dGyro_ITG-3200.o
- .debug_line    0x00002b93      0x313 ./src/dServoPwm.o
- .debug_line    0x00002ea6      0x358 ./src/dServoTimers.o
- .debug_line    0x000031fe      0x446 ./src/main.o
- .debug_line    0x00003644      0x2a3 ./HAL_UART/retargetPrintf.o
- .debug_line    0x000038e7      0x3de ./HAL_UART/uart.o
- .debug_line    0x00003cc5      0x2e9 C:\Users\admin\Desktop\Keadrone\CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
- .debug_line    0x00003fae      0x585 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(queue.o)
- .debug_line    0x00004533      0x645 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(tasks.o)
- .debug_line    0x00004b78      0x465 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(heap_2.o)
- .debug_line    0x00004fdd      0x459 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(port.o)
- .debug_line    0x00005436      0x44c C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(list.o)
+ .debug_line    0x000011f1      0x36e ./src/DCM.o
+ .debug_line    0x0000155f      0x30b ./src/DCM_Data.o
+ .debug_line    0x0000186a       0x83 ./src/Vector.o
+ .debug_line    0x000018ed      0x4f7 ./src/calculations_heading.o
+ .debug_line    0x00001de4      0x57e ./src/dAccelerometer_BMA180.o
+ .debug_line    0x00002362      0x2c1 ./src/dAnalogLpc.o
+ .debug_line    0x00002623      0x521 ./src/dGyro_ITG-3200.o
+ .debug_line    0x00002b44      0x313 ./src/dServoPwm.o
+ .debug_line    0x00002e57      0x358 ./src/dServoTimers.o
+ .debug_line    0x000031af      0x446 ./src/main.o
+ .debug_line    0x000035f5      0x2a3 ./HAL_UART/retargetPrintf.o
+ .debug_line    0x00003898      0x3de ./HAL_UART/uart.o
+ .debug_line    0x00003c76      0x2e9 C:\Users\admin\Desktop\Keadrone\CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
+ .debug_line    0x00003f5f      0x585 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(queue.o)
+ .debug_line    0x000044e4      0x645 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(tasks.o)
+ .debug_line    0x00004b29      0x465 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(heap_2.o)
+ .debug_line    0x00004f8e      0x459 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(port.o)
+ .debug_line    0x000053e7      0x44c C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(list.o)
 
-.debug_macinfo  0x00000000    0x9b646
+.debug_macinfo  0x00000000    0x9b3eb
  .debug_macinfo
                 0x00000000     0x267e ./cr_startup_lpc17.o
  .debug_macinfo
@@ -1512,94 +1502,94 @@ OUTPUT(SimpleDemo.axf elf32-littlearm)
  .debug_macinfo
                 0x00015057     0x9224 ./lpc17xx_ssp.o
  .debug_macinfo
-                0x0001e27b     0x2d16 ./src/DCM.o
+                0x0001e27b     0x2c57 ./src/DCM.o
  .debug_macinfo
-                0x00020f91      0xc1a ./src/Vector.o
+                0x00020ed2     0x2c46 ./src/DCM_Data.o
  .debug_macinfo
-                0x00021bab     0x2d05 ./src/calculations.o
+                0x00023b18      0xc1a ./src/Vector.o
  .debug_macinfo
-                0x000248b0     0xa9b6 ./src/calculations_heading.o
+                0x00024732     0xa8d9 ./src/calculations_heading.o
  .debug_macinfo
-                0x0002f266     0x9a00 ./src/dAccelerometer_BMA180.o
+                0x0002f00b     0x9a00 ./src/dAccelerometer_BMA180.o
  .debug_macinfo
-                0x00038c66     0x6b6d ./src/dAnalogLpc.o
+                0x00038a0b     0x6b6d ./src/dAnalogLpc.o
  .debug_macinfo
-                0x0003f7d3     0x887f ./src/dGyro_ITG-3200.o
+                0x0003f578     0x887f ./src/dGyro_ITG-3200.o
  .debug_macinfo
-                0x00048052     0x7f61 ./src/dServoPwm.o
+                0x00047df7     0x7f61 ./src/dServoPwm.o
  .debug_macinfo
-                0x0004ffb3     0x7f61 ./src/dServoTimers.o
+                0x0004fd58     0x7f61 ./src/dServoTimers.o
  .debug_macinfo
-                0x00057f14     0x851d ./src/main.o
+                0x00057cb9     0x851d ./src/main.o
  .debug_macinfo
-                0x00060431     0x2a86 ./HAL_UART/retargetPrintf.o
+                0x000601d6     0x2a86 ./HAL_UART/retargetPrintf.o
  .debug_macinfo
-                0x00062eb7     0x6d3c ./HAL_UART/uart.o
+                0x00062c5c     0x6d3c ./HAL_UART/uart.o
  .debug_macinfo
-                0x00069bf3     0x6d5c C:\Users\admin\Desktop\Keadrone\CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
+                0x00069998     0x6d5c C:\Users\admin\Desktop\Keadrone\CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
  .debug_macinfo
-                0x0007094f     0x8e16 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(queue.o)
+                0x000706f4     0x8e16 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(queue.o)
  .debug_macinfo
-                0x00079765     0x8cc6 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(tasks.o)
+                0x0007950a     0x8cc6 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(tasks.o)
  .debug_macinfo
-                0x0008242b     0x88ca C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(heap_2.o)
+                0x000821d0     0x88ca C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(heap_2.o)
  .debug_macinfo
-                0x0008acf5     0x8734 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(port.o)
+                0x0008aa9a     0x8734 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(port.o)
  .debug_macinfo
-                0x00093429     0x821d C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(list.o)
+                0x000931ce     0x821d C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(list.o)
 
-.debug_frame    0x00000000     0x1330
+.debug_frame    0x00000000     0x131c
  .debug_frame   0x00000000      0x120 ./cr_startup_lpc17.o
  .debug_frame   0x00000120       0xf0 ./i2c.o
  .debug_frame   0x00000210      0x10c ./lpc17xx_clkpwr.o
  .debug_frame   0x0000031c       0x2c ./lpc17xx_libcfg_default.o
  .debug_frame   0x00000348      0x26c ./lpc17xx_ssp.o
- .debug_frame   0x000005b4       0xf0 ./src/DCM.o
- .debug_frame   0x000006a4       0x94 ./src/Vector.o
- .debug_frame   0x00000738       0x88 ./src/calculations.o
- .debug_frame   0x000007c0       0x80 ./src/calculations_heading.o
- .debug_frame   0x00000840      0x160 ./src/dAccelerometer_BMA180.o
- .debug_frame   0x000009a0       0x44 ./src/dAnalogLpc.o
- .debug_frame   0x000009e4       0xe0 ./src/dGyro_ITG-3200.o
- .debug_frame   0x00000ac4       0x48 ./src/dServoPwm.o
- .debug_frame   0x00000b0c       0x98 ./src/dServoTimers.o
- .debug_frame   0x00000ba4       0x48 ./src/main.o
- .debug_frame   0x00000bec       0x4c ./HAL_UART/retargetPrintf.o
- .debug_frame   0x00000c38       0xbc ./HAL_UART/uart.o
- .debug_frame   0x00000cf4       0x48 C:\Users\admin\Desktop\Keadrone\CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
- .debug_frame   0x00000d3c      0x198 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(queue.o)
- .debug_frame   0x00000ed4      0x2c8 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(tasks.o)
- .debug_frame   0x0000119c       0x6c C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(heap_2.o)
- .debug_frame   0x00001208       0xc0 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(port.o)
- .debug_frame   0x000012c8       0x68 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(list.o)
+ .debug_frame   0x000005b4       0xd8 ./src/DCM.o
+ .debug_frame   0x0000068c       0x9c ./src/DCM_Data.o
+ .debug_frame   0x00000728       0x94 ./src/Vector.o
+ .debug_frame   0x000007bc       0x74 ./src/calculations_heading.o
+ .debug_frame   0x00000830      0x160 ./src/dAccelerometer_BMA180.o
+ .debug_frame   0x00000990       0x44 ./src/dAnalogLpc.o
+ .debug_frame   0x000009d4       0xdc ./src/dGyro_ITG-3200.o
+ .debug_frame   0x00000ab0       0x48 ./src/dServoPwm.o
+ .debug_frame   0x00000af8       0x98 ./src/dServoTimers.o
+ .debug_frame   0x00000b90       0x48 ./src/main.o
+ .debug_frame   0x00000bd8       0x4c ./HAL_UART/retargetPrintf.o
+ .debug_frame   0x00000c24       0xbc ./HAL_UART/uart.o
+ .debug_frame   0x00000ce0       0x48 C:\Users\admin\Desktop\Keadrone\CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
+ .debug_frame   0x00000d28      0x198 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(queue.o)
+ .debug_frame   0x00000ec0      0x2c8 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(tasks.o)
+ .debug_frame   0x00001188       0x6c C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(heap_2.o)
+ .debug_frame   0x000011f4       0xc0 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(port.o)
+ .debug_frame   0x000012b4       0x68 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(list.o)
 
-.debug_loc      0x00000000     0x2759
+.debug_loc      0x00000000     0x2758
  .debug_loc     0x00000000      0x1e5 ./cr_startup_lpc17.o
  .debug_loc     0x000001e5      0x1a0 ./i2c.o
  .debug_loc     0x00000385      0x1b3 ./lpc17xx_clkpwr.o
  .debug_loc     0x00000538       0x37 ./lpc17xx_libcfg_default.o
  .debug_loc     0x0000056f      0x415 ./lpc17xx_ssp.o
- .debug_loc     0x00000984      0x175 ./src/DCM.o
- .debug_loc     0x00000af9       0xdc ./src/Vector.o
- .debug_loc     0x00000bd5       0xdc ./src/calculations.o
- .debug_loc     0x00000cb1       0x9a ./src/calculations_heading.o
- .debug_loc     0x00000d4b      0x245 ./src/dAccelerometer_BMA180.o
- .debug_loc     0x00000f90       0x62 ./src/dAnalogLpc.o
- .debug_loc     0x00000ff2      0x169 ./src/dGyro_ITG-3200.o
- .debug_loc     0x0000115b       0x62 ./src/dServoPwm.o
- .debug_loc     0x000011bd       0xfb ./src/dServoTimers.o
- .debug_loc     0x000012b8       0x56 ./src/main.o
- .debug_loc     0x0000130e       0x6e ./HAL_UART/retargetPrintf.o
- .debug_loc     0x0000137c      0x14a ./HAL_UART/uart.o
- .debug_loc     0x000014c6       0x56 C:\Users\admin\Desktop\Keadrone\CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
- .debug_loc     0x0000151c      0x6d5 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(queue.o)
- .debug_loc     0x00001bf1      0x8dc C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(tasks.o)
- .debug_loc     0x000024cd      0x1c2 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(heap_2.o)
- .debug_loc     0x0000268f       0x6f C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(port.o)
- .debug_loc     0x000026fe       0x5b C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(list.o)
+ .debug_loc     0x00000984      0x13e ./src/DCM.o
+ .debug_loc     0x00000ac2      0x113 ./src/DCM_Data.o
+ .debug_loc     0x00000bd5       0xdc ./src/Vector.o
+ .debug_loc     0x00000cb1       0x99 ./src/calculations_heading.o
+ .debug_loc     0x00000d4a      0x245 ./src/dAccelerometer_BMA180.o
+ .debug_loc     0x00000f8f       0x62 ./src/dAnalogLpc.o
+ .debug_loc     0x00000ff1      0x169 ./src/dGyro_ITG-3200.o
+ .debug_loc     0x0000115a       0x62 ./src/dServoPwm.o
+ .debug_loc     0x000011bc       0xfb ./src/dServoTimers.o
+ .debug_loc     0x000012b7       0x56 ./src/main.o
+ .debug_loc     0x0000130d       0x6e ./HAL_UART/retargetPrintf.o
+ .debug_loc     0x0000137b      0x14a ./HAL_UART/uart.o
+ .debug_loc     0x000014c5       0x56 C:\Users\admin\Desktop\Keadrone\CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
+ .debug_loc     0x0000151b      0x6d5 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(queue.o)
+ .debug_loc     0x00001bf0      0x8dc C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(tasks.o)
+ .debug_loc     0x000024cc      0x1c2 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(heap_2.o)
+ .debug_loc     0x0000268e       0x6f C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(port.o)
+ .debug_loc     0x000026fd       0x5b C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(list.o)
 
 .debug_pubnames
-                0x00000000      0xf1e
+                0x00000000      0xef6
  .debug_pubnames
                 0x00000000       0xfd ./cr_startup_lpc17.o
  .debug_pubnames
@@ -1611,41 +1601,41 @@ OUTPUT(SimpleDemo.axf elf32-littlearm)
  .debug_pubnames
                 0x000002e4      0x174 ./lpc17xx_ssp.o
  .debug_pubnames
-                0x00000458       0xab ./src/DCM.o
+                0x00000458       0xa2 ./src/DCM.o
  .debug_pubnames
-                0x00000503       0x62 ./src/Vector.o
+                0x000004fa       0x78 ./src/DCM_Data.o
  .debug_pubnames
-                0x00000565       0x5e ./src/calculations.o
+                0x00000572       0x62 ./src/Vector.o
  .debug_pubnames
-                0x000005c3       0x9d ./src/calculations_heading.o
+                0x000005d4       0x64 ./src/calculations_heading.o
  .debug_pubnames
-                0x00000660       0x4b ./src/dAccelerometer_BMA180.o
+                0x00000638       0x4b ./src/dAccelerometer_BMA180.o
  .debug_pubnames
-                0x000006ab       0x2c ./src/dAnalogLpc.o
+                0x00000683       0x2c ./src/dAnalogLpc.o
  .debug_pubnames
-                0x000006d7       0x37 ./src/dGyro_ITG-3200.o
+                0x000006af       0x37 ./src/dGyro_ITG-3200.o
  .debug_pubnames
-                0x0000070e       0x31 ./src/dServoPwm.o
+                0x000006e6       0x31 ./src/dServoPwm.o
  .debug_pubnames
-                0x0000073f       0x55 ./src/dServoTimers.o
+                0x00000717       0x55 ./src/dServoTimers.o
  .debug_pubnames
-                0x00000794       0x30 ./src/main.o
+                0x0000076c       0x30 ./src/main.o
  .debug_pubnames
-                0x000007c4       0x2a ./HAL_UART/retargetPrintf.o
+                0x0000079c       0x2a ./HAL_UART/retargetPrintf.o
  .debug_pubnames
-                0x000007ee      0x12b ./HAL_UART/uart.o
+                0x000007c6      0x12b ./HAL_UART/uart.o
  .debug_pubnames
-                0x00000919       0x4f C:\Users\admin\Desktop\Keadrone\CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
+                0x000008f1       0x4f C:\Users\admin\Desktop\Keadrone\CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
  .debug_pubnames
-                0x00000968      0x149 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(queue.o)
+                0x00000940      0x149 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(queue.o)
  .debug_pubnames
-                0x00000ab1      0x28b C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(tasks.o)
+                0x00000a89      0x28b C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(tasks.o)
  .debug_pubnames
-                0x00000d3c       0x64 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(heap_2.o)
+                0x00000d14       0x64 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(heap_2.o)
  .debug_pubnames
-                0x00000da0      0x10d C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(port.o)
+                0x00000d78      0x10d C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(port.o)
  .debug_pubnames
-                0x00000ead       0x71 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(list.o)
+                0x00000e85       0x71 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(list.o)
 
 .debug_aranges  0x00000000      0x598
  .debug_aranges
@@ -1659,11 +1649,11 @@ OUTPUT(SimpleDemo.axf elf32-littlearm)
  .debug_aranges
                 0x00000148       0xb0 ./lpc17xx_ssp.o
  .debug_aranges
-                0x000001f8       0x50 ./src/DCM.o
+                0x000001f8       0x48 ./src/DCM.o
  .debug_aranges
-                0x00000248       0x38 ./src/Vector.o
+                0x00000240       0x40 ./src/DCM_Data.o
  .debug_aranges
-                0x00000280       0x38 ./src/calculations.o
+                0x00000280       0x38 ./src/Vector.o
  .debug_aranges
                 0x000002b8       0x30 ./src/calculations_heading.o
  .debug_aranges
@@ -1701,9 +1691,9 @@ OUTPUT(SimpleDemo.axf elf32-littlearm)
  .debug_ranges  0x000000b8       0x58 ./lpc17xx_clkpwr.o
  .debug_ranges  0x00000110       0x18 ./lpc17xx_libcfg_default.o
  .debug_ranges  0x00000128       0xa8 ./lpc17xx_ssp.o
- .debug_ranges  0x000001d0       0x48 ./src/DCM.o
- .debug_ranges  0x00000218       0x30 ./src/Vector.o
- .debug_ranges  0x00000248       0x30 ./src/calculations.o
+ .debug_ranges  0x000001d0       0x40 ./src/DCM.o
+ .debug_ranges  0x00000210       0x38 ./src/DCM_Data.o
+ .debug_ranges  0x00000248       0x30 ./src/Vector.o
  .debug_ranges  0x00000278       0x28 ./src/calculations_heading.o
  .debug_ranges  0x000002a0       0x68 ./src/dAccelerometer_BMA180.o
  .debug_ranges  0x00000308       0x20 ./src/dAnalogLpc.o
@@ -1716,7 +1706,7 @@ OUTPUT(SimpleDemo.axf elf32-littlearm)
  .debug_ranges  0x00000448       0x20 C:\Users\admin\Desktop\Keadrone\CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
  .debug_ranges  0x00000468       0x50 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(tasks.o)
 
-.debug_str      0x00000000     0x255e
+.debug_str      0x00000000     0x2560
  .debug_str     0x00000000      0x180 ./cr_startup_lpc17.o
                                 0x1ba (size before relaxing)
  .debug_str     0x00000180      0x7a5 ./i2c.o
@@ -1727,41 +1717,41 @@ OUTPUT(SimpleDemo.axf elf32-littlearm)
                                  0xfd (size before relaxing)
  .debug_str     0x00000a8d      0x2c5 ./lpc17xx_ssp.o
                                 0x3f1 (size before relaxing)
- .debug_str     0x00000d52      0x1c0 ./src/DCM.o
-                                0x292 (size before relaxing)
- .debug_str     0x00000f12       0x8e ./src/Vector.o
+ .debug_str     0x00000d52      0x1ad ./src/DCM.o
+                                0x272 (size before relaxing)
+ .debug_str     0x00000eff       0x82 ./src/DCM_Data.o
+                                0x1ab (size before relaxing)
+ .debug_str     0x00000f81       0x8e ./src/Vector.o
                                  0xcf (size before relaxing)
- .debug_str     0x00000fa0       0x6a ./src/calculations.o
-                                0x152 (size before relaxing)
- .debug_str     0x0000100a      0x12a ./src/calculations_heading.o
-                                0x2c1 (size before relaxing)
- .debug_str     0x00001134      0x2a8 ./src/dAccelerometer_BMA180.o
-                                0x851 (size before relaxing)
- .debug_str     0x000013dc       0x85 ./src/dAnalogLpc.o
+ .debug_str     0x0000100f      0x23b ./src/calculations_heading.o
+                                0x4d8 (size before relaxing)
+ .debug_str     0x0000124a      0x18f ./src/dAccelerometer_BMA180.o
+                                0x852 (size before relaxing)
+ .debug_str     0x000013d9       0x85 ./src/dAnalogLpc.o
                                 0x383 (size before relaxing)
- .debug_str     0x00001461       0xbd ./src/dGyro_ITG-3200.o
+ .debug_str     0x0000145e       0xc2 ./src/dGyro_ITG-3200.o
                                 0x699 (size before relaxing)
- .debug_str     0x0000151e       0x37 ./src/dServoPwm.o
+ .debug_str     0x00001520       0x37 ./src/dServoPwm.o
                                 0x239 (size before relaxing)
- .debug_str     0x00001555       0x81 ./src/dServoTimers.o
+ .debug_str     0x00001557       0x81 ./src/dServoTimers.o
                                 0x55d (size before relaxing)
- .debug_str     0x000015d6       0x24 ./src/main.o
+ .debug_str     0x000015d8       0x24 ./src/main.o
                                 0x180 (size before relaxing)
- .debug_str     0x000015fa       0x4a ./HAL_UART/retargetPrintf.o
+ .debug_str     0x000015fc       0x4a ./HAL_UART/retargetPrintf.o
                                 0x115 (size before relaxing)
- .debug_str     0x00001644      0x173 ./HAL_UART/uart.o
+ .debug_str     0x00001646      0x173 ./HAL_UART/uart.o
                                 0x6dc (size before relaxing)
- .debug_str     0x000017b7       0x72 C:\Users\admin\Desktop\Keadrone\CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
+ .debug_str     0x000017b9       0x72 C:\Users\admin\Desktop\Keadrone\CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
                                 0x258 (size before relaxing)
- .debug_str     0x00001829      0x401 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(queue.o)
+ .debug_str     0x0000182b      0x401 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(queue.o)
                                 0x4e3 (size before relaxing)
- .debug_str     0x00001c2a      0x638 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(tasks.o)
+ .debug_str     0x00001c2c      0x638 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(tasks.o)
                                 0x818 (size before relaxing)
- .debug_str     0x00002262      0x150 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(heap_2.o)
+ .debug_str     0x00002264      0x150 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(heap_2.o)
                                 0x232 (size before relaxing)
- .debug_str     0x000023b2      0x11a C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(port.o)
+ .debug_str     0x000023b4      0x11a C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(port.o)
                                 0x234 (size before relaxing)
- .debug_str     0x000024cc       0x92 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(list.o)
+ .debug_str     0x000024ce       0x92 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\Debug\libFreeRTOS_Library.a(list.o)
                                 0x216 (size before relaxing)
 
 .comment        0x00000000      0xc18
@@ -1771,8 +1761,8 @@ OUTPUT(SimpleDemo.axf elf32-littlearm)
  .comment       0x00000081       0x2b ./lpc17xx_libcfg_default.o
  .comment       0x000000ac       0x2b ./lpc17xx_ssp.o
  .comment       0x000000d7       0x2b ./src/DCM.o
- .comment       0x00000102       0x2b ./src/Vector.o
- .comment       0x0000012d       0x2b ./src/calculations.o
+ .comment       0x00000102       0x2b ./src/DCM_Data.o
+ .comment       0x0000012d       0x2b ./src/Vector.o
  .comment       0x00000158       0x2b ./src/calculations_heading.o
  .comment       0x00000183       0x2b ./src/dAccelerometer_BMA180.o
  .comment       0x000001ae       0x2b ./src/dAnalogLpc.o
@@ -1853,9 +1843,9 @@ OUTPUT(SimpleDemo.axf elf32-littlearm)
  .ARM.attributes
                 0x000000f5       0x31 ./src/DCM.o
  .ARM.attributes
-                0x00000126       0x31 ./src/Vector.o
+                0x00000126       0x31 ./src/DCM_Data.o
  .ARM.attributes
-                0x00000157       0x31 ./src/calculations.o
+                0x00000157       0x31 ./src/Vector.o
  .ARM.attributes
                 0x00000188       0x31 ./src/calculations_heading.o
  .ARM.attributes

@@ -5,8 +5,8 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../src/DCM.c \
+../src/DCM_Data.c \
 ../src/Vector.c \
-../src/calculations.c \
 ../src/calculations_heading.c \
 ../src/dAccelerometer_BMA180.c \
 ../src/dAnalogLpc.c \
@@ -17,8 +17,8 @@ C_SRCS += \
 
 OBJS += \
 ./src/DCM.o \
+./src/DCM_Data.o \
 ./src/Vector.o \
-./src/calculations.o \
 ./src/calculations_heading.o \
 ./src/dAccelerometer_BMA180.o \
 ./src/dAnalogLpc.o \
@@ -29,8 +29,8 @@ OBJS += \
 
 C_DEPS += \
 ./src/DCM.d \
+./src/DCM_Data.d \
 ./src/Vector.d \
-./src/calculations.d \
 ./src/calculations_heading.d \
 ./src/dAccelerometer_BMA180.d \
 ./src/dAnalogLpc.d \

@@ -264,10 +264,14 @@ void gyroGetDataFromChip(GYRO_S *p)
 #define FILTERSHIFT 1
 
 	// perform just a little bit of filtering to improve signal to noise
-	gyro.x += (((newValueX / 2) - (gyro.x / 2)) >> FILTERSHIFT);
-	gyro.y += (((newValueY / 2) - (gyro.y / 2)) >> FILTERSHIFT);
-	gyro.z += (((newValueZ / 2) - (gyro.z / 2)) >> FILTERSHIFT);
-
-	*p = gyro;
+	/*
+	 gyro.x += (((newValueX / 2) - (gyro.x / 2)) >> FILTERSHIFT);
+	 gyro.y += (((newValueY / 2) - (gyro.y / 2)) >> FILTERSHIFT);
+	 gyro.z += (((newValueZ / 2) - (gyro.z / 2)) >> FILTERSHIFT);
+	 //*p = gyro;
+	 */
+	p->x = newValueX;
+	p->y = newValueY;
+	p->z = newValueZ;
 
 }
