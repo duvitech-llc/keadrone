@@ -11,8 +11,8 @@
 void initPwmServos(void)
 {
 	LPC_PINCON->PINSEL3 |= 0x2 << 8; //PWM1.2 @p1.20
-	LPC_PINCON->PINSEL3 |= 0x2 << 14; //PWM1.4 @p1.23
-	LPC_PINCON->PINSEL3 |= 0x2 << 16; //PWM1.5 @p1.24
+	LPC_PINCON->PINSEL3 |= 0x2 << 14; //PWM1.4 @p1.23-
+	LPC_PINCON->PINSEL3 |= 0x2 << 16; //PWM1.5 @p1.24-
 	LPC_PINCON->PINSEL3 |= 0x2 << 20; //PWM1.6 @p1.26
 
 	/* Set up clock and power for module */

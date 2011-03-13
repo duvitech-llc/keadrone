@@ -39,11 +39,45 @@ static void terminal(void *pvParameters)
 					gyro_copy.x, gyro_copy.y, gyro_copy.z);
 
 			/* Printout section */
-			printf("%4.2f,", roll );
-			printf("%4.2f\n", pitch);
+			printf("%4.0f,", roll);
+			printf("%4.0f\n", pitch);
 
 		}
 	}
+}
+
+int32_t pidCalc(int32_t currVal)
+{
+	int32_t derivative_term;
+	int32_t kd = -100;
+	static int32_t en0, en1, en2;
+	en0 = currVal;
+	//Calculate the differential term
+	derivative_term = en0 - en2;
+	if (derivative_term > 120)
+	{
+		derivative_term = 120;
+	}
+	if (derivative_term < -120)
+	{
+		derivative_term = -120;
+	}
+	derivative_term = derivative_term * kd;
+	//	derivative_term = derivative_term >> 5;
+	//divide by 32
+
+	if (derivative_term > 120)
+	{
+		derivative_term = 120;
+	}
+	if (derivative_term < -120)
+	{
+		derivative_term = -120;
+	}
+
+	en2 = en1;
+	en1 = en0;
+	return derivative_term;
 }
 
 static void calculations_heading(void *pvParameters)
@@ -68,8 +102,9 @@ static void calculations_heading(void *pvParameters)
 			static Bool initDone = TRUE;
 			if (initDone)
 			{
+
 				static uint16_t initIteration = 0;
-				if (initIteration++ == 32)
+				if (initIteration++ == 33)//not 32 since first value is dummy =0,0
 				{
 					initDone = FALSE;
 					imuInit_2();
@@ -78,9 +113,12 @@ static void calculations_heading(void *pvParameters)
 				{
 					imuInit_1();
 				}
+
 			}
 			else
 			{
+				//warmup
+				static int16_t initWarmup = 1000;
 
 				Matrix_update();
 				Normalize();
@@ -88,30 +126,38 @@ static void calculations_heading(void *pvParameters)
 				Euler_angles();
 
 				static int32_t valueY = 0;
-				static int32_t powerVal = 300;
-				static int32_t pTerm = 8;
+				static int32_t powerVal = 330;
+				static int32_t pTerm = 7;
 				static int32_t setpoint = 0;
 				static int32_t error = 0;
 
-				error = ToDeg(currentHeading.roll) - setpoint;
-				valueY = error * pTerm;
+				if (initWarmup == 0)
+				{
 
-				int32_t calc;
+					error = ToDeg(currentHeading.pitch) - setpoint;
+					valueY = error * pTerm;
+					valueY -= pidCalc(error);
 
-				calc = powerVal - valueY;
-				if (calc < 0)
-					calc = 0;
-				else if (calc > 600)
-					calc = 600;
-				servoSet(3, calc);
+					int32_t calc;
+					calc = powerVal - valueY;
+					if (calc < 0)
+						calc = 0;
+					else if (calc > 380)
+						calc = 380;
+					servoSet(3, calc);
 
-				calc = powerVal + valueY;
-				if (calc < 0)
-					calc = 0;
-				else if (calc > 600)
-					calc = 600;
-				servoSet(1, calc);
+					calc = powerVal + valueY;
+					if (calc < 0)
+						calc = 0;
+					else if (calc > 380)
+						calc = 380;
+					servoSet(1, calc);
+				}
+				else
+				{
+					initWarmup--;
 
+				}
 				static uint16_t counter = 0;
 				counter++;
 				if (counter == 4)

@@ -53,5 +53,5 @@ void imuUpdate(int16_t *data)
 
 	AN_DATA[ACC_X] = SENSOR_SIGN[ACC_X] * (*(data + ACC_X));// - AN_OFFSET[ACC_X]);
 	AN_DATA[ACC_Y] = SENSOR_SIGN[ACC_Y] * (*(data + ACC_Y));// - AN_OFFSET[ACC_Y]);
-	AN_DATA[ACC_Z] = SENSOR_SIGN[ACC_Z] * (*(data + ACC_Z));// - AN_OFFSET[ACC_Z]);
+	AN_DATA[ACC_Z] = SENSOR_SIGN[ACC_Z] * (*(data + ACC_Z));// - AN_OFFSET[ACC_Z];
 }

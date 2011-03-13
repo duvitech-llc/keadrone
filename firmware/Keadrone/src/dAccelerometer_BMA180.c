@@ -128,6 +128,15 @@ static Bool bmaInit(uint8_t range, uint8_t bw)
 	temp |= 0x10;
 	bmaWrite(CTRLREG0, temp); // Have to set ee_w to write any other registers
 	//-------------------------------------------------------------------------------------
+	// Set mode
+	temp = bmaRead(tco_z);
+	temp &= ~3; // mask/clear mode setting
+	temp |= 1; // enable high sens & ultra low noise mode
+	bmaWrite(tco_z, temp); //Write new range data, keep other bits the same
+
+	//-------------------------------------------------------------------------------------
+
+
 	// Set BW
 	temp = bmaRead(BWTCS);
 	temp1 = bw;
@@ -142,7 +151,10 @@ static Bool bmaInit(uint8_t range, uint8_t bw)
 	temp1 = (temp1 << RANGESHIFT);
 	temp &= (~RANGEMASK);
 	temp |= temp1;
+	temp |= 1; // enable sample skipping (samp_skip)
 	bmaWrite(OLSB1, temp); //Write new range data, keep other bits the same
+	temp = bmaRead(OLSB1);
+
 	//-------------------------------------------------------------------------------------
 
 	// Set interrupt
@@ -161,7 +173,7 @@ static void gpioIntInit(void)
 	NVIC_SetPriority(EINT3_IRQn, 30);
 	NVIC_EnableIRQ(EINT3_IRQn);
 }
-#define HISTORY_IIR 256
+#define HISTORY_IIR 2
 
 typedef struct
 {
@@ -170,28 +182,24 @@ typedef struct
 } IIR_DATA;
 uint16_t IIR_Average(IIR_DATA *p)
 {
-	// on boot-up, for touch, our value is never 0
-	if (p->IIR_Sum == 0)
-		p->IIR_Sum = (int32_t) p->currReading * HISTORY_IIR;
-
-	// baseline is always higher or equal to currReading
-	if (p->IIR_Sum < (int32_t) p->currReading * HISTORY_IIR)
+	// on boot-up, our value is never 0xFFFFFFFF
+	if (p->IIR_Sum == 0xFFFFFFFF)
 		p->IIR_Sum = (int32_t) p->currReading * HISTORY_IIR;
 
 	p->IIR_Sum -= (int32_t)(p->IIR_Sum / HISTORY_IIR);
 	p->IIR_Sum += p->currReading;
 
-	// note, this filter has an gain of HISTERY
-	// therefore we must devide the average value
+	// note, this filter has an gain of HISTORY
+	// therefore we must divide the average value
 	// with HISTORY to get our current average
 	return (uint16_t)(p->IIR_Sum / HISTORY_IIR);
 }
+static IIR_DATA x;
+static IIR_DATA y;
+static IIR_DATA z;
 
 void spiReqNewData_FromISR(void)
 {
-	static IIR_DATA x;
-	static IIR_DATA y;
-	static IIR_DATA z;
 
 	static uint8_t regData[7];
 
@@ -211,7 +219,7 @@ void spiReqNewData_FromISR(void)
 	acc[ISR_FillsBuffer].Z = regData[4];
 	acc[ISR_FillsBuffer].Z |= (uint16_t) regData[5] << 8;
 	z.currReading = acc[ISR_FillsBuffer].Z >> 2; // Get rid of two non-value bits in LSB
-	acc[ISR_FillsBuffer].Z = IIR_Average(&z);
+	acc[ISR_FillsBuffer].Z = IIR_Average(&z) + 4096;
 
 	acc[ISR_FillsBuffer].temp = (uint8_t) regData[6];
 
@@ -248,6 +256,8 @@ void spiInit(void)
 	SSP_CFG_Type sspChannelConfig;
 	SSP_DATA_SETUP_Type sspDataConfig;
 
+	x.IIR_Sum = y.IIR_Sum = z.IIR_Sum = 0xFFFFFFFF;
+
 	LPC_PINCON->PINSEL0 |= 0x2 << 30; //SCK0 p0.15
 	LPC_PINCON->PINSEL1 |= 0x2 << 4; //MOSI0 p0.18
 	LPC_PINCON->PINSEL1 |= 0x2 << 2; //MISO0 p0.17
@@ -263,7 +273,7 @@ void spiInit(void)
 	SSP_ConfigStructInit(&sspChannelConfig);
 	SSP_Init(SSP_CHANNEL, &sspChannelConfig);
 	SSP_Cmd(SSP_CHANNEL, ENABLE);
-	while (bmaInit(0x02, 6) == FALSE)
+	while (bmaInit(0x02, 0) == FALSE)
 	{
 		printf("BMA180: Error communication\n");
 		delay_ms(5);
