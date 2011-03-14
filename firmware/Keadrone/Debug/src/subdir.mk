@@ -13,6 +13,7 @@ C_SRCS += \
 ../src/dGyro_ITG-3200.c \
 ../src/dServoPwm.c \
 ../src/dServoTimers.c \
+../src/filterIIR.c \
 ../src/main.c 
 
 OBJS += \
@@ -25,6 +26,7 @@ OBJS += \
 ./src/dGyro_ITG-3200.o \
 ./src/dServoPwm.o \
 ./src/dServoTimers.o \
+./src/filterIIR.o \
 ./src/main.o 
 
 C_DEPS += \
@@ -37,6 +39,7 @@ C_DEPS += \
 ./src/dGyro_ITG-3200.d \
 ./src/dServoPwm.d \
 ./src/dServoTimers.d \
+./src/filterIIR.d \
 ./src/main.d 
 
 

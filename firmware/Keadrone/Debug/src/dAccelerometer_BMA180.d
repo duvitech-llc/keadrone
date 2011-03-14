@@ -5,7 +5,7 @@ src/dAccelerometer_BMA180.d src/dAccelerometer_BMA180.o:  \
   C:\Users\admin\Desktop\Keadrone\CMSISv1p30_LPC17xx\inc/system_LPC17xx.h \
   C:\Users\admin\Desktop\Keadrone\Keadrone/lpc17xx_ssp.h \
   C:\Users\admin\Desktop\Keadrone\Keadrone/lpc_types.h \
-  ../src/dAccelerometer_BMA180.h \
+  ../src/dAccelerometer_BMA180.h ../src/filterIIR.h \
   C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\include/FreeRTOS.h \
   C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\include/projdefs.h \
   C:\Users\admin\Desktop\Keadrone\Keadrone/FreeRTOSConfig.h \
@@ -26,6 +26,8 @@ C:\Users\admin\Desktop\Keadrone\Keadrone/lpc17xx_ssp.h:
 C:\Users\admin\Desktop\Keadrone\Keadrone/lpc_types.h:
 
 ../src/dAccelerometer_BMA180.h:
+
+../src/filterIIR.h:
 
 C:\Users\admin\Desktop\Keadrone\FreeRTOS_Library\include/FreeRTOS.h:
 

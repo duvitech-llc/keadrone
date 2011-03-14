@@ -189,7 +189,7 @@ void calculations_heading_init(void)
 		;
 }
 
-/* Gets called every 2000Hz*/
+/* Gets called every 2000Hz by gyro INT*/
 void calculations_heading_FromISR(void)
 {
 	static signed portBASE_TYPE xHigherPriorityTaskWoken;
@@ -203,13 +203,13 @@ void calculations_heading_FromISR(void)
 	static int32_t bigArray[6];
 	static int16_t iterations = 0;
 
-	bigArray[ACC_X] += ((accCurrent.X));
-	bigArray[ACC_Y] += ((accCurrent.Y));
-	bigArray[ACC_Z] += ((accCurrent.Z));
+	bigArray[0] += ((accCurrent.X));
+	bigArray[1] += ((accCurrent.Y));
+	bigArray[2] += ((accCurrent.Z));
 
-	bigArray[GYRO_X] += ((gyroCurrent.x));
-	bigArray[GYRO_Y] += ((gyroCurrent.y));
-	bigArray[GYRO_Z] += ((gyroCurrent.z));
+	bigArray[3] += ((gyroCurrent.x));
+	bigArray[4] += ((gyroCurrent.y));
+	bigArray[5] += ((gyroCurrent.z));
 
 	iterations++;
 	if (iterations == 8)
@@ -221,8 +221,16 @@ void calculations_heading_FromISR(void)
 		}
 		/* Run DCM Calculations */
 
+		accCurrent.X = array[0];
+		accCurrent.Y = array[1];
+		accCurrent.Z = array[2];
+
+		gyroCurrent.x = array[3];
+		gyroCurrent.y = array[4];
+		gyroCurrent.z = array[5];
+
 		/*updates values in DCM_DATA */
-		imuUpdate((int16_t*) &array[0]);
+		imuUpdate(&gyroCurrent, &accCurrent);
 
 		/* Unblock the task by releasing the semaphore. */
 		xHigherPriorityTaskWoken = pdFALSE;

@@ -5,21 +5,35 @@
  *      Author: Willem Pietersz
  */
 
+// generic LPC includes
 #include "LPC17xx.h"
 #include "lpc17xx_ssp.h"
-#include "dAccelerometer_BMA180.h"
+
+#include "dAccelerometer_BMA180.h" // include ourself
+#include "filterIIR.h"
 
 /* Kernel includes. */
 #include "FreeRTOS.h"
 #include "task.h"
 
-#define SSP_CHANNEL LPC_SSP0
-#define PORT_CS	LPC_GPIO0
-#define PIN_MASK_CS (1<<16)
+// filter data for all axis
+static IIR_DATA x;
+static IIR_DATA y;
+static IIR_DATA z;
 
-static volatile int ISR_FillsBuffer = 0;
-static volatile sAcc_data acc[2];
+// LPC hardware specific changes
+#define SSP_CHANNEL LPC_SSP0 // SPIx
+#define PORT_CS	LPC_GPIO0 // LPC GPIO for CS
+#define PIN_MASK_CS (1<<16) // Chip select
+// For non  blocking access to latest data
+typedef enum
+{
+	bufferA, bufferB, SIZE_BUFFER
+} BUFFER_SPI_DATA;
+static volatile BUFFER_SPI_DATA ISR_FillsBuffer = 0;
+static volatile sAcc_data acc[SIZE_BUFFER];
 
+/*---------------------------------------------------------*/
 #define delay_1ms			( 1 / portTICK_RATE_MS )
 static void delay_ms(uint16_t value)
 {
@@ -28,6 +42,8 @@ static void delay_ms(uint16_t value)
 
 }
 
+/*---------------------------------------------------------*/
+/*---------------------------------------------------------*/
 static char bmaRead(uint8_t address)
 {
 	//returns the contents of any 1 byte register from any address
@@ -52,11 +68,9 @@ static char bmaRead(uint8_t address)
 	return rxBuff;
 }
 
+// This function is speed-optimized to the FIFO buffer of this ARM controller */
 static void bmaReadMultiple_FromISR(uint8_t address, uint8_t *data, uint8_t len)
 {
-	//returns the contents of any 1 byte register from any address
-	//sets the MSB for every address byte (READ mode)
-
 	static char rxBuff[9];
 	static char txBuff[9];
 
@@ -70,6 +84,7 @@ static void bmaReadMultiple_FromISR(uint8_t address, uint8_t *data, uint8_t len)
 	sspDataConfig.length = 8;
 	sspDataConfig.tx_data = &address;
 	sspDataConfig.rx_data = &rxBuff;
+
 	/* todo: replace rx data for data directly, saves time */
 	SSP_ReadWriteBMA180(SSP_CHANNEL, &sspDataConfig);//, SSP_TRANSFER_POLLING);
 	static uint8_t counter;
@@ -77,7 +92,6 @@ static void bmaReadMultiple_FromISR(uint8_t address, uint8_t *data, uint8_t len)
 	{
 		*(data + counter) = rxBuff[counter + 1];
 	}
-
 	PORT_CS->FIOSET |= PIN_MASK_CS; //CS High
 }
 
@@ -166,6 +180,9 @@ static Bool bmaInit(uint8_t range, uint8_t bw)
 	return TRUE;
 }
 
+/*---------------------------------------------------------*/
+/*---------------------------------------------------------*/
+
 static void gpioIntInit(void)
 {
 	//Enable rising edge interrupt for P0.8
@@ -173,34 +190,9 @@ static void gpioIntInit(void)
 	NVIC_SetPriority(EINT3_IRQn, 30);
 	NVIC_EnableIRQ(EINT3_IRQn);
 }
-#define HISTORY_IIR 2
-
-typedef struct
-{
-	int32_t IIR_Sum;
-	int32_t currReading;
-} IIR_DATA;
-uint16_t IIR_Average(IIR_DATA *p)
-{
-	// on boot-up, our value is never 0xFFFFFFFF
-	if (p->IIR_Sum == 0xFFFFFFFF)
-		p->IIR_Sum = (int32_t) p->currReading * HISTORY_IIR;
-
-	p->IIR_Sum -= (int32_t)(p->IIR_Sum / HISTORY_IIR);
-	p->IIR_Sum += p->currReading;
-
-	// note, this filter has an gain of HISTORY
-	// therefore we must divide the average value
-	// with HISTORY to get our current average
-	return (uint16_t)(p->IIR_Sum / HISTORY_IIR);
-}
-static IIR_DATA x;
-static IIR_DATA y;
-static IIR_DATA z;
 
 void spiReqNewData_FromISR(void)
 {
-
 	static uint8_t regData[7];
 
 	// get 7 bytes starting from reg. ACCXLSB
@@ -232,9 +224,8 @@ void spiReqNewData_FromISR(void)
 
 void spiGetAccelero(sAcc_data *p)
 {
-	/* note that the acc. meter gives data at 2.66kHz rate, and gyro at 2kHz.
-	 * Thats why we use dual buffer for mutual exclusion.
-	 */
+	/* note that the acc. meter gives data at 20Hz rate, and gyro at 2kHz.
+	 * Thats why we use dual buffer for mutual exclusion.	 */
 
 	int currBuffer;
 	// Get the buffer that is currently filled by the interrupt
@@ -256,7 +247,9 @@ void spiInit(void)
 	SSP_CFG_Type sspChannelConfig;
 	SSP_DATA_SETUP_Type sspDataConfig;
 
+	// init with default values
 	x.IIR_Sum = y.IIR_Sum = z.IIR_Sum = 0xFFFFFFFF;
+	x.IIR_HISTORY = y.IIR_HISTORY = z.IIR_HISTORY = 2;
 
 	LPC_PINCON->PINSEL0 |= 0x2 << 30; //SCK0 p0.15
 	LPC_PINCON->PINSEL1 |= 0x2 << 4; //MOSI0 p0.18

@@ -23,53 +23,6 @@ static I2C_DATA i2c;
 static GYRO_S gyro =
 { 0 };
 
-#ifdef UNUSED
-#define HISTORY_IIR    32 //'L' average point (baseline updated @100mS)
-typedef struct
-{
-	uint32_t IIR_Sum;
-	uint16_t currReading;
-}FIR_FILTER;
-
-uint16_t IIR_Average(FIR_FILTER *p)
-{
-	// on boot-up our value is never 0
-	if (p->IIR_Sum == 0)
-	p->IIR_Sum = (UINT32) p->currReading * HISTORY_IIR;
-
-	p->IIR_Sum -= (UINT32)(p->IIR_Sum / HISTORY_IIR);
-	p->IIR_Sum += p->currReading;
-
-	// note, this filter has an gain of HISTERY
-	// therefore we must devide the average value
-	// with HISTORY to get our current average
-	return (UINT16)(p->IIR_Sum / HISTORY_IIR);
-}
-
-#define HISTORY_IIR    32 //'L' average point (baseline updated @100mS)
-typedef struct
-{
-	uint32_t IIR_Sum;
-	uint16_t currReading;
-}FIR_FILTER;
-
-uint16_t IIR_Average(FIR_FILTER *p)
-{
-	// on boot-up our value is never 0
-	if (p->IIR_Sum == 0)
-	p->IIR_Sum = (UINT32) p->currReading * HISTORY_IIR;
-
-	p->IIR_Sum -= (UINT32)(p->IIR_Sum / HISTORY_IIR);
-	p->IIR_Sum += p->currReading;
-
-	// note, this filter has an gain of HISTERY
-	// therefore we must devide the average value
-	// with HISTORY to get our current average
-	return (UINT16)(p->IIR_Sum / HISTORY_IIR);
-}
-
-#endif
-
 static int16_t slewRateLimit(int16_t newValue, int16_t * rawValue)
 {
 	// Start slew-rate limiter
@@ -115,22 +68,6 @@ static void gyroCalculateOffset(void)
 		newValueX = ((int16_t) i2cBuffer[2] << 8) + i2cBuffer[3];
 		newValueY = ((int16_t) i2cBuffer[4] << 8) + i2cBuffer[5];
 		newValueZ = ((int16_t) i2cBuffer[6] << 8) + i2cBuffer[7];
-
-		//gyro[counter].temp = ((int16_t) i2cBuffer[0] << 8) + i2cBuffer[1];
-		//gyro[counter].x = ((int16_t) i2cBuffer[2] << 8) + i2cBuffer[3];
-		//gyro[counter].y = ((int16_t) i2cBuffer[4] << 8) + i2cBuffer[5];
-		//gyro[counter].z = ((int16_t) i2cBuffer[6] << 8) + i2cBuffer[7];
-
-		/*
-		 x.currReading = ((int16_t) i2cBuffer[2] << 8) + i2cBuffer[3];
-		 gyro.x_offset = IIR_Average(x);
-
-		 y.currReading = ((int16_t) i2cBuffer[4] << 8) + i2cBuffer[5];
-		 gyro.y_offset = IIR_Average(x);
-
-		 z.currReading = ((int16_t) i2cBuffer[6] << 8) + i2cBuffer[7];
-		 gyro.z_offset = IIR_Average(x);
-		 */
 
 		sumX += (int32_t) slewRateLimit(newValueX, &rawX);
 		sumY += (int32_t) slewRateLimit(newValueY, &rawY);
