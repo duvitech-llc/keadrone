@@ -171,13 +171,13 @@ void Drift_correction(void)
 void Matrix_update(void)
 {
 	// maybe make the values EXTERN to reduce function calls
-	Gyro_Vector[0] = ToRad(getGyroX()); //gyro x roll // 14.375 = Gyro RAW to Grad/s
-	Gyro_Vector[1] = ToRad(getGyroY()); //gyro y pitch
-	Gyro_Vector[2] = ToRad(getGyroZ()); //gyro Z yaw
+	Gyro_Vector[0] = ToRad(((float)imu_read_sensor(GYRO_X)/ 14.375)); //gyro x roll // 14.375 = Gyro RAW to Grad/s
+	Gyro_Vector[1] = ToRad(((float)imu_read_sensor(GYRO_Y)/ 14.375)); //gyro y pitch
+	Gyro_Vector[2] = ToRad(((float)imu_read_sensor(GYRO_Z)/ 14.375)); //gyro Z yaw
 
-	Accel_Vector[0] = getAcceleroX();
-	Accel_Vector[1] = getAcceleroY();
-	Accel_Vector[2] = getAcceleroZ();
+	Accel_Vector[0] = imu_read_sensor(ACC_X);
+	Accel_Vector[1] = imu_read_sensor(ACC_Y);
+	Accel_Vector[2] = imu_read_sensor(ACC_Z); // Expect 0,0,4096 (ideal)
 
 	Vector_Add(&Omega[0], &Gyro_Vector[0], &Omega_I[0]); //adding proportional term
 	Vector_Add(&Omega_Vector[0], &Omega[0], &Omega_P[0]); //adding Integrator term

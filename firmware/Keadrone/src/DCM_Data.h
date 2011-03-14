@@ -7,6 +7,10 @@
 
 #ifndef CALCULATIONS_H_
 #define CALCULATIONS_H_
+typedef enum
+{
+	GYRO_X, GYRO_Y, GYRO_Z, ACC_X, ACC_Y, ACC_Z, LAST_ELEMENT
+} SENSOR_DATA;
 
 // ADXL345 Sensitivity(from datasheet) => 4mg/LSB   1G => 1000mg/4mg = 256 steps
 // Tested value : 248
@@ -28,19 +32,6 @@
 //OUTPUTMODE=0 will print uncorrected data of the gyros (with drift)
 #define OUTPUTMODE 1
 
-typedef struct
-{
-	int16_t X;
-	int16_t Y;
-	int16_t Z;
-} DCM_DATA;
-
-typedef struct
-{
-	int32_t X;
-	int32_t Y;
-	int32_t Z;
-} DCM_DATA_OFFSETS;
 
 typedef struct
 {
@@ -48,13 +39,6 @@ typedef struct
 	float pitch; // y
 	float yaw;//z
 } GYRO_STRUCT;
-
-float getGyroX(void);
-float getGyroY(void);
-float getGyroZ(void);
-int16_t getAcceleroX(void);
-int16_t getAcceleroX(void);
-int16_t getAcceleroX(void);
 
 void imuHeadingUpdate(float pitch, float roll, float yaw);
 GYRO_STRUCT currentHeading;

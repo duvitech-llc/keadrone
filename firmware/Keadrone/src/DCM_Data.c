@@ -8,14 +8,14 @@
 #include "stdint.h"
 #include "DCM_Data.h"
 
-static DCM_DATA gyro;
-static DCM_DATA_OFFSETS gyroOffset;
-static DCM_DATA gyroSensorSign;
-static DCM_DATA accelero;
-static DCM_DATA_OFFSETS acceleroOffset;
-static DCM_DATA acceleroSign;
+//todo: put the init in a #define
+static int16_t SENSOR_SIGN[LAST_ELEMENT] =
+//{ -1, 1, 1, 1, -1, -1 }; //Correct directions x,y,z - gyros, accels, magnetormeter
+{ 1, -1, -1, 1, -1, -1 }; //Correct directions x,y,z - gyros, accels, magnetormeter
+static int32_t AN_OFFSET[LAST_ELEMENT] =
+{ 0, 0, 0, 0, 0, 0 }; //Array that stores the Offset of the sensors
+static int16_t AN_DATA[LAST_ELEMENT];
 
-// Posts new heading in grad/s format (not rad/s!)
 void imuHeadingUpdate(float pitch, float roll, float yaw)
 {
 	currentHeading.pitch = pitch;
@@ -23,83 +23,35 @@ void imuHeadingUpdate(float pitch, float roll, float yaw)
 	currentHeading.yaw = yaw;
 }
 
-/******************GETTERS************************************/
-
-// OUTPUT SCALED TO GRAD/S
-float getGyroX(void)
+int16_t imu_read_sensor(SENSOR_DATA select)
 {
-	return ((float) (gyro.X - gyroOffset.X) / 14.375);
-}
-// OUTPUT SCALED TO GRAD/S
-float getGyroY(void)
-{
-	return ((float) (gyro.Y - gyroOffset.Y) / 14.375);
-}
-// OUTPUT SCALED TO GRAD/S
-float getGyroZ(void)
-{
-	return ((float) (gyro.Z - gyroOffset.Z) / 14.375);
+	return ((AN_DATA[select] - AN_OFFSET[select]));
 }
 
-// OUTPUT ACELERO NOT SCALED
-//(REMEMBER TO SPECIFY GRAVITY DIVIDER IN DCM_DATA.H)
-int16_t getAcceleroX(void)
-{
-	return (accelero.X - acceleroOffset.X);
-}
-int16_t getAcceleroY(void)
-{
-	return (accelero.Y - acceleroOffset.Y);
-}
-int16_t getAcceleroZ(void)
-{
-	return (accelero.Z - acceleroOffset.Z);
-}
-/**********************************************************************/
-
-// call this function on init 32 times with valid, new data from all sensors
 void imuInit_1(void)
 {
-	acceleroSign.X = 1;
-	acceleroSign.Y = -1;
-	acceleroSign.Z = -1;
-
-	gyroSensorSign.X = 1;
-	gyroSensorSign.Y = -1;
-	gyroSensorSign.Z = -1;
-
-	acceleroOffset.X += accelero.X;
-	acceleroOffset.Y += accelero.Y;
-	acceleroOffset.Z += accelero.Z;
-
-	gyroOffset.X += gyro.X;
-	gyroOffset.Y += gyro.Y;
-	gyroOffset.Z += gyro.Z;
-
+	int y;
+	for (y = 0; y < 6; y++) // Cumulate values
+		AN_OFFSET[y] += AN_DATA[y];
 }
 
-//Simply divides all the offset values
 void imuInit_2(void)
 {
-	acceleroOffset.X /= 32;
-	acceleroOffset.Y /= 32;
-	acceleroOffset.Z /= 32;
+	int y;
+	for (y = 0; y < 6; y++)
+		AN_OFFSET[y] = AN_OFFSET[y] / 32;
 
-	gyroOffset.X /= 32;
-	gyroOffset.Y /= 32;
-	gyroOffset.Z /= 32;
-
-	acceleroOffset.Z -= GRAVITY_DIV * acceleroSign.Z;
+	AN_OFFSET[ACC_Z] += GRAVITY_DIV * SENSOR_SIGN[ACC_Z];
 }
 
 /* Parameters are given in grad/s */
-void imuUpdate(DCM_DATA *pGyro, DCM_DATA *pAccelero)
+void imuUpdate(int16_t *data)
 {
-	gyro.X = gyroSensorSign.X * pGyro->X;
-	gyro.Y = gyroSensorSign.Y * pGyro->Y;
-	gyro.Z = gyroSensorSign.Z * pGyro->Z;
+	AN_DATA[GYRO_X] = SENSOR_SIGN[GYRO_X] * (*(data + GYRO_X)); //0
+	AN_DATA[GYRO_Y] = SENSOR_SIGN[GYRO_Y] * (*(data + GYRO_Y)); //1
+	AN_DATA[GYRO_Z] = SENSOR_SIGN[GYRO_Z] * (*(data + GYRO_Z)); //2
 
-	accelero.X = acceleroSign.X * pAccelero->X;
-	accelero.Y = acceleroSign.Y * pAccelero->Y;
-	accelero.Z = acceleroSign.Z * pAccelero->Z;
+	AN_DATA[ACC_X] = SENSOR_SIGN[ACC_X] * (*(data + ACC_X));// - AN_OFFSET[ACC_X]);
+	AN_DATA[ACC_Y] = SENSOR_SIGN[ACC_Y] * (*(data + ACC_Y));// - AN_OFFSET[ACC_Y]);
+	AN_DATA[ACC_Z] = SENSOR_SIGN[ACC_Z] * (*(data + ACC_Z));// - AN_OFFSET[ACC_Z];
 }
