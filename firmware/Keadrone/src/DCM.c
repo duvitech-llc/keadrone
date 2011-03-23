@@ -103,8 +103,8 @@ void Normalize(void)
 }
 
 /**************************************************/
-float Kp_ROLLPITCHa = 0.0002;
-float Ki_ROLLPITCHa = 0.000000;
+float Kp_ROLLPITCHa = Kp_ROLLPITCH;
+float Ki_ROLLPITCHa = Ki_ROLLPITCH;
 
 void Drift_correction(void)
 {
@@ -171,9 +171,9 @@ void Drift_correction(void)
 void Matrix_update(void)
 {
 	// maybe make the values EXTERN to reduce function calls
-	Gyro_Vector[0] = ToRad(((float)imu_read_sensor(GYRO_X)/ 14.375)); //gyro x roll // 14.375 = Gyro RAW to Grad/s
-	Gyro_Vector[1] = ToRad(((float)imu_read_sensor(GYRO_Y)/ 14.375)); //gyro y pitch
-	Gyro_Vector[2] = ToRad(((float)imu_read_sensor(GYRO_Z)/ 14.375)); //gyro Z yaw
+	Gyro_Vector[0] = ToRad(((float)imu_read_sensor(GYRO_X)/ GYRO_DIV)); //gyro x roll // 14.375 = Gyro RAW to Grad/s
+	Gyro_Vector[1] = ToRad(((float)imu_read_sensor(GYRO_Y)/ GYRO_DIV)); //gyro y pitch
+	Gyro_Vector[2] = ToRad(((float)imu_read_sensor(GYRO_Z)/ GYRO_DIV)); //gyro Z yaw
 
 	Accel_Vector[0] = imu_read_sensor(ACC_X);
 	Accel_Vector[1] = imu_read_sensor(ACC_Y);

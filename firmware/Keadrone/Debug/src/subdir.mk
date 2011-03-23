@@ -8,6 +8,7 @@ C_SRCS += \
 ../src/DCM_Data.c \
 ../src/Vector.c \
 ../src/calculations_heading.c \
+../src/calculations_motors.c \
 ../src/dAccelerometer_BMA180.c \
 ../src/dAnalogLpc.c \
 ../src/dGyro_ITG-3200.c \
@@ -21,6 +22,7 @@ OBJS += \
 ./src/DCM_Data.o \
 ./src/Vector.o \
 ./src/calculations_heading.o \
+./src/calculations_motors.o \
 ./src/dAccelerometer_BMA180.o \
 ./src/dAnalogLpc.o \
 ./src/dGyro_ITG-3200.o \
@@ -34,6 +36,7 @@ C_DEPS += \
 ./src/DCM_Data.d \
 ./src/Vector.d \
 ./src/calculations_heading.d \
+./src/calculations_motors.d \
 ./src/dAccelerometer_BMA180.d \
 ./src/dAnalogLpc.d \
 ./src/dGyro_ITG-3200.d \

@@ -18,6 +18,8 @@ static xSemaphoreHandle xSemaphore, xSemaphoreTerminal;
 static sAcc_data accCurrent;
 static GYRO_S gyroCurrent;
 
+/* Terminal ********************************************/
+
 static void terminal(void *pvParameters)
 {
 	for (;;)
@@ -25,60 +27,28 @@ static void terminal(void *pvParameters)
 		/*Block waiting for the semaphore to become available. */
 		if (xSemaphoreTake( xSemaphoreTerminal, 0xffff ) == pdTRUE)
 		{
+			/*
+			 static sAcc_data acc_copy;
+			 static GYRO_S gyro_copy;
 
-			static sAcc_data acc_copy;
-			static GYRO_S gyro_copy;
+			 acc_copy = accCurrent;
+			 gyro_copy = gyroCurrent;
 
-			acc_copy = accCurrent;
-			gyro_copy = gyroCurrent;
 
-			float roll, pitch;
-			roll = ToDeg(currentHeading.roll);
-			pitch = ToDeg(currentHeading.pitch);
-			printf("%d,%d,%d,%d,%d,%d,", acc_copy.X, acc_copy.Y, acc_copy.Z,
-					gyro_copy.x, gyro_copy.y, gyro_copy.z);
-
+			 printf("%d,%d,%d,%d,%d,%d,", acc_copy.X, acc_copy.Y, acc_copy.Z,
+			 gyro_copy.x, gyro_copy.y, gyro_copy.z);
+			 */
 			/* Printout section */
-			printf("%4.0f,", roll);
-			printf("%4.0f\n", pitch);
+
+			printf("%4.1f,", getHeadingYaw());
+			printf("%4.1f,", getHeadingRoll());
+			printf("%4.1f\n", getHeadingPitch());
 
 		}
 	}
 }
 
-int32_t pidCalc(int32_t currVal)
-{
-	int32_t derivative_term;
-	int32_t kd = -100;
-	static int32_t en0, en1, en2;
-	en0 = currVal;
-	//Calculate the differential term
-	derivative_term = en0 - en2;
-	if (derivative_term > 120)
-	{
-		derivative_term = 120;
-	}
-	if (derivative_term < -120)
-	{
-		derivative_term = -120;
-	}
-	derivative_term = derivative_term * kd;
-	//	derivative_term = derivative_term >> 5;
-	//divide by 32
-
-	if (derivative_term > 120)
-	{
-		derivative_term = 120;
-	}
-	if (derivative_term < -120)
-	{
-		derivative_term = -120;
-	}
-
-	en2 = en1;
-	en1 = en0;
-	return derivative_term;
-}
+/* Heading ********************************************/
 
 static void calculations_heading(void *pvParameters)
 {
@@ -110,54 +80,18 @@ static void calculations_heading(void *pvParameters)
 					imuInit_2();
 				}
 				else
-				{
 					imuInit_1();
-				}
 
 			}
 			else
 			{
-				//warmup
-				static int16_t initWarmup = 1000;
-
 				Matrix_update();
 				Normalize();
 				Drift_correction();
 				Euler_angles();
 
-				static int32_t valueY = 0;
-				static int32_t powerVal = 330;
-				static int32_t pTerm = 7;
-				static int32_t setpoint = 0;
-				static int32_t error = 0;
+				calculations_motor();
 
-				if (initWarmup == 0)
-				{
-
-					error = ToDeg(currentHeading.pitch) - setpoint;
-					valueY = error * pTerm;
-					valueY -= pidCalc(error);
-
-					int32_t calc;
-					calc = powerVal - valueY;
-					if (calc < 0)
-						calc = 0;
-					else if (calc > 380)
-						calc = 380;
-					servoSet(3, calc);
-
-					calc = powerVal + valueY;
-					if (calc < 0)
-						calc = 0;
-					else if (calc > 380)
-						calc = 380;
-					servoSet(1, calc);
-				}
-				else
-				{
-					initWarmup--;
-
-				}
 				static uint16_t counter = 0;
 				counter++;
 				if (counter == 4)
@@ -189,6 +123,8 @@ void calculations_heading_init(void)
 		;
 }
 
+/* heading ISR ********************************************/
+
 /* Gets called every 2000Hz*/
 void calculations_heading_FromISR(void)
 {
@@ -219,7 +155,6 @@ void calculations_heading_FromISR(void)
 			//average the data to a single sample
 			array[iterations] = bigArray[iterations] / 8;
 		}
-		/* Run DCM Calculations */
 
 		/*updates values in DCM_DATA */
 		imuUpdate((int16_t*) &array[0]);

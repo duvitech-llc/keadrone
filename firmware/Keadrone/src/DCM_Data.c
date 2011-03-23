@@ -8,14 +8,17 @@
 #include "stdint.h"
 #include "DCM_Data.h"
 
-//todo: put the init in a #define
+GYRO_STRUCT currentHeading;
+// this is in the format gyro X,Y,Z accelero X,Y,Z
+#define SENSOR_SIGNS 1, -1, -1, 1, -1, -1
+
 static int16_t SENSOR_SIGN[LAST_ELEMENT] =
-//{ -1, 1, 1, 1, -1, -1 }; //Correct directions x,y,z - gyros, accels, magnetormeter
-{ 1, -1, -1, 1, -1, -1 }; //Correct directions x,y,z - gyros, accels, magnetormeter
+{ SENSOR_SIGNS}; //Correct directions x,y,z - gyros, accels, magnetormeter
 static int32_t AN_OFFSET[LAST_ELEMENT] =
 { 0, 0, 0, 0, 0, 0 }; //Array that stores the Offset of the sensors
 static int16_t AN_DATA[LAST_ELEMENT];
 
+// will be called from DCM
 void imuHeadingUpdate(float pitch, float roll, float yaw)
 {
 	currentHeading.pitch = pitch;
@@ -47,11 +50,26 @@ void imuInit_2(void)
 /* Parameters are given in grad/s */
 void imuUpdate(int16_t *data)
 {
-	AN_DATA[GYRO_X] = SENSOR_SIGN[GYRO_X] * (*(data + GYRO_X)); //0
-	AN_DATA[GYRO_Y] = SENSOR_SIGN[GYRO_Y] * (*(data + GYRO_Y)); //1
-	AN_DATA[GYRO_Z] = SENSOR_SIGN[GYRO_Z] * (*(data + GYRO_Z)); //2
+	AN_DATA[GYRO_X] = SENSOR_SIGN[GYRO_X] * (*(data + GYRO_X));
+	AN_DATA[GYRO_Y] = SENSOR_SIGN[GYRO_Y] * (*(data + GYRO_Y));
+	AN_DATA[GYRO_Z] = SENSOR_SIGN[GYRO_Z] * (*(data + GYRO_Z));
 
-	AN_DATA[ACC_X] = SENSOR_SIGN[ACC_X] * (*(data + ACC_X));// - AN_OFFSET[ACC_X]);
-	AN_DATA[ACC_Y] = SENSOR_SIGN[ACC_Y] * (*(data + ACC_Y));// - AN_OFFSET[ACC_Y]);
-	AN_DATA[ACC_Z] = SENSOR_SIGN[ACC_Z] * (*(data + ACC_Z));// - AN_OFFSET[ACC_Z];
+	AN_DATA[ACC_X] = SENSOR_SIGN[ACC_X] * (*(data + ACC_X));
+	AN_DATA[ACC_Y] = SENSOR_SIGN[ACC_Y] * (*(data + ACC_Y));
+	AN_DATA[ACC_Z] = SENSOR_SIGN[ACC_Z] * (*(data + ACC_Z));
+}
+
+float getHeadingRoll(void)
+{
+	return ToDeg(currentHeading.roll);
+}
+
+float getHeadingPitch(void)
+{
+	return ToDeg(currentHeading.pitch);
+}
+
+float getHeadingYaw(void)
+{
+	return ToDeg(currentHeading.yaw);
 }
