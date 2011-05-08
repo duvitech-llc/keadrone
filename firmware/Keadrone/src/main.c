@@ -97,6 +97,7 @@ void initExternalInt(void)
 
 }
 
+/* Timer must be enabled, else fatal error */
 uint32_t timerGetCurrentTime(void)
 {
 	uint32_t value;
@@ -215,9 +216,11 @@ void EINT3_IRQHandler(void)
 {
 	static uint16_t bitTestF, bitTestR;
 	uint32_t mask;
+	// create mask for the 4 input captures ports
 	mask = (1 << 0) + (1 << 1) + (1 << 2) + (1 << 3);
 	bitTestR = LPC_GPIOINT->IO2IntStatR & mask;
 	bitTestF = LPC_GPIOINT->IO2IntStatF & mask;
+
 	// rf servo input checked first due time measurement
 	if (bitTestF || bitTestR)
 	{
