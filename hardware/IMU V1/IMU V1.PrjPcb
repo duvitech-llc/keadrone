@@ -63,22 +63,6 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document3]
-DocumentPath=IMU V1.PcbDoc
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-
-[Document4]
 DocumentPath=GYRO 3-AXIS - ITG-3200.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -94,39 +78,7 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 
-[Document5]
-DocumentPath=Pressure sensor - SCP1000-D01.SchDoc
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=7
-DoLibraryUpdate=0
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-
-[Document6]
-DocumentPath=Temperature sensor - TC1046VNBTR.SchDoc
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=11
-DoLibraryUpdate=0
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-
-[Document7]
+[Document4]
 DocumentPath=Documentatie generator.OutJob
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -142,23 +94,7 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 
-[Document8]
-DocumentPath=Pressure sensor - SCP1000-D01.Harness
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-
-[Document9]
+[Document5]
 DocumentPath=GYRO 3-AXIS - ITG-3200.Harness
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -174,7 +110,7 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 
-[Document10]
+[Document6]
 DocumentPath=Zigbee interface.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -190,7 +126,7 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 
-[Document11]
+[Document7]
 DocumentPath=ServoConnector.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -206,7 +142,7 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 
-[Document12]
+[Document8]
 DocumentPath=SMPS 1000mA - LM22672.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -222,23 +158,7 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 
-[Document13]
-DocumentPath=JTAG Connector.SchDoc
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=4
-DoLibraryUpdate=0
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-
-[Document14]
+[Document9]
 DocumentPath=Accelerometer 3-AXIS - BMA180.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -254,7 +174,7 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 
-[Document15]
+[Document10]
 DocumentPath=Subsheets combined.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -270,7 +190,7 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 
-[Document16]
+[Document11]
 DocumentPath=Subsheets combined.Harness
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -286,23 +206,7 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 
-[Document17]
-DocumentPath=LV-MaxSonar Connector.SchDoc
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=5
-DoLibraryUpdate=0
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-
-[Document18]
+[Document12]
 DocumentPath=Battery Voltage 12v Max.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -318,23 +222,7 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 
-[Document19]
-DocumentPath=Frame.PcbDoc
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-
-[Document20]
+[Document13]
 DocumentPath=Power Entry 24v-3pin Fused-1A5.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -350,7 +238,7 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 
-[Document21]
+[Document14]
 DocumentPath=GPS Connector - LS20031.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -366,7 +254,7 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 
-[Document22]
+[Document15]
 DocumentPath=Regulator 3v3-250mA MCP1702.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -382,23 +270,7 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 
-[Document23]
-DocumentPath=Sensor current 100A.SchDoc
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=15
-DoLibraryUpdate=0
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-
-[Document24]
+[Document16]
 DocumentPath=Accelerometer 3-AXIS - BMA180.Harness
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -414,23 +286,7 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 
-[Document25]
-DocumentPath=Test Pins.SchDoc
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=16
-DoLibraryUpdate=0
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-
-[Document26]
+[Document17]
 DocumentPath=IMU V1.Annotation
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -446,7 +302,7 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 
-[Document27]
+[Document18]
 DocumentPath=IMU V2.PcbDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -454,6 +310,22 @@ AnnotationIndexControlEnabled=0
 AnnotateSuffix=
 AnnotateScope=All
 AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+
+[Document19]
+DocumentPath=Bluetooth interface - RN42.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=15
 DoLibraryUpdate=1
 DoDatabaseUpdate=1
 ClassGenCCAutoEnabled=1
@@ -1390,59 +1262,59 @@ Order1=3
 IndexEnabled1=0
 IndexStartValue1=1
 Suffix1=
-UniqueIDPath2=\EDITINDA\SCWIQBFV
-DocumentName2=GPS Connector - LS20031.SchDoc
+UniqueIDPath2=\EDITINDA\RMXWTYJD
+DocumentName2=Bluetooth interface - RN42.SchDoc
 IsEnabled2=1
 SelectionScope2=All
-Order2=4
+Order2=25
 IndexEnabled2=0
 IndexStartValue2=1
 Suffix2=
-UniqueIDPath3=\EDITINDA\LWDIIQPW
-DocumentName3=GYRO 3-AXIS - ITG-3200.SchDoc
+UniqueIDPath3=\EDITINDA\SCWIQBFV
+DocumentName3=GPS Connector - LS20031.SchDoc
 IsEnabled3=1
 SelectionScope3=All
-Order3=5
+Order3=4
 IndexEnabled3=0
 IndexStartValue3=1
 Suffix3=
-UniqueIDPath4=\FIJUSHSU
-DocumentName4=JTAG Connector.SchDoc
+UniqueIDPath4=\EDITINDA\LWDIIQPW
+DocumentName4=GYRO 3-AXIS - ITG-3200.SchDoc
 IsEnabled4=1
 SelectionScope4=All
-Order4=6
+Order4=5
 IndexEnabled4=0
 IndexStartValue4=1
 Suffix4=
-UniqueIDPath5=\EDITINDA\PLAQAQQW
-DocumentName5=LV-MaxSonar Connector.SchDoc
+UniqueIDPath5=
+DocumentName5=main.SchDoc
 IsEnabled5=1
 SelectionScope5=All
-Order5=7
+Order5=1
 IndexEnabled5=0
 IndexStartValue5=1
 Suffix5=
-UniqueIDPath6=
-DocumentName6=main.SchDoc
+UniqueIDPath6=\NRNSRFPO
+DocumentName6=Oscillator 8mhz SMT.SchDoc
 IsEnabled6=1
 SelectionScope6=All
-Order6=1
+Order6=26
 IndexEnabled6=0
 IndexStartValue6=1
 Suffix6=
-UniqueIDPath7=\EDITINDA\HOAYPCEW
-DocumentName7=Power Entry 24v-3pin Fused-1A5.SchDoc
+UniqueIDPath7=\DBXNSHFT
+DocumentName7=PIC programmer in-circuit.SchDoc
 IsEnabled7=1
 SelectionScope7=All
-Order7=8
+Order7=27
 IndexEnabled7=0
 IndexStartValue7=1
 Suffix7=
-UniqueIDPath8=\EDITINDA\NAFQHYKR
-DocumentName8=Pressure sensor - SCP1000-D01.SchDoc
+UniqueIDPath8=\EDITINDA\HOAYPCEW
+DocumentName8=Power Entry 24v-3pin Fused-1A5.SchDoc
 IsEnabled8=1
 SelectionScope8=All
-Order8=9
+Order8=8
 IndexEnabled8=0
 IndexStartValue8=1
 Suffix8=
@@ -1470,102 +1342,94 @@ Order11=10
 IndexEnabled11=0
 IndexStartValue11=1
 Suffix11=
-UniqueIDPath12=\EDITINDA\YMWTEKGL
-DocumentName12=Sensor current 100A.SchDoc
+UniqueIDPath12=\EDITINDA\1LQTRTUBU
+DocumentName12=ServoConnector.SchDoc
 IsEnabled12=1
 SelectionScope12=All
-Order12=13
+Order12=19
 IndexEnabled12=0
 IndexStartValue12=1
 Suffix12=
-UniqueIDPath13=\EDITINDA\1LQTRTUBU
+UniqueIDPath13=\EDITINDA\2LQTRTUBU
 DocumentName13=ServoConnector.SchDoc
 IsEnabled13=1
 SelectionScope13=All
-Order13=19
+Order13=20
 IndexEnabled13=0
 IndexStartValue13=1
 Suffix13=
-UniqueIDPath14=\EDITINDA\2LQTRTUBU
+UniqueIDPath14=\EDITINDA\3LQTRTUBU
 DocumentName14=ServoConnector.SchDoc
 IsEnabled14=1
 SelectionScope14=All
-Order14=20
+Order14=21
 IndexEnabled14=0
 IndexStartValue14=1
 Suffix14=
-UniqueIDPath15=\EDITINDA\3LQTRTUBU
+UniqueIDPath15=\EDITINDA\4LQTRTUBU
 DocumentName15=ServoConnector.SchDoc
 IsEnabled15=1
 SelectionScope15=All
-Order15=21
+Order15=22
 IndexEnabled15=0
 IndexStartValue15=1
 Suffix15=
-UniqueIDPath16=\EDITINDA\4LQTRTUBU
+UniqueIDPath16=\EDITINDA\5LQTRTUBU
 DocumentName16=ServoConnector.SchDoc
 IsEnabled16=1
 SelectionScope16=All
-Order16=22
+Order16=23
 IndexEnabled16=0
 IndexStartValue16=1
 Suffix16=
-UniqueIDPath17=\EDITINDA\5LQTRTUBU
+UniqueIDPath17=\EDITINDA\6LQTRTUBU
 DocumentName17=ServoConnector.SchDoc
 IsEnabled17=1
 SelectionScope17=All
-Order17=23
+Order17=24
 IndexEnabled17=0
 IndexStartValue17=1
 Suffix17=
-UniqueIDPath18=\EDITINDA\6LQTRTUBU
+UniqueIDPath18=\EDITINDA\7LQTRTUBU
 DocumentName18=ServoConnector.SchDoc
 IsEnabled18=1
 SelectionScope18=All
-Order18=24
+Order18=28
 IndexEnabled18=0
 IndexStartValue18=1
 Suffix18=
-UniqueIDPath19=\EDITINDA\MEVQJRFM
-DocumentName19=SMPS 1000mA - LM22672.SchDoc
+UniqueIDPath19=\EDITINDA\8LQTRTUBU
+DocumentName19=ServoConnector.SchDoc
 IsEnabled19=1
 SelectionScope19=All
-Order19=15
+Order19=29
 IndexEnabled19=0
 IndexStartValue19=1
 Suffix19=
-UniqueIDPath20=\EDITINDA
-DocumentName20=Subsheets combined.SchDoc
+UniqueIDPath20=\EDITINDA\MEVQJRFM
+DocumentName20=SMPS 1000mA - LM22672.SchDoc
 IsEnabled20=1
 SelectionScope20=All
-Order20=16
+Order20=15
 IndexEnabled20=0
 IndexStartValue20=1
 Suffix20=
-UniqueIDPath21=\EDITINDA\AKKYFWOU
-DocumentName21=Temperature sensor - TC1046VNBTR.SchDoc
+UniqueIDPath21=\EDITINDA
+DocumentName21=Subsheets combined.SchDoc
 IsEnabled21=1
 SelectionScope21=All
-Order21=17
+Order21=16
 IndexEnabled21=0
 IndexStartValue21=1
 Suffix21=
-UniqueIDPath22=\WWIOQTPB
-DocumentName22=Test Pins.SchDoc
+UniqueIDPath22=\EDITINDA\OVRFPULI
+DocumentName22=Zigbee interface.SchDoc
 IsEnabled22=1
 SelectionScope22=All
-Order22=25
+Order22=18
 IndexEnabled22=0
 IndexStartValue22=1
 Suffix22=
-UniqueIDPath23=\EDITINDA\OVRFPULI
-DocumentName23=Zigbee interface.SchDoc
-IsEnabled23=1
-SelectionScope23=All
-Order23=18
-IndexEnabled23=0
-IndexStartValue23=1
-Suffix23=
 
 [PrjClassGen]
 CompClassManualEnabled=0
