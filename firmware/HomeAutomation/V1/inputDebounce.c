@@ -34,7 +34,7 @@ BOOL btnDebounce(BTN_DEBOUNCE_STRUCT *p)
             if (BUTTON_TIME_MS_PRESSED_LONG / 10 < p->timePressed)
                 ;
             else if (p->timePressed++ == BUTTON_TIME_MS_PRESSED_LONG / 10) {
-                p->debouncedBtnState = BTN_PRESSED_LONG;
+                p->debouncedBtnState = BTN_DISABLD_LONG;
                 return TRUE; // return that there was an event
             }
             p->timeReleased = 0;
@@ -43,8 +43,8 @@ BOOL btnDebounce(BTN_DEBOUNCE_STRUCT *p)
         case RELEASED:
             if (p->timePressed < BUTTON_TIME_MS_PRESSED_LONG / 10) {
                 if (BUTTON_TIME_MS_PRESSED_SHORT / 10 < p->timePressed) {
-                    if (p->debouncedBtnState != BTN_PRESSED_SHORT) {
-                        p->debouncedBtnState = BTN_PRESSED_SHORT;
+                    if (p->debouncedBtnState != BTN_DISABLED_SHORT) {
+                        p->debouncedBtnState = BTN_DISABLED_SHORT;
                         return TRUE; // return that there was an event
                     }
                 }
@@ -52,8 +52,8 @@ BOOL btnDebounce(BTN_DEBOUNCE_STRUCT *p)
             if (BUTTON_TIME_MS_RELEASED / 10 < p->timeReleased)
                 ;
             else if (p->timeReleased++ == BUTTON_TIME_MS_RELEASED / 10) {
-                if (p->debouncedBtnState != BTN_RELEASED) {
-                    p->debouncedBtnState = BTN_RELEASED;
+                if (p->debouncedBtnState != BTN_ENABLED) {
+                    p->debouncedBtnState = BTN_ENABLED;
                     return TRUE; // return that there was an event
                 }
             }

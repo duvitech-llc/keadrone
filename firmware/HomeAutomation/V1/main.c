@@ -33,6 +33,7 @@ typedef struct
         {
             unsigned enabled : 1;
             unsigned enabledMirror : 1;
+            unsigned morningWakeLight : 1;
             unsigned dimloop : 1;
             unsigned softstart : 1;
             unsigned softOff : 1;
@@ -40,6 +41,7 @@ typedef struct
         };
         UINT16 unionValue; // value of union
     };
+    UINT16 tmrMorningWakeLights;
     UINT16 dimvalue; // actual value of the dimming
     UINT16 tmrAutoShutdownLights;
 } LIGHT_DATA;
@@ -49,6 +51,20 @@ LIGHT_DATA wc = {0};
 
 UINT16 lightController(LIGHT_DATA * p)
 {
+    if (p->morningWakeLight == TRUE && p->dimvalue < 255) {
+        p->softstart = FALSE; //make sure soft start is disabled
+        p->dimloop = FALSE;
+
+        if (p->tmrMorningWakeLights++ == 200) {
+            p->dimvalue++;
+            p->tmrMorningWakeLights = 0;
+        }
+        return p->dimvalue;
+    }
+    else {
+        p->morningWakeLight = FALSE;
+    }
+
     if (p->enabled == TRUE) {
         if (p->enabledMirror == FALSE && p->dimloop == FALSE) {
             // POWER ON - short button press soft-start light to max.
@@ -113,19 +129,28 @@ void serviceUserEvents(void)
 
     btnX = &btn1;
     btnX->rawStatus = !SW_BADKAMER;
+    static int shortPressedTimes = 0;
     if (btnDebounce(btnX)) {
         switch (btnX->debouncedBtnState) {
-            case BTN_PRESSED_LONG:
+            case BTN_DISABLD_LONG:
                 badkamer.dimloop = FALSE;
                 badkamer.enabled = 0;
                 break;
-            case BTN_PRESSED_SHORT:
-                if (badkamer.softstart == TRUE)
-                    badkamer.softstart = FALSE;
-                else
-                    badkamer.dimloop ^= TRUE;
+            case BTN_DISABLED_SHORT:
+                shortPressedTimes++;
+                if (shortPressedTimes == 1) {
+                    if (badkamer.softstart == TRUE)
+                        badkamer.softstart = FALSE;
+                    else
+                        badkamer.dimloop ^= TRUE;
+                }
+                else if (shortPressedTimes == 2) {
+                    badkamer.morningWakeLight = TRUE;
+                    badkamer.dimvalue = 15;
+                }
                 break;
-            case BTN_RELEASED:
+            case BTN_ENABLED:
+                shortPressedTimes = 0;
                 badkamer.enabled = 1;
                 badkamer.dimloopToggle = 1;
                 break;
@@ -136,17 +161,17 @@ void serviceUserEvents(void)
     btnX->rawStatus = SW_WC;
     if (btnDebounce(btnX)) {
         switch (btnX->debouncedBtnState) {
-            case BTN_PRESSED_LONG:
+            case BTN_DISABLD_LONG:
                 wc.dimloop = FALSE;
                 wc.enabled = 0;
                 break;
-            case BTN_PRESSED_SHORT:
+            case BTN_DISABLED_SHORT:
                 if (wc.softstart == TRUE)
                     wc.softstart = FALSE;
                 else
                     wc.dimloop ^= TRUE;
                 break;
-            case BTN_RELEASED:
+            case BTN_ENABLED:
                 wc.enabled = 1;
                 wc.dimloopToggle = 1;
                 break;
