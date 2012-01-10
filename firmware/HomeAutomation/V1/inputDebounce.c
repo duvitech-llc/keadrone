@@ -32,7 +32,7 @@ BOOL btnDebounce(BTN_DEBOUNCE_STRUCT *p)
     switch (p->rawStatus) {
         case PRESSED:
             if (p->timeReleased < BUTTON_TIME_MS_RELEASED_LONG / 10) {
-                if (BUTTON_TIME_MS_RELEASED_SHORT / 10 < p->timePressed) {
+                if (BUTTON_TIME_MS_RELEASED_SHORT / 10 < p->timeReleased) {
                     if (p->debouncedBtnState != BTN_ENABLED_SHORT) {
                         p->debouncedBtnState = BTN_ENABLED_SHORT;
                         return TRUE; // return that there was an event

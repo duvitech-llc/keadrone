@@ -41,8 +41,8 @@ void pwmInit(void)
  */
 UINT16 valueToPwm(UINT16 value)
 {
-#define MAX_STEPS_VALUE 255
-#define STEEPNESS_EXP   0.012
+#define MAX_STEPS_VALUE 0x3FF
+#define STEEPNESS_EXP   0.005
     float output;
     output = (MAX_STEPS_VALUE / (expf((float) MAX_STEPS_VALUE * STEEPNESS_EXP) - 1));
     output = output * (expf((float) value * STEEPNESS_EXP) - 1);
@@ -53,7 +53,7 @@ void pwmSetA(UINT16 value)
 {
     UINT16 value2;
     value2 = valueToPwm(value);
-    value2 *= (PWM_BASE_FREQ / 255);
+    value2 *= (PWM_BASE_FREQ / 0x3FF);
     OC2R = value2;
 }
 
@@ -61,6 +61,6 @@ void pwmSetB(UINT16 value)
 {
     UINT16 value2;
     value2 = valueToPwm(value);
-    value2 *= (PWM_BASE_FREQ / 255);
+    value2 *= (PWM_BASE_FREQ / 0x3FF);
     OC3R = value2;
 }

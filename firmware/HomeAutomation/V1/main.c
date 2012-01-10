@@ -48,10 +48,12 @@ typedef struct
 
 LIGHT_DATA badkamer = {0};
 LIGHT_DATA wc = {0};
+#define DIMVALUE_MAX    0x3FF
+#define DIMVALUE_INITIAL    150
 
 UINT16 lightController(LIGHT_DATA * p)
 {
-    if (p->morningWakeLight == TRUE && p->dimvalue < 255 && p->enabled == TRUE) {
+    if (p->morningWakeLight == TRUE && p->dimvalue < DIMVALUE_MAX && p->enabled == TRUE) {
         p->softstart = FALSE; //make sure soft start is disabled
         p->dimloop = FALSE;
 
@@ -71,14 +73,14 @@ UINT16 lightController(LIGHT_DATA * p)
             p->softstart = 1;
         }
         else if (p->enabledMirror == FALSE && p->dimloop == TRUE) {
-            p->dimvalue = 20; // initial value
+            p->dimvalue = DIMVALUE_INITIAL; // initial value
         }
         p->enabledMirror = TRUE; // mark that we are online now
 
         if (p->softstart == TRUE && p->dimloop == FALSE) {
             // increase output to max
             p->dimvalue++;
-            if (255 == p->dimvalue)
+            if (DIMVALUE_MAX == p->dimvalue)
                 p->softstart = 0;
         }
 
@@ -88,12 +90,12 @@ UINT16 lightController(LIGHT_DATA * p)
             switch (p->dimloopToggle) {
                 case TRUE:
                     p->dimvalue++;
-                    if (255 <= p->dimvalue)
+                    if (DIMVALUE_MAX <= p->dimvalue)
                         p->dimloopToggle ^= 1;
                     break;
                 case FALSE:
                     p->dimvalue--;
-                    if (p->dimvalue < 20)
+                    if (p->dimvalue < DIMVALUE_INITIAL)
                         p->dimloopToggle ^= 1;
                     break;
             }
@@ -138,16 +140,17 @@ void serviceUserEvents(void)
             case BTN_DISABLED_SHORT:
                 shortPressedTimes++;
                 if (shortPressedTimes == 1) {
-                    if (badkamer.softstart == TRUE)
+                    //if (badkamer.softstart == TRUE)
                         badkamer.softstart = FALSE;
-                    else {
-                        badkamer.dimloop ^= TRUE;
+                    //else {
+                        //badkamer.dimloop ^= TRUE;
                         badkamer.morningWakeLight = FALSE;
-                    }
+                        badkamer.dimvalue = 500;
+                    //}
                 }
                 else if (shortPressedTimes == 2) {
                     badkamer.morningWakeLight = TRUE;
-                    badkamer.dimvalue = 20;
+                    badkamer.dimvalue = 100;
                 }
                 break;
             case BTN_ENABLED:
@@ -155,7 +158,6 @@ void serviceUserEvents(void)
                     badkamer.enabled = 1;
                     badkamer.dimloop = FALSE;
                     badkamer.dimloopToggle = 1;
-                    shortPressedTimes = 0;
                 }
                 break;
 
@@ -175,12 +177,13 @@ void serviceUserEvents(void)
                 wc.enabled = 0;
                 break;
             case BTN_DISABLED_SHORT:
-                if (wc.softstart == TRUE)
-                    wc.softstart = FALSE;
-                else
-                    wc.dimloop ^= TRUE;
+                //if (wc.softstart == TRUE)
+                wc.softstart = FALSE;
+                //else
+                //wc.dimloop ^= TRUE;
+                wc.dimvalue = 500;
                 break;
-            case BTN_ENABLED_SHORT:
+            case BTN_ENABLED:
                 wc.enabled = 1;
                 wc.dimloopToggle = 1;
                 break;
@@ -259,12 +262,13 @@ int main(void)
                 serviceUserEvents();
             }
 
-            static UINT tmrExpired7mS = 6;
-            if (++tmrExpired7mS == 7) {
-                tmrExpired7mS = 0;
-                pwmSetA(lightController(&wc));
-                pwmSetB(lightController(&badkamer));
+            static UINT tmrExpired2mS = 1;
+            if (++tmrExpired2mS == 2) {
+                tmrExpired2mS = 0;
+
             }
+            pwmSetA(lightController(&wc));
+            pwmSetB(lightController(&badkamer));
         }
 
         if (tmrExpired500mS) {

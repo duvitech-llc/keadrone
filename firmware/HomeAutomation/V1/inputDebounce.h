@@ -34,7 +34,7 @@ typedef union {
         unsigned bootup : 1;
         /** Debounce times*/
         unsigned timePressed : 7;
-        unsigned timeReleased : 5;
+        unsigned timeReleased : 7;
     };
     UINT32 value;
 } BTN_DEBOUNCE_STRUCT;
