@@ -42,7 +42,7 @@ void pwmInit(void)
 UINT16 valueToPwm(UINT16 value)
 {
 #define MAX_STEPS_VALUE 255
-#define STEEPNESS_EXP   0.020
+#define STEEPNESS_EXP   0.012
     float output;
     output = (MAX_STEPS_VALUE / (expf((float) MAX_STEPS_VALUE * STEEPNESS_EXP) - 1));
     output = output * (expf((float) value * STEEPNESS_EXP) - 1);

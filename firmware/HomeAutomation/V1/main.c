@@ -51,7 +51,7 @@ LIGHT_DATA wc = {0};
 
 UINT16 lightController(LIGHT_DATA * p)
 {
-    if (p->morningWakeLight == TRUE && p->dimvalue < 255) {
+    if (p->morningWakeLight == TRUE && p->dimvalue < 255 && p->enabled == TRUE) {
         p->softstart = FALSE; //make sure soft start is disabled
         p->dimloop = FALSE;
 
@@ -132,36 +132,45 @@ void serviceUserEvents(void)
     static int shortPressedTimes = 0;
     if (btnDebounce(btnX)) {
         switch (btnX->debouncedBtnState) {
-            case BTN_DISABLD_LONG:
-                badkamer.dimloop = FALSE;
-                badkamer.enabled = 0;
+            case BTN_DISABLED_LONG:
+                badkamer.enabled = FALSE;
                 break;
             case BTN_DISABLED_SHORT:
                 shortPressedTimes++;
                 if (shortPressedTimes == 1) {
                     if (badkamer.softstart == TRUE)
                         badkamer.softstart = FALSE;
-                    else
+                    else {
                         badkamer.dimloop ^= TRUE;
+                        badkamer.morningWakeLight = FALSE;
+                    }
                 }
                 else if (shortPressedTimes == 2) {
                     badkamer.morningWakeLight = TRUE;
-                    badkamer.dimvalue = 15;
+                    badkamer.dimvalue = 20;
                 }
                 break;
             case BTN_ENABLED:
-                shortPressedTimes = 0;
-                badkamer.enabled = 1;
-                badkamer.dimloopToggle = 1;
+                if (badkamer.enabled == FALSE) {
+                    badkamer.enabled = 1;
+                    badkamer.dimloop = FALSE;
+                    badkamer.dimloopToggle = 1;
+                    shortPressedTimes = 0;
+                }
                 break;
+
+            case BTN_ENABLED_LONG:
+                shortPressedTimes = 0;
+                break;
+
         }
     }
 
     btnX = &btn2;
-    btnX->rawStatus = SW_WC;
+    btnX->rawStatus = !SW_WC;
     if (btnDebounce(btnX)) {
         switch (btnX->debouncedBtnState) {
-            case BTN_DISABLD_LONG:
+            case BTN_DISABLED_LONG:
                 wc.dimloop = FALSE;
                 wc.enabled = 0;
                 break;
@@ -171,7 +180,7 @@ void serviceUserEvents(void)
                 else
                     wc.dimloop ^= TRUE;
                 break;
-            case BTN_ENABLED:
+            case BTN_ENABLED_SHORT:
                 wc.enabled = 1;
                 wc.dimloopToggle = 1;
                 break;
@@ -252,6 +261,7 @@ int main(void)
 
             static UINT tmrExpired7mS = 6;
             if (++tmrExpired7mS == 7) {
+                tmrExpired7mS = 0;
                 pwmSetA(lightController(&wc));
                 pwmSetB(lightController(&badkamer));
             }
