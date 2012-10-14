@@ -49,7 +49,13 @@ typedef struct
 LIGHT_DATA badkamer = {0};
 LIGHT_DATA wc = {0};
 #define DIMVALUE_MAX    0x3FF
-#define DIMVALUE_INITIAL    150
+#define DIMVALUE_DIMMED    150
+
+struct
+{
+    BOOL enabled;
+    UINT16 naloopTimer;
+} fan;
 
 UINT16 lightController(LIGHT_DATA * p)
 {
@@ -57,7 +63,7 @@ UINT16 lightController(LIGHT_DATA * p)
         p->softstart = FALSE; //make sure soft start is disabled
         p->dimloop = FALSE;
 
-        if (p->tmrMorningWakeLights++ == 200) {
+        if (p->tmrMorningWakeLights++ == 700) {
             p->dimvalue++;
             p->tmrMorningWakeLights = 0;
         }
@@ -73,7 +79,7 @@ UINT16 lightController(LIGHT_DATA * p)
             p->softstart = 1;
         }
         else if (p->enabledMirror == FALSE && p->dimloop == TRUE) {
-            p->dimvalue = DIMVALUE_INITIAL; // initial value
+            p->dimvalue = DIMVALUE_DIMMED; // initial value
         }
         p->enabledMirror = TRUE; // mark that we are online now
 
@@ -88,16 +94,16 @@ UINT16 lightController(LIGHT_DATA * p)
             p->softstart = 0; //make sure soft start is disabled
 
             switch (p->dimloopToggle) {
-                case TRUE:
-                    p->dimvalue++;
-                    if (DIMVALUE_MAX <= p->dimvalue)
-                        p->dimloopToggle ^= 1;
-                    break;
-                case FALSE:
-                    p->dimvalue--;
-                    if (p->dimvalue < DIMVALUE_INITIAL)
-                        p->dimloopToggle ^= 1;
-                    break;
+            case TRUE:
+                p->dimvalue++;
+                if (DIMVALUE_MAX <= p->dimvalue)
+                    p->dimloopToggle ^= 1;
+                break;
+            case FALSE:
+                p->dimvalue--;
+                if (p->dimvalue < DIMVALUE_DIMMED)
+                    p->dimloopToggle ^= 1;
+                break;
             }
         }
     }
@@ -134,59 +140,77 @@ void serviceUserEvents(void)
     static int shortPressedTimes = 0;
     if (btnDebounce(btnX)) {
         switch (btnX->debouncedBtnState) {
-            case BTN_DISABLED_LONG:
-                badkamer.enabled = FALSE;
-                break;
-            case BTN_DISABLED_SHORT:
-                shortPressedTimes++;
-                if (shortPressedTimes == 1) {
-                    //if (badkamer.softstart == TRUE)
-                        badkamer.softstart = FALSE;
-                    //else {
-                        //badkamer.dimloop ^= TRUE;
-                        badkamer.morningWakeLight = FALSE;
-                        badkamer.dimvalue = 500;
-                    //}
-                }
-                else if (shortPressedTimes == 2) {
-                    badkamer.morningWakeLight = TRUE;
-                    badkamer.dimvalue = 100;
-                }
-                break;
-            case BTN_ENABLED:
-                if (badkamer.enabled == FALSE) {
-                    badkamer.enabled = 1;
-                    badkamer.dimloop = FALSE;
-                    badkamer.dimloopToggle = 1;
-                }
-                break;
+        case BTN_DISABLED_LONG:
+            badkamer.enabled = FALSE;
+            break;
+        case BTN_DISABLED_SHORT:
+            shortPressedTimes++;
+            if (shortPressedTimes == 1) {
+                //if (badkamer.softstart == TRUE)
+                badkamer.softstart = FALSE;
+                //else {
+                //badkamer.dimloop ^= TRUE;
+                badkamer.morningWakeLight = FALSE;
+                badkamer.dimvalue = 500;
+                //}
+            }
+            else if (shortPressedTimes == 2) {
+                //badkamer.morningWakeLight = TRUE;
+                badkamer.dimvalue = 250;
+            }
+            else if (shortPressedTimes == 2) {
+                badkamer.morningWakeLight = TRUE;
+                badkamer.dimvalue = 250;
+            }
 
-            case BTN_ENABLED_LONG:
-                shortPressedTimes = 0;
-                break;
+            break;
+        case BTN_ENABLED:
+            if (badkamer.enabled == FALSE) {
+                badkamer.enabled = 1;
+                badkamer.dimloop = FALSE;
+                badkamer.dimloopToggle = 1;
+            }
+            break;
+
+        case BTN_ENABLED_LONG:
+            shortPressedTimes = 0;
+            break;
 
         }
     }
+
+    static int shortPressedTimes2 = 0;
 
     btnX = &btn2;
     btnX->rawStatus = !SW_WC;
     if (btnDebounce(btnX)) {
         switch (btnX->debouncedBtnState) {
-            case BTN_DISABLED_LONG:
-                wc.dimloop = FALSE;
-                wc.enabled = 0;
-                break;
-            case BTN_DISABLED_SHORT:
+        case BTN_DISABLED_LONG:
+            wc.dimloop = FALSE;
+            wc.enabled = 0;
+            break;
+        case BTN_DISABLED_SHORT:
+            shortPressedTimes2++;
+            if (shortPressedTimes2 == 1) {
                 //if (wc.softstart == TRUE)
                 wc.softstart = FALSE;
                 //else
                 //wc.dimloop ^= TRUE;
                 wc.dimvalue = 500;
-                break;
-            case BTN_ENABLED:
-                wc.enabled = 1;
-                wc.dimloopToggle = 1;
-                break;
+            }
+            if (shortPressedTimes2 == 2) {
+                wc.softstart = FALSE;
+                wc.dimvalue = 250;
+            }
+            break;
+        case BTN_ENABLED:
+            wc.enabled = 1;
+            wc.dimloopToggle = 1;
+            break;
+
+        case BTN_ENABLED_LONG:
+            shortPressedTimes2 = 0;
+            break;
         }
     }
 }
@@ -213,13 +237,14 @@ void lightsAutoOfftmr(void)
     }
     else
         wc.tmrAutoShutdownLights = 0;
+
 }
 
 void systemAutoShutdownWhenIdle(void)
 {
     static UINT16 tmrShutdown = 0;
 
-    if (wc.enabled == FALSE && badkamer.enabled == FALSE) {
+    if (wc.enabled == FALSE && badkamer.enabled == FALSE && fan.enabled == FALSE) {
         // begin countdown to shutdown system
         if (tmrShutdown == 10);
         else if (++tmrShutdown == 10) {
@@ -232,20 +257,57 @@ void systemAutoShutdownWhenIdle(void)
     }
 }
 
+/**
+ *  Call this every 1 sec.
+ */
+void sensorOperation(void)
+{
+    // only execute hygrometer if bathroom light is enabled
+    // or if the fan is executing nalooptijd
+    if (badkamer.enabled == FALSE && fan.enabled == FALSE)
+        return;
+    switch (sensor_getValue()) {
+    case 0:
+        if (fan.enabled == FALSE)
+            pwmSetFan(0);
+        else if (fan.naloopTimer != 0) // start countdown
+            fan.naloopTimer--;
+        else // disable fan when countdown expired
+            fan.enabled = FALSE;
+
+        break;
+    case 1:
+        pwmSetFan(75); // geruisloos maar draait
+        fan.enabled = 1;
+        fan.naloopTimer = 60 * 5;
+        break;
+    case 2:
+        pwmSetFan(80);
+        break;
+    case 3:
+        pwmSetFan(90);
+        break;
+    case 4:
+        pwmSetFan(100);
+        break;
+    }
+}
+
 int main(void)
 {
     clearIntrflags();
     oscConfig();
     tmrInit1();
     pwmInit();
+    adc_init();
 
     // all ports digital
-    ANSA = 0;
+    ANSA = 1; // an1 = analog
     ANSB = 0;
 
-    LED_COMMON_TRIS = 0;
+    //LED_COMMON_TRIS = 0; not used since this port is now used as PWM output for FAN
     LED_RED_TRIS = 0;
-    LED_RED = 1;
+    LED_RED = 0;
 
     RELAY_1_TRIS = 0;
     RELAY_2_TRIS = 0;
@@ -274,9 +336,17 @@ int main(void)
         if (tmrExpired500mS) {
             tmrExpired500mS = FALSE;
             systemAutoShutdownWhenIdle();
+
+            static UINT tmrExpired1000mS = 0;
+            if (++tmrExpired1000mS == 2) {
+                tmrExpired1000mS = 0;
+                sensorOperation();
+            }
+
         }
 
         if (tmrExpired1minute) {
+
             tmrExpired1minute = FALSE;
             lightsAutoOfftmr();
         }
@@ -308,10 +378,11 @@ PRIVATE void clearIntrflags(void)
     IFS4 = 0;
 }
 
+#ifdef UNUSED
+
 PRIVATE void ioPortsInit(void)
 {
-    ANSA = 0; // all IO digital
-    ANSB = 0; // all IO digital
+
 
     LED_COMMON_TRIS = OUTPUT;
     LED_RED_TRIS = OUTPUT;
@@ -329,7 +400,7 @@ PRIVATE void ioPortsInit(void)
 
     if (!ROTARY_8) slaveAddres += 8;
 }
-
+#endif
 #ifdef __DEBUG
 #define _trapISR __attribute__((interrupt,no_auto_psv))
 

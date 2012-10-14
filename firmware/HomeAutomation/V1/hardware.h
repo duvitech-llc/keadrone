@@ -14,9 +14,9 @@
 /* logica board defines */
 #define OUTPUT  0
 #define INPUT   1
-#define LED_COMMON_TRIS _TRISB8
-#define LED_RED_TRIS    _TRISB7
-#define LED_RED         _LATB7
+//#define LED_COMMON_TRIS _TRISB7
+#define LED_RED_TRIS    _TRISB8
+#define LED_RED         _LATB8
 
 #define ROTARY_1_PU       _CN29PUE
 #define ROTARY_2_PU       _CN6PUE
@@ -52,6 +52,11 @@
 void pwmSetA(UINT16 value);
 void pwmSetB(UINT16 value);
 void pwmInit(void);
+
+void adc_init();
+UINT16 adc_getReading(void);
+UINT16 sensor_getValue(void);
+
 
 
 #endif

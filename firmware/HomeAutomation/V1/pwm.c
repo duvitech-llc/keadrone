@@ -15,7 +15,7 @@
  * are enabled.*
  */
 #define PWM_BASE_FREQ 4095
-
+#define PWM_BASE_FREQ_FAN 500
 void pwmInit(void)
 {
     OC2CON1 = 0x0000; // Turn off Output Compare 1 Module
@@ -31,6 +31,14 @@ void pwmInit(void)
     OC3RS = PWM_BASE_FREQ; // Initialize Secondary Compare Register1 with
     OC3CON1 = 7174; // perifferal clock and edge-pwm
     OC3CON2 = 0b11111; // use our own sync source
+
+    // addon for bathroom fan
+    OC1CON1 = 0x0000; // Turn off Output Compare 1 Module
+    OC1CON2 = 0;
+    OC1R = 0; // Initialize Compare Register1 with 0x0026
+    OC1RS = PWM_BASE_FREQ_FAN; // Initialize Secondary Compare Register1 with
+    OC1CON1 = 7174; // perifferal clock and edge-pwm
+    OC1CON2 = 0b11111; // use our own sync source
 }
 
 #include <math.h>
@@ -64,3 +72,10 @@ void pwmSetB(UINT16 value)
     value2 *= (PWM_BASE_FREQ / 0x3FF);
     OC3R = value2;
 }
+
+void pwmSetFan(UINT16 value)
+{
+    value *= (PWM_BASE_FREQ_FAN / 100);
+    OC1R = value;
+}
+
