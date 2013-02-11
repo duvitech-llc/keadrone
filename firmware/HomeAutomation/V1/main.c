@@ -279,16 +279,21 @@ void sensorOperation(void)
     case 1:
         pwmSetFan(75); // geruisloos maar draait
         fan.enabled = 1;
-        fan.naloopTimer = 60 * 5;
         break;
     case 2:
-        pwmSetFan(80);
+        if (badkamer.enabled == FALSE)
+            pwmSetFan(80);
+        else
+            pwmSetFan(75); // geruisloos maar draait
+
         break;
     case 3:
-        pwmSetFan(90);
-        break;
     case 4:
-        pwmSetFan(100);
+        if (badkamer.enabled == FALSE)
+            pwmSetFan(90);
+        else
+            pwmSetFan(75); // geruisloos maar draait
+        fan.naloopTimer = 60 * 5;
         break;
     }
 }

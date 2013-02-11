@@ -31,7 +31,7 @@
         <targetDevice>PIC24FV16KA302</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>RealICEPlatformTool</platformTool>
+        <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain>C30</languageToolchain>
         <languageToolchainVersion>3_30b</languageToolchainVersion>
         <platform>3</platform>
@@ -131,107 +131,7 @@
         <property key="output-file-format" value="elf"/>
       </C30Global>
       <PICkit3PlatformTool>
-        <property key="ADC 1" value="true"/>
-        <property key="AutoSelectMemRanges" value="auto"/>
-        <property key="CLOCK CONTROL LVDCON" value="true"/>
-        <property key="CLOCK CONTROL REFOCON" value="true"/>
-        <property key="COMPARATOR" value="true"/>
-        <property key="CRC" value="true"/>
-        <property key="CTMU" value="true"/>
-        <property key="Freeze All Other Peripherals" value="true"/>
-        <property key="I2C1" value="true"/>
-        <property key="INPUT CAPTURE 1" value="true"/>
-        <property key="OUTPUT COMPARE 1" value="true"/>
-        <property key="SPI 1" value="true"/>
-        <property key="SecureSegment.SegmentProgramming" value="FullChipProgramming"/>
-        <property key="TIMER1" value="true"/>
-        <property key="TIMER2" value="true"/>
-        <property key="TIMER3" value="true"/>
-        <property key="ToolFirmwareFilePath"
-                  value="Press to browse for a specific firmware version"/>
-        <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
-        <property key="UART 1" value="true"/>
-        <property key="UART 2" value="true"/>
-        <property key="hwtoolclock.frcindebug" value="false"/>
-        <property key="memories.eeprom" value="false"/>
-        <property key="memories.id" value="false"/>
-        <property key="memories.programmemory" value="true"/>
-        <property key="memories.programmemory.end" value="0x57ff"/>
-        <property key="memories.programmemory.start" value="0x0"/>
-        <property key="poweroptions.powerenable" value="true"/>
-        <property key="programmertogo.imagename" value=""/>
-        <property key="programoptions.eraseb4program" value="true"/>
-        <property key="programoptions.preserveeeprom" value="false"/>
-        <property key="programoptions.preserveprogramrange" value="false"/>
-        <property key="programoptions.preserveprogramrange.end" value="0xff"/>
-        <property key="programoptions.preserveprogramrange.start" value="0x0"/>
-        <property key="programoptions.usehighvoltageonmclr" value="false"/>
-        <property key="voltagevalue" value="5.0"/>
       </PICkit3PlatformTool>
-      <RealICEPlatformTool>
-        <property key="ADC 1" value="false"/>
-        <property key="AutoSelectMemRanges" value="auto"/>
-        <property key="CLOCK CONTROL LVDCON" value="false"/>
-        <property key="CLOCK CONTROL REFOCON" value="false"/>
-        <property key="COMPARATOR" value="false"/>
-        <property key="CRC" value="false"/>
-        <property key="CTMU" value="false"/>
-        <property key="Freeze All Other Peripherals" value="false"/>
-        <property key="I2C1" value="false"/>
-        <property key="INPUT CAPTURE 1" value="false"/>
-        <property key="OUTPUT COMPARE 1" value="false"/>
-        <property key="RIExTrigs.Five" value="OFF"/>
-        <property key="RIExTrigs.Four" value="OFF"/>
-        <property key="RIExTrigs.One" value="OFF"/>
-        <property key="RIExTrigs.Seven" value="OFF"/>
-        <property key="RIExTrigs.Six" value="OFF"/>
-        <property key="RIExTrigs.Three" value="OFF"/>
-        <property key="RIExTrigs.Two" value="OFF"/>
-        <property key="RIExTrigs.Zero" value="OFF"/>
-        <property key="SPI 1" value="false"/>
-        <property key="SecureSegment.SegmentProgramming" value="FullChipProgramming"/>
-        <property key="TIMER1" value="false"/>
-        <property key="TIMER2" value="false"/>
-        <property key="TIMER3" value="false"/>
-        <property key="ToolFirmwareFilePath"
-                  value="Press to browse for a specific firmware version"/>
-        <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
-        <property key="UART 1" value="false"/>
-        <property key="UART 2" value="false"/>
-        <property key="debugoptions.useswbreakpoints" value="false"/>
-        <property key="hwtoolclock.frcindebug" value="false"/>
-        <property key="hwtoolclock.instructionspeed" value="4"/>
-        <property key="hwtoolclock.units" value="mips"/>
-        <property key="memories.aux" value="false"/>
-        <property key="memories.bootflash" value="true"/>
-        <property key="memories.configurationmemory" value="true"/>
-        <property key="memories.eeprom" value="true"/>
-        <property key="memories.flashdata" value="true"/>
-        <property key="memories.id" value="true"/>
-        <property key="memories.programmemory" value="true"/>
-        <property key="memories.programmemory.end" value="0x2bff"/>
-        <property key="memories.programmemory.start" value="0x0"/>
-        <property key="programoptions.eraseb4program" value="true"/>
-        <property key="programoptions.preserveeeprom" value="false"/>
-        <property key="programoptions.preserveprogramrange" value="false"/>
-        <property key="programoptions.preserveprogramrange.end" value="0x2bff"/>
-        <property key="programoptions.preserveprogramrange.start" value="0x0"/>
-        <property key="programoptions.preserveuserid" value="false"/>
-        <property key="programoptions.usehighvoltageonmclr" value="false"/>
-        <property key="programoptions.uselvpprogramming" value="false"/>
-        <property key="tracecontrol.collectioninterval" value="1"/>
-        <property key="tracecontrol.collectionunits" value="1"/>
-        <property key="tracecontrol.disablemacros" value="false"/>
-        <property key="tracecontrol.medium" value="0"/>
-        <property key="tracecontrol.portselect" value="0"/>
-        <property key="tracecontrol.select" value="0"/>
-        <property key="tracecontrol.spiselect" value="0"/>
-        <property key="tracecontrol.timerpriority" value="3"/>
-        <property key="tracecontrol.timerselect" value="0"/>
-        <property key="tracecontrol.tracebufmax" value="54600"/>
-        <property key="tracecontrol.tracefile" value="C:\Users\Willem\mpdeftrace.log"/>
-        <property key="tracecontrol.tracefilemax" value="54600"/>
-      </RealICEPlatformTool>
     </conf>
     <conf name="Debugger" type="2">
       <toolsSet>

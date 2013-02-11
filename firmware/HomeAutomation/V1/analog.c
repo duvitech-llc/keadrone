@@ -88,7 +88,7 @@ UINT16 sensor_getValue(void)
     else average = avgHistory;
 
     /* return the value based on humidity */
-    if (average < 2300) // 2300 equals 70%
+    if (average < 2400) // 2300 equals 70%
         return 0;
     else if (average < 2500) // 75
         return 1;
