@@ -1,0 +1,104 @@
+Removed Pin From Net: NetName=VREF-/AN1/RA0 Pin=K1-2
+Removed Pin From Net: NetName=AN9/RB15 Pin=R1-1
+Removed Pin From Net: NetName=AN10/INT1/RB14 Pin=R2-1
+Removed Pin From Net: NetName=VREF+/AN0/RA0 Pin=R8-2
+Removed Pin From Net: NetName=AN9/RB15 Pin=U1-3
+Removed Pin From Net: NetName=AN10/INT1/RB14 Pin=U2-3
+Removed Pin From Net: NetName=VREF+/AN0/RA0 Pin=U3-1
+Change Component Comment : Designator=P10 Old Comment=220VAC input New Comment=HV 220VAC input
+Change Component Comment : Designator=P6 Old Comment=220VAC output (to 12v transformer) New Comment=HV 220VAC output (to transformer 12v)
+Change Component Comment : Designator=P4 Old Comment=220VAC to FAN New Comment=HV 220VAC output to FAN
+Change Component Comment : Designator=P11 Old Comment=FASE Ingang New Comment=HV Buttons inputs (fase)
+Change Component Designator: OldDesignator=C1 NewDesignator=C4.2.1
+Change Component Designator: OldDesignator=C2 NewDesignator=C4.2.2
+Change Component Designator: OldDesignator=C3 NewDesignator=C3.2.1
+Change Component Designator: OldDesignator=C4 NewDesignator=C3.2.2
+Change Component Designator: OldDesignator=C5 NewDesignator=C1.1
+Change Component Designator: OldDesignator=D1 NewDesignator=D1.1
+Change Component Designator: OldDesignator=D2 NewDesignator=D4.3.1
+Change Component Designator: OldDesignator=D3 NewDesignator=D4.3.2
+Change Component Designator: OldDesignator=D4 NewDesignator=D3.2.1
+Change Component Designator: OldDesignator=D5 NewDesignator=D3.2.2
+Change Component Designator: OldDesignator=D6 NewDesignator=D2.2.1
+Change Component Designator: OldDesignator=D7 NewDesignator=D2.2.2
+Change Component Designator: OldDesignator=F1 NewDesignator=F1.1
+Change Component Designator: OldDesignator=K1 NewDesignator=K1.3.1
+Change Component Designator: OldDesignator=K2 NewDesignator=K1.3.2
+Change Component Designator: OldDesignator=L1 NewDesignator=L1.2.1
+Change Component Designator: OldDesignator=L2 NewDesignator=L1.2.2
+Change Component Designator: OldDesignator=P1 NewDesignator=P3.1
+Change Component Designator: OldDesignator=P2 NewDesignator=P1.1
+Change Component Designator: OldDesignator=P3 NewDesignator=P4.1
+Change Component Designator: OldDesignator=P4 NewDesignator=P9.1
+Change Component Designator: OldDesignator=P5 NewDesignator=P8.1
+Change Component Designator: OldDesignator=P6 NewDesignator=P7.1
+Change Component Designator: OldDesignator=P7 NewDesignator=P10.4.2
+Change Component Designator: OldDesignator=P8 NewDesignator=P10.4.1
+Change Component Designator: OldDesignator=P9 NewDesignator=P10.4.3
+Change Component Designator: OldDesignator=P10 NewDesignator=P6.1
+Change Component Designator: OldDesignator=P11 NewDesignator=P5.1
+Change Component Designator: OldDesignator=Q1 NewDesignator=Q1.3.1
+Change Component Designator: OldDesignator=Q2 NewDesignator=Q1.3.2
+Change Component Designator: OldDesignator=R1 NewDesignator=R4.4.2
+Change Component Designator: OldDesignator=R2 NewDesignator=R4.4.1
+Change Component Designator: OldDesignator=R3 NewDesignator=R4.4.3
+Change Component Designator: OldDesignator=R4 NewDesignator=R2.2.1
+Change Component Designator: OldDesignator=R5 NewDesignator=R2.2.2
+Change Component Designator: OldDesignator=R6 NewDesignator=R3.4.2
+Change Component Designator: OldDesignator=R7 NewDesignator=R3.4.1
+Change Component Designator: OldDesignator=R8 NewDesignator=R3.4.3
+Change Component Designator: OldDesignator=R9 NewDesignator=R1.2.1
+Change Component Designator: OldDesignator=R10 NewDesignator=R1.2.2
+Change Component Designator: OldDesignator=U1 NewDesignator=U1.4.2
+Change Component Designator: OldDesignator=U2 NewDesignator=U1.4.1
+Change Component Designator: OldDesignator=U3 NewDesignator=U1.4.3
+Added Component: Designator=C2.1(C0805)
+Added Component: Designator=P2.1(TB3_3.5)
+Added Pin To Net: NetName=GND Pin=C2.1-1
+Added Pin To Net: NetName=12V Pin=C2.1-2
+Added Pin To Net: NetName=VREF+/AN0/RA0 Pin=P2.1-1
+Added Pin To Net: NetName=5V0 Pin=P2.1-2
+Added Pin To Net: NetName=GND Pin=P2.1-3
+Added Pin To Net: NetName=VREF-/AN1/RA0 Pin=Q1.3.1-B
+Added Pin To Net: NetName=AN10/INT1/RB14 Pin=R1.2.1-2
+Added Pin To Net: NetName=AN9/RB15 Pin=R1.2.2-2
+Added Pin To Net: NetName=AN10/INT1/RB14 Pin=R2.2.1-1
+Added Pin To Net: NetName=AN9/RB15 Pin=R2.2.2-1
+Added Pin To Net: NetName=PGD/SDA/SCK Pin=R3.4.3-2
+Added Pin To Net: NetName=PGD/SDA/SCK Pin=U1.4.3-1
+Change Net Name : Old Net Name=HV_220VAC_FASE New Net Name=HV_FASE
+Change Net Name : Old Net Name=HV_220VAC_FASE_GESCHAKELD New Net Name=HV_FASE_OUT_TRANSFORMER
+Change Net Name : Old Net Name=HV_220VAC_FASE_GESCHAKELD_FAN New Net Name=HV_FASE_OUT_FAN
+Change Net Name : Old Net Name=HV_220VAC_NEUTRAL New Net Name=HV_NEUTRAL
+Change Net Name : Old Net Name=NetC1_2 New Net Name=NetC4.2.1_2
+Change Net Name : Old Net Name=NetC2_2 New Net Name=NetC4.2.2_2
+Change Net Name : Old Net Name=NetD2_1 New Net Name=NetD4.3.1_1
+Change Net Name : Old Net Name=NetD3_1 New Net Name=NetD4.3.2_1
+Change Net Name : Old Net Name=NetD4_1 New Net Name=NetD2.2.1_1
+Change Net Name : Old Net Name=NetD5_1 New Net Name=NetD2.2.2_1
+Change Net Name : Old Net Name=NetF1_2 New Net Name=NetF1.1_2
+Change Net Name : Old Net Name=NetK2_2 New Net Name=NetK1.3.2_2
+Change Net Name : Old Net Name=NetL1_4 New Net Name=NetL1.2.1_4
+Change Net Name : Old Net Name=NetL2_4 New Net Name=NetL1.2.2_4
+Change Net Name : Old Net Name=NetP7_2 New Net Name=NetP10.4.2_2
+Change Net Name : Old Net Name=NetP8_2 New Net Name=NetP10.4.1_2
+Change Net Name : Old Net Name=NetP9_2 New Net Name=NetP10.4.3_2
+Change Net Name : Old Net Name=NetP11_1 New Net Name=NetP5.1_1
+Change Net Name : Old Net Name=NetP11_2 New Net Name=NetP5.1_2
+Change Net Name : Old Net Name=NetR3_1 New Net Name=NetR4.4.3_1
+Added Pin To Net: NetName=NetK1.3.1_2 Pin=K1.3.1-2
+Added Net: Name=NetK1.3.1_2
+Added Pin To Net: NetName=NetR4.4.1_1 Pin=R4.4.1-1
+Added Pin To Net: NetName=NetR4.4.1_1 Pin=U1.4.1-3
+Added Net: Name=NetR4.4.1_1
+Added Pin To Net: NetName=NetR4.4.2_1 Pin=R4.4.2-1
+Added Pin To Net: NetName=NetR4.4.2_1 Pin=U1.4.2-3
+Added Net: Name=NetR4.4.2_1
+Change Class Name : Old Net Name=FET2 New Net Name=LEDS WC
+Change Class Name : Old Net Name=FET3 New Net Name=LEDS BADKAMER
+Change Class Name : Old Net Name=Ufet1 New Net Name=VENTILATOR BAD
+Added Member To Class: ClassName=main Member=Component C2.1 (C2) 2u2
+Added Member To Class: ClassName=main Member=Component P2.1 (P2) HUMIDITY SENSOR
+Added Room: Name=LEDS BADKAMER
+Added Room: Name=LEDS WC
+Added Room: Name=VENTILATOR BAD

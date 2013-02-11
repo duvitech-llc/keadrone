@@ -1,0 +1,24 @@
+Added Component: Designator=P11.4.1(PH1x3_2.54)
+Added Component: Designator=P11.4.2(PH1x3_2.54)
+Added Component: Designator=P11.4.3(PH1x3_2.54)
+Added Pin To Net: NetName=GND Pin=P11.4.1-1
+Added Pin To Net: NetName=PWM1/RB10 Pin=P11.4.1-2
+Added Pin To Net: NetName=GND Pin=P11.4.2-1
+Added Pin To Net: NetName=PWM2/RB11 Pin=P11.4.2-2
+Added Pin To Net: NetName=GND Pin=P11.4.3-1
+Added Pin To Net: NetName=PGD/SDA/SCK Pin=P11.4.3-2
+Added Pin To Net: NetName=OUTPUT_LEDS BADKAMER Pin=P10.4.1-2
+Added Pin To Net: NetName=OUTPUT_LEDS BADKAMER Pin=P11.4.1-3
+Added Pin To Net: NetName=OUTPUT_LEDS BADKAMER Pin=U1.4.1-2
+Added Net: Name=OUTPUT_LEDS BADKAMER
+Added Pin To Net: NetName=OUTPUT_LEDS WC Pin=P10.4.2-2
+Added Pin To Net: NetName=OUTPUT_LEDS WC Pin=P11.4.2-3
+Added Pin To Net: NetName=OUTPUT_LEDS WC Pin=U1.4.2-2
+Added Net: Name=OUTPUT_LEDS WC
+Added Pin To Net: NetName=OUTPUT_VENTILATOR BAD Pin=P10.4.3-2
+Added Pin To Net: NetName=OUTPUT_VENTILATOR BAD Pin=P11.4.3-3
+Added Pin To Net: NetName=OUTPUT_VENTILATOR BAD Pin=U1.4.3-2
+Added Net: Name=OUTPUT_VENTILATOR BAD
+Added Member To Class: ClassName=LEDS BADKAMER Member=Component P11.4.1 (P11) Pin Header
+Added Member To Class: ClassName=LEDS WC Member=Component P11.4.2 (P11) Pin Header
+Added Member To Class: ClassName=VENTILATOR BAD Member=Component P11.4.3 (P11) Pin Header

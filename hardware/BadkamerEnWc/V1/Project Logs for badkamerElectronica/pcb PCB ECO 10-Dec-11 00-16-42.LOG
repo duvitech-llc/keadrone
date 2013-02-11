@@ -1,0 +1,128 @@
+Added Component: Designator=C1_Ux1(C0805)
+Added Component: Designator=C1_Ux2(C0805)
+Added Component: Designator=C2_Ux1(C0805)
+Added Component: Designator=C2_Ux2(C0805)
+Added Component: Designator=D1(SOD323)
+Added Component: Designator=D2_Ux1(SOD323)
+Added Component: Designator=D2_Ux2(SOD323)
+Added Component: Designator=D3_Ux1(SOD323)
+Added Component: Designator=D3_Ux2(SOD323)
+Added Component: Designator=F1(Rachem_R8)
+Added Component: Designator=K1(RELAY-G5LA-1)
+Added Component: Designator=L1_Ux1(transformer_Block_1.5VA)
+Added Component: Designator=L1_Ux2(transformer_Block_1.5VA)
+Added Component: Designator=P4(TB2_5.08)
+Added Component: Designator=P5(TB2_5.08)
+Added Component: Designator=P6(TB2_5.08)
+Added Component: Designator=P7(TB2_5.08)
+Added Component: Designator=P8(TB2_5.08)
+Added Component: Designator=P9(TB2_5.08)
+Added Component: Designator=Q1(SOT-323-NPN)
+Added Component: Designator=R1(R0805)
+Added Component: Designator=R2(R0805)
+Added Component: Designator=R3_Ux1(R0805)
+Added Component: Designator=R3_Ux2(R0805)
+Added Component: Designator=R4_Ux1(0603)
+Added Component: Designator=R4_Ux2(0603)
+Added Component: Designator=U1(TO-220AB)
+Added Component: Designator=U2(TO-220AB)
+Added Pin To Net: NetName=NetD1_1 Pin=D1-1
+Added Pin To Net: NetName=12V Pin=D1-2
+Added Pin To Net: NetName=HV_220VAC_NEUTRAL Pin=F1-1
+Added Pin To Net: NetName=NetF1_2 Pin=F1-2
+Added Pin To Net: NetName=HV_220VAC_FASE Pin=K1-1
+Added Pin To Net: NetName=HV_220VAC_FASE_GESCHAKELD Pin=K1-3
+Added Pin To Net: NetName=NetD1_1 Pin=K1-4
+Added Pin To Net: NetName=12V Pin=K1-5
+Added Pin To Net: NetName=HV_220VAC_NEUTRAL Pin=L1_Ux1-1
+Added Pin To Net: NetName=NetP5_2 Pin=L1_Ux1-2
+Added Pin To Net: NetName=HV_220VAC_NEUTRAL Pin=L1_Ux2-1
+Added Pin To Net: NetName=NetP5_1 Pin=L1_Ux2-2
+Added Pin To Net: NetName=12V Pin=P4-1
+Added Pin To Net: NetName=NetP4_2 Pin=P4-2
+Added Pin To Net: NetName=NetP5_1 Pin=P5-1
+Added Pin To Net: NetName=NetP5_2 Pin=P5-2
+Added Pin To Net: NetName=12V Pin=P6-1
+Added Pin To Net: NetName=NetP6_2 Pin=P6-2
+Added Pin To Net: NetName=NetF1_2 Pin=P7-1
+Added Pin To Net: NetName=HV_220VAC_FASE Pin=P7-2
+Added Pin To Net: NetName=HV_220VAC_NEUTRAL Pin=P8-1
+Added Pin To Net: NetName=HV_220VAC_FASE_GESCHAKELD Pin=P8-2
+Added Pin To Net: NetName=GND Pin=P9-1
+Added Pin To Net: NetName=12V Pin=P9-2
+Added Pin To Net: NetName=ENABLETRANSFORMER Pin=Q1-B
+Added Pin To Net: NetName=NetD1_1 Pin=Q1-C
+Added Pin To Net: NetName=GND Pin=Q1-E
+Added Pin To Net: NetName=AN10/INT1/RB14 Pin=R1-1
+Added Pin To Net: NetName=GND Pin=R1-2
+Added Pin To Net: NetName=AN9/RB15 Pin=R2-1
+Added Pin To Net: NetName=GND Pin=R2-2
+Added Pin To Net: NetName=ENABLELIGHTS1 Pin=U1-1
+Added Pin To Net: NetName=NetP4_2 Pin=U1-2
+Added Pin To Net: NetName=AN10/INT1/RB14 Pin=U1-3
+Added Pin To Net: NetName=ENABLELIGHTS2 Pin=U2-1
+Added Pin To Net: NetName=NetP6_2 Pin=U2-2
+Added Pin To Net: NetName=AN9/RB15 Pin=U2-3
+Added Pin To Net: NetName=12V_Ux1 Pin=C1_Ux1-2
+Added Pin To Net: NetName=12V_Ux1 Pin=D2_Ux1-2
+Added Net: Name=12V_Ux1
+Added Pin To Net: NetName=12V_Ux2 Pin=C1_Ux2-2
+Added Pin To Net: NetName=12V_Ux2 Pin=D2_Ux2-2
+Added Net: Name=12V_Ux2
+Added Pin To Net: NetName=GND_Ux1 Pin=C1_Ux1-1
+Added Pin To Net: NetName=GND_Ux1 Pin=C2_Ux1-1
+Added Pin To Net: NetName=GND_Ux1 Pin=L1_Ux1-3
+Added Pin To Net: NetName=GND_Ux1 Pin=R4_Ux1-2
+Added Net: Name=GND_Ux1
+Added Pin To Net: NetName=GND_Ux2 Pin=C1_Ux2-1
+Added Pin To Net: NetName=GND_Ux2 Pin=C2_Ux2-1
+Added Pin To Net: NetName=GND_Ux2 Pin=L1_Ux2-3
+Added Pin To Net: NetName=GND_Ux2 Pin=R4_Ux2-2
+Added Net: Name=GND_Ux2
+Added Pin To Net: NetName=NetC2_Ux1_2 Pin=C2_Ux1-2
+Added Pin To Net: NetName=NetC2_Ux1_2 Pin=D3_Ux1-2
+Added Pin To Net: NetName=NetC2_Ux1_2 Pin=R3_Ux1-1
+Added Net: Name=NetC2_Ux1_2
+Added Pin To Net: NetName=NetC2_Ux2_2 Pin=C2_Ux2-2
+Added Pin To Net: NetName=NetC2_Ux2_2 Pin=D3_Ux2-2
+Added Pin To Net: NetName=NetC2_Ux2_2 Pin=R3_Ux2-1
+Added Net: Name=NetC2_Ux2_2
+Added Pin To Net: NetName=NetD2_Ux1_1 Pin=D2_Ux1-1
+Added Pin To Net: NetName=NetD2_Ux1_1 Pin=D3_Ux1-1
+Added Pin To Net: NetName=NetD2_Ux1_1 Pin=L1_Ux1-6
+Added Net: Name=NetD2_Ux1_1
+Added Pin To Net: NetName=NetD2_Ux2_1 Pin=D2_Ux2-1
+Added Pin To Net: NetName=NetD2_Ux2_1 Pin=D3_Ux2-1
+Added Pin To Net: NetName=NetD2_Ux2_1 Pin=L1_Ux2-6
+Added Net: Name=NetD2_Ux2_1
+Added Pin To Net: NetName=NetL1_Ux1_4 Pin=L1_Ux1-4
+Added Pin To Net: NetName=NetL1_Ux1_4 Pin=L1_Ux1-5
+Added Net: Name=NetL1_Ux1_4
+Added Pin To Net: NetName=NetL1_Ux2_4 Pin=L1_Ux2-4
+Added Pin To Net: NetName=NetL1_Ux2_4 Pin=L1_Ux2-5
+Added Net: Name=NetL1_Ux2_4
+Added Pin To Net: NetName=NetR3_Ux1_2 Pin=R3_Ux1-2
+Added Pin To Net: NetName=NetR3_Ux1_2 Pin=R4_Ux1-1
+Added Net: Name=NetR3_Ux1_2
+Added Pin To Net: NetName=NetR3_Ux2_2 Pin=R3_Ux2-2
+Added Pin To Net: NetName=NetR3_Ux2_2 Pin=R4_Ux2-1
+Added Net: Name=NetR3_Ux2_2
+Added Class: Name=Ux1
+Added Class: Name=Ux2
+Added Member To Class: ClassName=main Member=Component D1 60v 1A
+Added Member To Class: ClassName=main Member=Component F1 220VAC 0.4A
+Added Member To Class: ClassName=main Member=Component K1 Relay SPDT
+Added Member To Class: ClassName=main Member=Component P4 12v PWM out
+Added Member To Class: ClassName=main Member=Component P5 FASE Ingang
+Added Member To Class: ClassName=main Member=Component P6 12v PWM out
+Added Member To Class: ClassName=main Member=Component P7 220VAC input
+Added Member To Class: ClassName=main Member=Component P8 220VAC output (to 12v transformer)
+Added Member To Class: ClassName=main Member=Component P9 12v geschakeld IN
+Added Member To Class: ClassName=main Member=Component Q1 w/internal Res
+Added Member To Class: ClassName=main Member=Component R1 RESISTOR
+Added Member To Class: ClassName=main Member=Component R2 RESISTOR
+Added Member To Class: ClassName=main Member=Component U1 IRF540PBF
+Added Member To Class: ClassName=main Member=Component U2 IRF540PBF
+Added Room: Name=main
+Added Room: Name=Ux1
+Added Room: Name=Ux2

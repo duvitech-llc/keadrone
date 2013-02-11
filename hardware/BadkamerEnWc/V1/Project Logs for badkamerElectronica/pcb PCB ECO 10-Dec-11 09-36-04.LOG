@@ -1,0 +1,187 @@
+Added Component: Designator=C1_Ux1(C0805)
+Added Component: Designator=C1_Ux2(C0805)
+Added Component: Designator=C2_Ux1(C0805)
+Added Component: Designator=C2_Ux2(C0805)
+Added Component: Designator=C3(SMT CASE G)
+Added Component: Designator=D1_Urel1(SOD323)
+Added Component: Designator=D1_Urel2(SOD323)
+Added Component: Designator=D2_Ux1(SOD323)
+Added Component: Designator=D2_Ux2(SOD323)
+Added Component: Designator=D3_Ux1(SOD323)
+Added Component: Designator=D3_Ux2(SOD323)
+Added Component: Designator=D4(SOD323)
+Added Component: Designator=F1(Rachem_R8)
+Added Component: Designator=K1_Urel1(RELAY-G5LA-1)
+Added Component: Designator=K1_Urel2(RELAY-G5LA-1)
+Added Component: Designator=L1_Ux1(transformer_Block_1.5VA)
+Added Component: Designator=L1_Ux2(transformer_Block_1.5VA)
+Added Component: Designator=P4_FET2(TB2_5.08)
+Added Component: Designator=P4_FET3(TB2_5.08)
+Added Component: Designator=P4_Ufet1(TB2_5.08)
+Added Component: Designator=P5(TB2_5.08)
+Added Component: Designator=P6(TB2_5.08)
+Added Component: Designator=P7(TB2_5.08)
+Added Component: Designator=P8(TB2_5.08)
+Added Component: Designator=P9(TB2_5.08)
+Added Component: Designator=Q1_Urel1(SOT-323-NPN)
+Added Component: Designator=Q1_Urel2(SOT-323-NPN)
+Added Component: Designator=R1_FET2(R0805)
+Added Component: Designator=R1_FET3(R0805)
+Added Component: Designator=R1_Ufet1(R0805)
+Added Component: Designator=R2_FET2(R0805)
+Added Component: Designator=R2_FET3(R0805)
+Added Component: Designator=R2_Ufet1(R0805)
+Added Component: Designator=R3_Ux1(R0805)
+Added Component: Designator=R3_Ux2(R0805)
+Added Component: Designator=R4_Ux1(R0805)
+Added Component: Designator=R4_Ux2(R0805)
+Added Component: Designator=U1_FET2(TO-220AB)
+Added Component: Designator=U1_FET3(TO-220AB)
+Added Component: Designator=U1_Ufet1(TO-220AB)
+Added Pin To Net: NetName=GND_Ux1 Pin=C1_Ux1-1
+Added Pin To Net: NetName=12V_Ux1 Pin=C1_Ux1-2
+Added Pin To Net: NetName=GND_Ux2 Pin=C1_Ux2-1
+Added Pin To Net: NetName=12V_Ux2 Pin=C1_Ux2-2
+Added Pin To Net: NetName=GND_Ux1 Pin=C2_Ux1-1
+Added Pin To Net: NetName=NetC2_Ux1_2 Pin=C2_Ux1-2
+Added Pin To Net: NetName=GND_Ux2 Pin=C2_Ux2-1
+Added Pin To Net: NetName=NetC2_Ux2_2 Pin=C2_Ux2-2
+Added Pin To Net: NetName=GND Pin=C3-1
+Added Pin To Net: NetName=12V Pin=C3-2
+Added Pin To Net: NetName=NetD1_Urel1_1 Pin=D1_Urel1-1
+Added Pin To Net: NetName=12V Pin=D1_Urel1-2
+Added Pin To Net: NetName=NetD1_Urel2_1 Pin=D1_Urel2-1
+Added Pin To Net: NetName=12V Pin=D1_Urel2-2
+Added Pin To Net: NetName=NetD2_Ux1_1 Pin=D2_Ux1-1
+Added Pin To Net: NetName=12V_Ux1 Pin=D2_Ux1-2
+Added Pin To Net: NetName=NetD2_Ux2_1 Pin=D2_Ux2-1
+Added Pin To Net: NetName=12V_Ux2 Pin=D2_Ux2-2
+Added Pin To Net: NetName=NetD2_Ux1_1 Pin=D3_Ux1-1
+Added Pin To Net: NetName=NetC2_Ux1_2 Pin=D3_Ux1-2
+Added Pin To Net: NetName=NetD2_Ux2_1 Pin=D3_Ux2-1
+Added Pin To Net: NetName=NetC2_Ux2_2 Pin=D3_Ux2-2
+Added Pin To Net: NetName=12VRAW Pin=D4-1
+Added Pin To Net: NetName=12V Pin=D4-2
+Added Pin To Net: NetName=HV_220VAC_NEUTRAL Pin=F1-1
+Added Pin To Net: NetName=NetF1_2 Pin=F1-2
+Added Pin To Net: NetName=HV_220VAC_FASE Pin=K1_Urel1-1
+Added Pin To Net: NetName=VREF-/AN1/RA0 Pin=K1_Urel1-2
+Added Pin To Net: NetName=HV_220VAC_FASE_GESCHAKELD_FAN Pin=K1_Urel1-3
+Added Pin To Net: NetName=NetD1_Urel1_1 Pin=K1_Urel1-4
+Added Pin To Net: NetName=12V Pin=K1_Urel1-5
+Added Pin To Net: NetName=HV_220VAC_FASE Pin=K1_Urel2-1
+Added Pin To Net: NetName=NetK1_Urel2_2 Pin=K1_Urel2-2
+Added Pin To Net: NetName=HV_220VAC_FASE_GESCHAKELD Pin=K1_Urel2-3
+Added Pin To Net: NetName=NetD1_Urel2_1 Pin=K1_Urel2-4
+Added Pin To Net: NetName=12V Pin=K1_Urel2-5
+Added Pin To Net: NetName=HV_220VAC_NEUTRAL Pin=L1_Ux1-1
+Added Pin To Net: NetName=NetP5_2 Pin=L1_Ux1-2
+Added Pin To Net: NetName=GND_Ux1 Pin=L1_Ux1-3
+Added Pin To Net: NetName=NetL1_Ux1_4 Pin=L1_Ux1-4
+Added Pin To Net: NetName=NetL1_Ux1_4 Pin=L1_Ux1-5
+Added Pin To Net: NetName=NetD2_Ux1_1 Pin=L1_Ux1-6
+Added Pin To Net: NetName=HV_220VAC_NEUTRAL Pin=L1_Ux2-1
+Added Pin To Net: NetName=NetP5_1 Pin=L1_Ux2-2
+Added Pin To Net: NetName=GND_Ux2 Pin=L1_Ux2-3
+Added Pin To Net: NetName=NetL1_Ux2_4 Pin=L1_Ux2-4
+Added Pin To Net: NetName=NetL1_Ux2_4 Pin=L1_Ux2-5
+Added Pin To Net: NetName=NetD2_Ux2_1 Pin=L1_Ux2-6
+Added Pin To Net: NetName=12VRAW Pin=P4_FET2-1
+Added Pin To Net: NetName=NetP4_FET2_2 Pin=P4_FET2-2
+Added Pin To Net: NetName=12VRAW Pin=P4_FET3-1
+Added Pin To Net: NetName=NetP4_FET3_2 Pin=P4_FET3-2
+Added Pin To Net: NetName=12VRAW Pin=P4_Ufet1-1
+Added Pin To Net: NetName=NetP4_Ufet1_2 Pin=P4_Ufet1-2
+Added Pin To Net: NetName=NetP5_1 Pin=P5-1
+Added Pin To Net: NetName=NetP5_2 Pin=P5-2
+Added Pin To Net: NetName=HV_220VAC_NEUTRAL Pin=P6-1
+Added Pin To Net: NetName=HV_220VAC_FASE_GESCHAKELD_FAN Pin=P6-2
+Added Pin To Net: NetName=NetF1_2 Pin=P7-1
+Added Pin To Net: NetName=HV_220VAC_FASE Pin=P7-2
+Added Pin To Net: NetName=HV_220VAC_NEUTRAL Pin=P8-1
+Added Pin To Net: NetName=HV_220VAC_FASE_GESCHAKELD Pin=P8-2
+Added Pin To Net: NetName=GND Pin=P9-1
+Added Pin To Net: NetName=12VRAW Pin=P9-2
+Added Pin To Net: NetName=NetQ1_Urel1_B Pin=Q1_Urel1-B
+Added Pin To Net: NetName=NetD1_Urel1_1 Pin=Q1_Urel1-C
+Added Pin To Net: NetName=GND Pin=Q1_Urel1-E
+Added Pin To Net: NetName=RB13 Pin=Q1_Urel2-B
+Added Pin To Net: NetName=NetD1_Urel2_1 Pin=Q1_Urel2-C
+Added Pin To Net: NetName=GND Pin=Q1_Urel2-E
+Added Pin To Net: NetName=AN9/RB15 Pin=R1_FET2-1
+Added Pin To Net: NetName=GND Pin=R1_FET2-2
+Added Pin To Net: NetName=AN10/INT1/RB14 Pin=R1_FET3-1
+Added Pin To Net: NetName=GND Pin=R1_FET3-2
+Added Pin To Net: NetName=NetR1_Ufet1_1 Pin=R1_Ufet1-1
+Added Pin To Net: NetName=GND Pin=R1_Ufet1-2
+Added Pin To Net: NetName=GND Pin=R2_FET2-1
+Added Pin To Net: NetName=PWM2/RB11 Pin=R2_FET2-2
+Added Pin To Net: NetName=GND Pin=R2_FET3-1
+Added Pin To Net: NetName=PWM1/RB10 Pin=R2_FET3-2
+Added Pin To Net: NetName=GND Pin=R2_Ufet1-1
+Added Pin To Net: NetName=VREF+/AN0/RA0 Pin=R2_Ufet1-2
+Added Pin To Net: NetName=NetC2_Ux1_2 Pin=R3_Ux1-1
+Added Pin To Net: NetName=NetR3_Ux1_2 Pin=R3_Ux1-2
+Added Pin To Net: NetName=NetC2_Ux2_2 Pin=R3_Ux2-1
+Added Pin To Net: NetName=NetR3_Ux2_2 Pin=R3_Ux2-2
+Added Pin To Net: NetName=NetR3_Ux1_2 Pin=R4_Ux1-1
+Added Pin To Net: NetName=GND_Ux1 Pin=R4_Ux1-2
+Added Pin To Net: NetName=NetR3_Ux2_2 Pin=R4_Ux2-1
+Added Pin To Net: NetName=GND_Ux2 Pin=R4_Ux2-2
+Added Pin To Net: NetName=PWM2/RB11 Pin=U1_FET2-1
+Added Pin To Net: NetName=NetP4_FET2_2 Pin=U1_FET2-2
+Added Pin To Net: NetName=AN9/RB15 Pin=U1_FET2-3
+Added Pin To Net: NetName=PWM1/RB10 Pin=U1_FET3-1
+Added Pin To Net: NetName=NetP4_FET3_2 Pin=U1_FET3-2
+Added Pin To Net: NetName=AN10/INT1/RB14 Pin=U1_FET3-3
+Added Pin To Net: NetName=VREF+/AN0/RA0 Pin=U1_Ufet1-1
+Added Pin To Net: NetName=NetP4_Ufet1_2 Pin=U1_Ufet1-2
+Added Pin To Net: NetName=NetR1_Ufet1_1 Pin=U1_Ufet1-3
+Added Member To Class: ClassName=Ux1 Member=Component C1_Ux1 (C1) 100n
+Added Member To Class: ClassName=Ux2 Member=Component C1_Ux2 (C1) 100n
+Added Member To Class: ClassName=Ux1 Member=Component C2_Ux1 (C2) 100n
+Added Member To Class: ClassName=Ux2 Member=Component C2_Ux2 (C2) 100n
+Added Member To Class: ClassName=main Member=Component C3 330uF
+Added Member To Class: ClassName=Urel1 Member=Component D1_Urel1 (D1) 60v 1A
+Added Member To Class: ClassName=Urel2 Member=Component D1_Urel2 (D1) 60v 1A
+Added Member To Class: ClassName=Ux1 Member=Component D2_Ux1 (D2) 60v 1A
+Added Member To Class: ClassName=Ux2 Member=Component D2_Ux2 (D2) 60v 1A
+Added Member To Class: ClassName=Ux1 Member=Component D3_Ux1 (D3) 60v 1A
+Added Member To Class: ClassName=Ux2 Member=Component D3_Ux2 (D3) 60v 1A
+Added Member To Class: ClassName=main Member=Component D4 60v 1A
+Added Member To Class: ClassName=main Member=Component F1 220VAC 0.4A
+Added Member To Class: ClassName=Urel1 Member=Component K1_Urel1 (K1) Relay SPDT
+Added Member To Class: ClassName=Urel2 Member=Component K1_Urel2 (K1) Relay SPDT
+Added Member To Class: ClassName=Ux1 Member=Component L1_Ux1 (L1) transformer_dual_output
+Added Member To Class: ClassName=Ux2 Member=Component L1_Ux2 (L1) transformer_dual_output
+Added Member To Class: ClassName=FET2 Member=Component P4_FET2 (P4) 12v PWM out
+Added Member To Class: ClassName=FET3 Member=Component P4_FET3 (P4) 12v PWM out
+Added Member To Class: ClassName=Ufet1 Member=Component P4_Ufet1 (P4) 12v PWM out
+Added Member To Class: ClassName=main Member=Component P5 FASE Ingang
+Added Member To Class: ClassName=main Member=Component P6 220VAC to FAN
+Added Member To Class: ClassName=main Member=Component P7 220VAC input
+Added Member To Class: ClassName=main Member=Component P8 220VAC output (to 12v transformer)
+Added Member To Class: ClassName=main Member=Component P9 12v geschakeld IN
+Added Member To Class: ClassName=Urel1 Member=Component Q1_Urel1 (Q1) w/internal Res
+Added Member To Class: ClassName=Urel2 Member=Component Q1_Urel2 (Q1) w/internal Res
+Added Member To Class: ClassName=FET2 Member=Component R1_FET2 (R1) RESISTOR
+Added Member To Class: ClassName=FET3 Member=Component R1_FET3 (R1) RESISTOR
+Added Member To Class: ClassName=Ufet1 Member=Component R1_Ufet1 (R1) RESISTOR
+Added Member To Class: ClassName=FET2 Member=Component R2_FET2 (R2) RESISTOR
+Added Member To Class: ClassName=FET3 Member=Component R2_FET3 (R2) RESISTOR
+Added Member To Class: ClassName=Ufet1 Member=Component R2_Ufet1 (R2) RESISTOR
+Added Member To Class: ClassName=Ux1 Member=Component R3_Ux1 (R3) RESISTOR
+Added Member To Class: ClassName=Ux2 Member=Component R3_Ux2 (R3) RESISTOR
+Added Member To Class: ClassName=Ux1 Member=Component R4_Ux1 (R4) RESISTOR
+Added Member To Class: ClassName=Ux2 Member=Component R4_Ux2 (R4) RESISTOR
+Added Member To Class: ClassName=FET2 Member=Component U1_FET2 (U1) IRF540PBF
+Added Member To Class: ClassName=FET3 Member=Component U1_FET3 (U1) IRF540PBF
+Added Member To Class: ClassName=Ufet1 Member=Component U1_Ufet1 (U1) IRF540PBF
+Added Room: Name=FET2
+Added Room: Name=FET3
+Added Room: Name=main
+Added Room: Name=Ufet1
+Added Room: Name=Urel1
+Added Room: Name=Urel2
+Added Room: Name=Ux1
+Added Room: Name=Ux2

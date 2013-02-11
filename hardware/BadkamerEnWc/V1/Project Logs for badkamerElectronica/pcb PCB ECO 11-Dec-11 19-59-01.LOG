@@ -1,0 +1,35 @@
+Removed Member From Class: ClassName=schakelaar wc Member=C6
+Removed Member From Class: ClassName=schakelaar wc Member=D6
+Removed Member From Class: ClassName=Urel1 Member=K1
+Removed Member From Class: ClassName=main Member=P10
+Removed Member From Class: ClassName=Urel2 Member=Q2
+Removed Member From Class: ClassName=LEDS BADKAMER Member=R6
+Removed Member From Class: ClassName=schakelaar badkamer Member=R6
+Removed Member From Class: ClassName=schakelaar wc Member=R7
+Removed Member From Class: ClassName=schakelaar badkamer Member=R8
+Change Net Name : Old Net Name=NetC1_2 New Net Name=NetC5_2
+Change Net Name : Old Net Name=NetC2_2 New Net Name=NetC1_2
+Change Net Name : Old Net Name=NetD1_1 New Net Name=NetD7_1
+Change Net Name : Old Net Name=NetD2_1 New Net Name=NetD6_1
+Change Net Name : Old Net Name=NetD4_1 New Net Name=NetD3_1
+Change Net Name : Old Net Name=NetD5_1 New Net Name=NetD1_1
+Change Net Name : Old Net Name=NetK1_2 New Net Name=NetK2_2
+Change Net Name : Old Net Name=NetK2_2 New Net Name=NetK1_2
+Change Net Name : Old Net Name=NetP5_1 New Net Name=NetP3_1
+Change Net Name : Old Net Name=NetP5_2 New Net Name=NetP3_2
+Change Net Name : Old Net Name=NetR1_1 New Net Name=NetR7_1
+Change Net Name : Old Net Name=NetR2_1 New Net Name=NetR5_1
+Change Net Name : Old Net Name=NetR5_1 New Net Name=NetR9_1
+Added Class: Name=LEDS WC
+Added Class: Name=VENTILATOR BAD
+Added Member To Class: ClassName=schakelaar wc Member=Component C1 (C4) 100n
+Added Member To Class: ClassName=schakelaar wc Member=Component D2 60v 1A
+Added Member To Class: ClassName=Urel1 Member=Component K2 (K1) Relay SPDT
+Added Member To Class: ClassName=main Member=Component P9 (P8) 12v geschakeld IN
+Added Member To Class: ClassName=Urel2 Member=Component Q1 w/internal Res
+Added Member To Class: ClassName=schakelaar wc Member=Component R1 RESISTOR
+Added Member To Class: ClassName=schakelaar badkamer Member=Component R3 (R1) RESISTOR
+Added Member To Class: ClassName=schakelaar badkamer Member=Component R4 (R2) RESISTOR
+Added Member To Class: ClassName=LEDS BADKAMER Member=Component R9 (R4) RESISTOR
+Change Rule Scope 1 : Old Scope=InNet('NetP5_1') New Scope=InNet('NetP3_1')
+Change Rule Scope 1 : Old Scope=InNet('NetP5_2') New Scope=InNet('NetP3_2')

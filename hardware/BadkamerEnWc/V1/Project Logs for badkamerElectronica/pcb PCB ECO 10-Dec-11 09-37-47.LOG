@@ -1,0 +1,62 @@
+Change Component Designator: OldDesignator=C1_Ux1 NewDesignator=C1.2.1
+Change Component Designator: OldDesignator=C1_Ux2 NewDesignator=C1.2.2
+Change Component Designator: OldDesignator=C2_Ux1 NewDesignator=C2.2.1
+Change Component Designator: OldDesignator=C2_Ux2 NewDesignator=C2.2.2
+Change Component Designator: OldDesignator=C3 NewDesignator=C3.1
+Change Component Designator: OldDesignator=D1_Urel1 NewDesignator=D1.3.1
+Change Component Designator: OldDesignator=D1_Urel2 NewDesignator=D1.3.2
+Change Component Designator: OldDesignator=D2_Ux1 NewDesignator=D2.2.1
+Change Component Designator: OldDesignator=D2_Ux2 NewDesignator=D2.2.2
+Change Component Designator: OldDesignator=D3_Ux1 NewDesignator=D3.2.1
+Change Component Designator: OldDesignator=D3_Ux2 NewDesignator=D3.2.2
+Change Component Designator: OldDesignator=D4 NewDesignator=D4.1
+Change Component Designator: OldDesignator=F1 NewDesignator=F1.1
+Change Component Designator: OldDesignator=K1_Urel1 NewDesignator=K1.3.1
+Change Component Designator: OldDesignator=K1_Urel2 NewDesignator=K1.3.2
+Change Component Designator: OldDesignator=L1_Ux1 NewDesignator=L1.2.1
+Change Component Designator: OldDesignator=L1_Ux2 NewDesignator=L1.2.2
+Change Component Designator: OldDesignator=P1 NewDesignator=P1.1
+Change Component Designator: OldDesignator=P2 NewDesignator=P2.1
+Change Component Designator: OldDesignator=P3 NewDesignator=P3.1
+Change Component Designator: OldDesignator=P4_FET2 NewDesignator=P4.4.1
+Change Component Designator: OldDesignator=P4_FET3 NewDesignator=P4.4.2
+Change Component Designator: OldDesignator=P4_Ufet1 NewDesignator=P4.4.3
+Change Component Designator: OldDesignator=P5 NewDesignator=P5.1
+Change Component Designator: OldDesignator=P6 NewDesignator=P6.1
+Change Component Designator: OldDesignator=P7 NewDesignator=P7.1
+Change Component Designator: OldDesignator=P8 NewDesignator=P8.1
+Change Component Designator: OldDesignator=P9 NewDesignator=P9.1
+Change Component Designator: OldDesignator=Q1_Urel1 NewDesignator=Q1.3.1
+Change Component Designator: OldDesignator=Q1_Urel2 NewDesignator=Q1.3.2
+Change Component Designator: OldDesignator=R1_FET2 NewDesignator=R1.4.1
+Change Component Designator: OldDesignator=R1_FET3 NewDesignator=R1.4.2
+Change Component Designator: OldDesignator=R1_Ufet1 NewDesignator=R1.4.3
+Change Component Designator: OldDesignator=R2_FET2 NewDesignator=R2.4.1
+Change Component Designator: OldDesignator=R2_FET3 NewDesignator=R2.4.2
+Change Component Designator: OldDesignator=R2_Ufet1 NewDesignator=R2.4.3
+Change Component Designator: OldDesignator=R3_Ux1 NewDesignator=R3.2.1
+Change Component Designator: OldDesignator=R3_Ux2 NewDesignator=R3.2.2
+Change Component Designator: OldDesignator=R4_Ux1 NewDesignator=R4.2.1
+Change Component Designator: OldDesignator=R4_Ux2 NewDesignator=R4.2.2
+Change Component Designator: OldDesignator=U1_FET2 NewDesignator=U1.4.1
+Change Component Designator: OldDesignator=U1_FET3 NewDesignator=U1.4.2
+Change Component Designator: OldDesignator=U1_Ufet1 NewDesignator=U1.4.3
+Change Net Name : Old Net Name=NetC2_Ux1_2 New Net Name=NetC2.2.1_2
+Change Net Name : Old Net Name=NetC2_Ux2_2 New Net Name=NetC2.2.2_2
+Change Net Name : Old Net Name=NetD1_Urel1_1 New Net Name=NetD1.3.1_1
+Change Net Name : Old Net Name=NetD1_Urel2_1 New Net Name=NetD1.3.2_1
+Change Net Name : Old Net Name=NetD2_Ux1_1 New Net Name=NetD2.2.1_1
+Change Net Name : Old Net Name=NetD2_Ux2_1 New Net Name=NetD2.2.2_1
+Change Net Name : Old Net Name=NetF1_2 New Net Name=NetF1.1_2
+Change Net Name : Old Net Name=NetK1_Urel2_2 New Net Name=NetK1.3.2_2
+Change Net Name : Old Net Name=NetL1_Ux1_4 New Net Name=NetL1.2.1_4
+Change Net Name : Old Net Name=NetL1_Ux2_4 New Net Name=NetL1.2.2_4
+Change Net Name : Old Net Name=NetP4_FET2_2 New Net Name=NetP4.4.1_2
+Change Net Name : Old Net Name=NetP4_FET3_2 New Net Name=NetP4.4.2_2
+Change Net Name : Old Net Name=NetP4_Ufet1_2 New Net Name=NetP4.4.3_2
+Change Net Name : Old Net Name=NetP5_1 New Net Name=NetP5.1_1
+Change Net Name : Old Net Name=NetP5_2 New Net Name=NetP5.1_2
+Change Net Name : Old Net Name=NetQ1_Urel1_B New Net Name=NetQ1.3.1_B
+Change Net Name : Old Net Name=NetR1_Ufet1_1 New Net Name=NetR1.4.3_1
+Change Net Name : Old Net Name=NetR3_Ux1_2 New Net Name=NetR3.2.1_2
+Change Net Name : Old Net Name=NetR3_Ux2_2 New Net Name=NetR3.2.2_2

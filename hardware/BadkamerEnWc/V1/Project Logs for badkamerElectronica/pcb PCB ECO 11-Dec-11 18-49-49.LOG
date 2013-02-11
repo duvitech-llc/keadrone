@@ -1,0 +1,196 @@
+Added Component: Designator=C1.1(SMT CASE G)
+Added Component: Designator=C2.1(C0805)
+Added Component: Designator=C3.2.1(C0805)
+Added Component: Designator=C3.2.2(C0805)
+Added Component: Designator=C4.2.1(C0805)
+Added Component: Designator=C4.2.2(C0805)
+Added Component: Designator=D1.1(SOD323)
+Added Component: Designator=D2.2.1(SOD323)
+Added Component: Designator=D2.2.2(SOD323)
+Added Component: Designator=D3.2.1(SOD323)
+Added Component: Designator=D3.2.2(SOD323)
+Added Component: Designator=D4.3.1(SOD323)
+Added Component: Designator=D4.3.2(SOD323)
+Added Component: Designator=F1.1(Rachem_R8)
+Added Component: Designator=K1.3.1(RELAY-G5LA-1)
+Added Component: Designator=K1.3.2(RELAY-G5LA-1)
+Added Component: Designator=L1.2.1(transformer_Block_1.5VA)
+Added Component: Designator=L1.2.2(transformer_Block_1.5VA)
+Added Component: Designator=P2.1(TB3_3.5)
+Added Component: Designator=P5.1(TB2_5.08)
+Added Component: Designator=P6.1(TB2_5.08)
+Added Component: Designator=P7.1(TB2_5.08)
+Added Component: Designator=P8.1(TB2_5.08)
+Added Component: Designator=P9.1(TB2_5.08)
+Added Component: Designator=P10.4.1(TB2_5.08)
+Added Component: Designator=P10.4.2(TB2_5.08)
+Added Component: Designator=P10.4.3(TB2_5.08)
+Added Component: Designator=Q1.3.1(SOT-323-NPN)
+Added Component: Designator=Q1.3.2(SOT-323-NPN)
+Added Component: Designator=R1.2.1(R0805)
+Added Component: Designator=R1.2.2(R0805)
+Added Component: Designator=R2.2.1(R0805)
+Added Component: Designator=R2.2.2(R0805)
+Added Component: Designator=R3.4.1(R0805)
+Added Component: Designator=R3.4.2(R0805)
+Added Component: Designator=R3.4.3(R0805)
+Added Component: Designator=R4.4.1(R0805)
+Added Component: Designator=R4.4.2(R0805)
+Added Component: Designator=R4.4.3(R0805)
+Added Component: Designator=U1.4.1(TO-220AB)
+Added Component: Designator=U1.4.2(TO-220AB)
+Added Component: Designator=U1.4.3(TO-220AB)
+Added Pin To Net: NetName=GND Pin=C1.1-1
+Added Pin To Net: NetName=12V Pin=C1.1-2
+Added Pin To Net: NetName=GND Pin=C2.1-1
+Added Pin To Net: NetName=12V Pin=C2.1-2
+Added Pin To Net: NetName=GND_Ux1 Pin=C3.2.1-1
+Added Pin To Net: NetName=12V_Ux1 Pin=C3.2.1-2
+Added Pin To Net: NetName=GND_Ux2 Pin=C3.2.2-1
+Added Pin To Net: NetName=12V_Ux2 Pin=C3.2.2-2
+Added Pin To Net: NetName=GND_Ux1 Pin=C4.2.1-1
+Added Pin To Net: NetName=NetC4.2.1_2 Pin=C4.2.1-2
+Added Pin To Net: NetName=GND_Ux2 Pin=C4.2.2-1
+Added Pin To Net: NetName=NetC4.2.2_2 Pin=C4.2.2-2
+Added Pin To Net: NetName=12VRAW Pin=D1.1-1
+Added Pin To Net: NetName=12V Pin=D1.1-2
+Added Pin To Net: NetName=NetD2.2.1_1 Pin=D2.2.1-1
+Added Pin To Net: NetName=12V_Ux1 Pin=D2.2.1-2
+Added Pin To Net: NetName=NetD2.2.2_1 Pin=D2.2.2-1
+Added Pin To Net: NetName=12V_Ux2 Pin=D2.2.2-2
+Added Pin To Net: NetName=NetD2.2.1_1 Pin=D3.2.1-1
+Added Pin To Net: NetName=NetC4.2.1_2 Pin=D3.2.1-2
+Added Pin To Net: NetName=NetD2.2.2_1 Pin=D3.2.2-1
+Added Pin To Net: NetName=NetC4.2.2_2 Pin=D3.2.2-2
+Added Pin To Net: NetName=NetD4.3.1_1 Pin=D4.3.1-1
+Added Pin To Net: NetName=12V Pin=D4.3.1-2
+Added Pin To Net: NetName=NetD4.3.2_1 Pin=D4.3.2-1
+Added Pin To Net: NetName=12V Pin=D4.3.2-2
+Added Pin To Net: NetName=HV_NEUTRAL Pin=F1.1-1
+Added Pin To Net: NetName=NetF1.1_2 Pin=F1.1-2
+Added Pin To Net: NetName=HV_FASE Pin=K1.3.1-1
+Added Pin To Net: NetName=NetK1.3.1_2 Pin=K1.3.1-2
+Added Pin To Net: NetName=HV_FASE_OUT_FAN Pin=K1.3.1-3
+Added Pin To Net: NetName=NetD4.3.1_1 Pin=K1.3.1-4
+Added Pin To Net: NetName=12V Pin=K1.3.1-5
+Added Pin To Net: NetName=HV_FASE Pin=K1.3.2-1
+Added Pin To Net: NetName=NetK1.3.2_2 Pin=K1.3.2-2
+Added Pin To Net: NetName=HV_FASE_OUT_TRANSFORMER Pin=K1.3.2-3
+Added Pin To Net: NetName=NetD4.3.2_1 Pin=K1.3.2-4
+Added Pin To Net: NetName=12V Pin=K1.3.2-5
+Added Pin To Net: NetName=HV_NEUTRAL Pin=L1.2.1-1
+Added Pin To Net: NetName=NetP5.1_2 Pin=L1.2.1-2
+Added Pin To Net: NetName=GND_Ux1 Pin=L1.2.1-3
+Added Pin To Net: NetName=NetL1.2.1_4 Pin=L1.2.1-4
+Added Pin To Net: NetName=NetL1.2.1_4 Pin=L1.2.1-5
+Added Pin To Net: NetName=NetD2.2.1_1 Pin=L1.2.1-6
+Added Pin To Net: NetName=HV_NEUTRAL Pin=L1.2.2-1
+Added Pin To Net: NetName=NetP5.1_1 Pin=L1.2.2-2
+Added Pin To Net: NetName=GND_Ux2 Pin=L1.2.2-3
+Added Pin To Net: NetName=NetL1.2.2_4 Pin=L1.2.2-4
+Added Pin To Net: NetName=NetL1.2.2_4 Pin=L1.2.2-5
+Added Pin To Net: NetName=NetD2.2.2_1 Pin=L1.2.2-6
+Added Pin To Net: NetName=VREF+/AN0/RA0 Pin=P2.1-1
+Added Pin To Net: NetName=5V0 Pin=P2.1-2
+Added Pin To Net: NetName=GND Pin=P2.1-3
+Added Pin To Net: NetName=NetP5.1_1 Pin=P5.1-1
+Added Pin To Net: NetName=NetP5.1_2 Pin=P5.1-2
+Added Pin To Net: NetName=NetF1.1_2 Pin=P6.1-1
+Added Pin To Net: NetName=HV_FASE Pin=P6.1-2
+Added Pin To Net: NetName=HV_NEUTRAL Pin=P7.1-1
+Added Pin To Net: NetName=HV_FASE_OUT_TRANSFORMER Pin=P7.1-2
+Added Pin To Net: NetName=GND Pin=P8.1-1
+Added Pin To Net: NetName=12VRAW Pin=P8.1-2
+Added Pin To Net: NetName=HV_NEUTRAL Pin=P9.1-1
+Added Pin To Net: NetName=HV_FASE_OUT_FAN Pin=P9.1-2
+Added Pin To Net: NetName=12VRAW Pin=P10.4.1-1
+Added Pin To Net: NetName=NetP10.4.1_2 Pin=P10.4.1-2
+Added Pin To Net: NetName=12VRAW Pin=P10.4.2-1
+Added Pin To Net: NetName=NetP10.4.2_2 Pin=P10.4.2-2
+Added Pin To Net: NetName=12VRAW Pin=P10.4.3-1
+Added Pin To Net: NetName=NetP10.4.3_2 Pin=P10.4.3-2
+Added Pin To Net: NetName=VREF-/AN1/RA0 Pin=Q1.3.1-B
+Added Pin To Net: NetName=NetD4.3.1_1 Pin=Q1.3.1-C
+Added Pin To Net: NetName=GND Pin=Q1.3.1-E
+Added Pin To Net: NetName=RB13 Pin=Q1.3.2-B
+Added Pin To Net: NetName=NetD4.3.2_1 Pin=Q1.3.2-C
+Added Pin To Net: NetName=GND Pin=Q1.3.2-E
+Added Pin To Net: NetName=NetC4.2.1_2 Pin=R1.2.1-1
+Added Pin To Net: NetName=AN10/INT1/RB14 Pin=R1.2.1-2
+Added Pin To Net: NetName=NetC4.2.2_2 Pin=R1.2.2-1
+Added Pin To Net: NetName=AN9/RB15 Pin=R1.2.2-2
+Added Pin To Net: NetName=AN10/INT1/RB14 Pin=R2.2.1-1
+Added Pin To Net: NetName=GND_Ux1 Pin=R2.2.1-2
+Added Pin To Net: NetName=AN9/RB15 Pin=R2.2.2-1
+Added Pin To Net: NetName=GND_Ux2 Pin=R2.2.2-2
+Added Pin To Net: NetName=GND Pin=R3.4.1-1
+Added Pin To Net: NetName=PWM1/RB10 Pin=R3.4.1-2
+Added Pin To Net: NetName=GND Pin=R3.4.2-1
+Added Pin To Net: NetName=PWM2/RB11 Pin=R3.4.2-2
+Added Pin To Net: NetName=GND Pin=R3.4.3-1
+Added Pin To Net: NetName=PGD/SDA/SCK Pin=R3.4.3-2
+Added Pin To Net: NetName=NetR4.4.1_1 Pin=R4.4.1-1
+Added Pin To Net: NetName=GND Pin=R4.4.1-2
+Added Pin To Net: NetName=NetR4.4.2_1 Pin=R4.4.2-1
+Added Pin To Net: NetName=GND Pin=R4.4.2-2
+Added Pin To Net: NetName=NetR4.4.3_1 Pin=R4.4.3-1
+Added Pin To Net: NetName=GND Pin=R4.4.3-2
+Added Pin To Net: NetName=PWM1/RB10 Pin=U1.4.1-1
+Added Pin To Net: NetName=NetP10.4.1_2 Pin=U1.4.1-2
+Added Pin To Net: NetName=NetR4.4.1_1 Pin=U1.4.1-3
+Added Pin To Net: NetName=PWM2/RB11 Pin=U1.4.2-1
+Added Pin To Net: NetName=NetP10.4.2_2 Pin=U1.4.2-2
+Added Pin To Net: NetName=NetR4.4.2_1 Pin=U1.4.2-3
+Added Pin To Net: NetName=PGD/SDA/SCK Pin=U1.4.3-1
+Added Pin To Net: NetName=NetP10.4.3_2 Pin=U1.4.3-2
+Added Pin To Net: NetName=NetR4.4.3_1 Pin=U1.4.3-3
+Added Member To Class: ClassName=main Member=Component C1.1 (C1) 330uF
+Added Member To Class: ClassName=main Member=Component C2.1 (C2) 2u2
+Added Member To Class: ClassName=Ux1 Member=Component C3.2.1 (C3) 100n
+Added Member To Class: ClassName=Ux2 Member=Component C3.2.2 (C3) 100n
+Added Member To Class: ClassName=Ux1 Member=Component C4.2.1 (C4) 100n
+Added Member To Class: ClassName=Ux2 Member=Component C4.2.2 (C4) 100n
+Added Member To Class: ClassName=main Member=Component D1.1 (D1) 60v 1A
+Added Member To Class: ClassName=Ux1 Member=Component D2.2.1 (D2) 60v 1A
+Added Member To Class: ClassName=Ux2 Member=Component D2.2.2 (D2) 60v 1A
+Added Member To Class: ClassName=Ux1 Member=Component D3.2.1 (D3) 60v 1A
+Added Member To Class: ClassName=Ux2 Member=Component D3.2.2 (D3) 60v 1A
+Added Member To Class: ClassName=Urel1 Member=Component D4.3.1 (D4) 60v 1A
+Added Member To Class: ClassName=Urel2 Member=Component D4.3.2 (D4) 60v 1A
+Added Member To Class: ClassName=main Member=Component F1.1 (F1) 220VAC 0.4A
+Added Member To Class: ClassName=Urel1 Member=Component K1.3.1 (K1) Relay SPDT
+Added Member To Class: ClassName=Urel2 Member=Component K1.3.2 (K1) Relay SPDT
+Added Member To Class: ClassName=Ux1 Member=Component L1.2.1 (L1) transformer_dual_output
+Added Member To Class: ClassName=Ux2 Member=Component L1.2.2 (L1) transformer_dual_output
+Added Member To Class: ClassName=main Member=Component P2.1 (P2) HUMIDITY SENSOR
+Added Member To Class: ClassName=main Member=Component P5.1 (P5) HV Buttons inputs (fase)
+Added Member To Class: ClassName=main Member=Component P6.1 (P6) HV 220VAC input
+Added Member To Class: ClassName=main Member=Component P7.1 (P7) HV 220VAC output (to transformer 12v)
+Added Member To Class: ClassName=main Member=Component P8.1 (P8) 12v geschakeld IN
+Added Member To Class: ClassName=main Member=Component P9.1 (P9) HV 220VAC output to FAN
+Added Member To Class: ClassName=LEDS BADKAMER Member=Component P10.4.1 (P10) 12v PWM out
+Added Member To Class: ClassName=LEDS WC Member=Component P10.4.2 (P10) 12v PWM out
+Added Member To Class: ClassName=VENTILATOR BAD Member=Component P10.4.3 (P10) 12v PWM out
+Added Member To Class: ClassName=Urel1 Member=Component Q1.3.1 (Q1) w/internal Res
+Added Member To Class: ClassName=Urel2 Member=Component Q1.3.2 (Q1) w/internal Res
+Added Member To Class: ClassName=Ux1 Member=Component R1.2.1 (R1) RESISTOR
+Added Member To Class: ClassName=Ux2 Member=Component R1.2.2 (R1) RESISTOR
+Added Member To Class: ClassName=Ux1 Member=Component R2.2.1 (R2) RESISTOR
+Added Member To Class: ClassName=Ux2 Member=Component R2.2.2 (R2) RESISTOR
+Added Member To Class: ClassName=LEDS BADKAMER Member=Component R3.4.1 (R3) RESISTOR
+Added Member To Class: ClassName=LEDS WC Member=Component R3.4.2 (R3) RESISTOR
+Added Member To Class: ClassName=VENTILATOR BAD Member=Component R3.4.3 (R3) RESISTOR
+Added Member To Class: ClassName=LEDS BADKAMER Member=Component R4.4.1 (R4) RESISTOR
+Added Member To Class: ClassName=LEDS WC Member=Component R4.4.2 (R4) RESISTOR
+Added Member To Class: ClassName=VENTILATOR BAD Member=Component R4.4.3 (R4) RESISTOR
+Added Member To Class: ClassName=LEDS BADKAMER Member=Component U1.4.1 (U1) IRF540PBF
+Added Member To Class: ClassName=LEDS WC Member=Component U1.4.2 (U1) IRF540PBF
+Added Member To Class: ClassName=VENTILATOR BAD Member=Component U1.4.3 (U1) IRF540PBF
+Added Room: Name=LEDS BADKAMER
+Added Room: Name=LEDS WC
+Added Room: Name=main
+Added Room: Name=Urel1
+Added Room: Name=Urel2
+Added Room: Name=Ux1
+Added Room: Name=Ux2
+Added Room: Name=VENTILATOR BAD

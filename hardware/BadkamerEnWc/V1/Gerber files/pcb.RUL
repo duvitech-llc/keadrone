@@ -1,0 +1,13 @@
+DRC Rules Export File for PCB: C:\apps\SvnUse\Hardware\prive\BadkamerEnWc\V1\pcb.PcbDoc
+RuleKind=Clearance|RuleName=Schematic Clearance Constraint_5|Scope=Board|Minimum=78.74
+RuleKind=Clearance|RuleName=Schematic Clearance Constraint_4|Scope=Board|Minimum=78.74
+RuleKind=Clearance|RuleName=Schematic Clearance Constraint_3|Scope=Board|Minimum=78.74
+RuleKind=Clearance|RuleName=Schematic Clearance Constraint_2|Scope=Board|Minimum=78.74
+RuleKind=Clearance|RuleName=Schematic Clearance Constraint_1|Scope=Board|Minimum=78.74
+RuleKind=Clearance|RuleName=Schematic Clearance Constraint|Scope=Board|Minimum=78.74
+RuleKind=Clearance|RuleName=Schematic Clearance Constraint_6|Scope=Board|Minimum=78.74
+RuleKind=MinimumAnnularRing|RuleName=MinimumAnnularRing|Scope=Board|Minimum=3.94
+RuleKind=ShortCircuit|RuleName=ShortCircuit|Scope=Board|Allowed=0
+RuleKind=Width|RuleName=Width|Scope=Board|Minimum=7.87
+RuleKind=Clearance|RuleName=Clearance|Scope=Board|Minimum=7.87
+RuleKind=SolderMaskExpansion|RuleName=SolderMaskExpansion|Scope=Board|Minimum=4.00

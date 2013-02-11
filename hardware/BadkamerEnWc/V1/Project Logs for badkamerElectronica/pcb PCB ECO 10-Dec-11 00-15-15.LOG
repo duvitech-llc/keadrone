@@ -1,0 +1,165 @@
+Added Component: Designator=C1_U_schakelaarDetectie1(C0805)
+Added Component: Designator=C1_U_schakelaarDetectie2(C0805)
+Added Component: Designator=C2_U_schakelaarDetectie1(C0805)
+Added Component: Designator=C2_U_schakelaarDetectie2(C0805)
+Added Component: Designator=D1(SOD323)
+Added Component: Designator=D2_U_schakelaarDetectie1(SOD323)
+Added Component: Designator=D2_U_schakelaarDetectie2(SOD323)
+Added Component: Designator=D3_U_schakelaarDetectie1(SOD323)
+Added Component: Designator=D3_U_schakelaarDetectie2(SOD323)
+Added Component: Designator=F1(Rachem_R8)
+Added Component: Designator=K1(RELAY-G5LA-1)
+Added Component: Designator=L1_U_schakelaarDetectie1(transformer_Block_1.5VA)
+Added Component: Designator=L1_U_schakelaarDetectie2(transformer_Block_1.5VA)
+Added Component: Designator=P4(TB2_5.08)
+Added Component: Designator=P5(TB2_5.08)
+Added Component: Designator=P6(TB2_5.08)
+Added Component: Designator=P7(TB2_5.08)
+Added Component: Designator=P8(TB2_5.08)
+Added Component: Designator=P9(TB2_5.08)
+Added Component: Designator=Q1(SOT-323-NPN)
+Added Component: Designator=R1(R0805)
+Added Component: Designator=R2(R0805)
+Added Component: Designator=R3_U_schakelaarDetectie1(R0805)
+Added Component: Designator=R3_U_schakelaarDetectie2(R0805)
+Added Component: Designator=R4_U_schakelaarDetectie1(0603)
+Added Component: Designator=R4_U_schakelaarDetectie2(0603)
+Added Component: Designator=U1(TO-220AB)
+Added Component: Designator=U2(TO-220AB)
+Added Pin To Net: NetName=NetD1_1 Pin=D1-1
+Added Pin To Net: NetName=NetD1_1 Pin=K1-4
+Added Pin To Net: NetName=GND Pin=P3-3
+Added Pin To Net: NetName=GND Pin=P9-1
+Added Pin To Net: NetName=NetD1_1 Pin=Q1-C
+Added Pin To Net: NetName=GND Pin=Q1-E
+Added Pin To Net: NetName=GND Pin=R1-2
+Added Pin To Net: NetName=GND Pin=R2-2
+Added Pin To Net: NetName=5V0 Pin=P3-2
+Added Net: Name=5V0
+Added Pin To Net: NetName=12V_U_schakelaarDetectie1 Pin=C1_U_schakelaarDetectie1-2
+Added Pin To Net: NetName=12V_U_schakelaarDetectie1 Pin=D2_U_schakelaarDetectie1-2
+Added Net: Name=12V_U_schakelaarDetectie1
+Added Pin To Net: NetName=12V_U_schakelaarDetectie2 Pin=C1_U_schakelaarDetectie2-2
+Added Pin To Net: NetName=12V_U_schakelaarDetectie2 Pin=D2_U_schakelaarDetectie2-2
+Added Net: Name=12V_U_schakelaarDetectie2
+Added Pin To Net: NetName=12V Pin=D1-2
+Added Pin To Net: NetName=12V Pin=K1-5
+Added Pin To Net: NetName=12V Pin=P1-2
+Added Pin To Net: NetName=12V Pin=P4-1
+Added Pin To Net: NetName=12V Pin=P6-1
+Added Pin To Net: NetName=12V Pin=P9-2
+Added Net: Name=12V
+Added Pin To Net: NetName=AN9/RB15 Pin=P2-4
+Added Pin To Net: NetName=AN9/RB15 Pin=R2-1
+Added Pin To Net: NetName=AN9/RB15 Pin=U2-3
+Added Net: Name=AN9/RB15
+Added Pin To Net: NetName=AN10/INT1/RB14 Pin=P2-2
+Added Pin To Net: NetName=AN10/INT1/RB14 Pin=R1-1
+Added Pin To Net: NetName=AN10/INT1/RB14 Pin=U1-3
+Added Net: Name=AN10/INT1/RB14
+Added Pin To Net: NetName=DONOTUSE1 Pin=P3-1
+Added Net: Name=DONOTUSE1
+Added Pin To Net: NetName=ENABLELIGHTS1 Pin=P1-1
+Added Pin To Net: NetName=ENABLELIGHTS1 Pin=U1-1
+Added Net: Name=ENABLELIGHTS1
+Added Pin To Net: NetName=ENABLELIGHTS2 Pin=P1-3
+Added Pin To Net: NetName=ENABLELIGHTS2 Pin=U2-1
+Added Net: Name=ENABLELIGHTS2
+Added Pin To Net: NetName=ENABLETRANSFORMER Pin=P1-4
+Added Pin To Net: NetName=ENABLETRANSFORMER Pin=Q1-B
+Added Net: Name=ENABLETRANSFORMER
+Added Pin To Net: NetName=GND_U_schakelaarDetectie1 Pin=C1_U_schakelaarDetectie1-1
+Added Pin To Net: NetName=GND_U_schakelaarDetectie1 Pin=C2_U_schakelaarDetectie1-1
+Added Pin To Net: NetName=GND_U_schakelaarDetectie1 Pin=L1_U_schakelaarDetectie1-3
+Added Pin To Net: NetName=GND_U_schakelaarDetectie1 Pin=R4_U_schakelaarDetectie1-2
+Added Net: Name=GND_U_schakelaarDetectie1
+Added Pin To Net: NetName=GND_U_schakelaarDetectie2 Pin=C1_U_schakelaarDetectie2-1
+Added Pin To Net: NetName=GND_U_schakelaarDetectie2 Pin=C2_U_schakelaarDetectie2-1
+Added Pin To Net: NetName=GND_U_schakelaarDetectie2 Pin=L1_U_schakelaarDetectie2-3
+Added Pin To Net: NetName=GND_U_schakelaarDetectie2 Pin=R4_U_schakelaarDetectie2-2
+Added Net: Name=GND_U_schakelaarDetectie2
+Added Pin To Net: NetName=HV_220VAC_FASE_GESCHAKELD Pin=K1-3
+Added Pin To Net: NetName=HV_220VAC_FASE_GESCHAKELD Pin=P8-2
+Added Net: Name=HV_220VAC_FASE_GESCHAKELD
+Added Pin To Net: NetName=HV_220VAC_FASE Pin=K1-1
+Added Pin To Net: NetName=HV_220VAC_FASE Pin=P7-2
+Added Net: Name=HV_220VAC_FASE
+Added Pin To Net: NetName=HV_220VAC_NEUTRAL Pin=F1-1
+Added Pin To Net: NetName=HV_220VAC_NEUTRAL Pin=L1_U_schakelaarDetectie1-1
+Added Pin To Net: NetName=HV_220VAC_NEUTRAL Pin=L1_U_schakelaarDetectie2-1
+Added Pin To Net: NetName=HV_220VAC_NEUTRAL Pin=P8-1
+Added Net: Name=HV_220VAC_NEUTRAL
+Added Pin To Net: NetName=NetC2_U_schakelaarDetectie1_2 Pin=C2_U_schakelaarDetectie1-2
+Added Pin To Net: NetName=NetC2_U_schakelaarDetectie1_2 Pin=D3_U_schakelaarDetectie1-2
+Added Pin To Net: NetName=NetC2_U_schakelaarDetectie1_2 Pin=R3_U_schakelaarDetectie1-1
+Added Net: Name=NetC2_U_schakelaarDetectie1_2
+Added Pin To Net: NetName=NetC2_U_schakelaarDetectie2_2 Pin=C2_U_schakelaarDetectie2-2
+Added Pin To Net: NetName=NetC2_U_schakelaarDetectie2_2 Pin=D3_U_schakelaarDetectie2-2
+Added Pin To Net: NetName=NetC2_U_schakelaarDetectie2_2 Pin=R3_U_schakelaarDetectie2-1
+Added Net: Name=NetC2_U_schakelaarDetectie2_2
+Added Pin To Net: NetName=NetD2_U_schakelaarDetectie1_1 Pin=D2_U_schakelaarDetectie1-1
+Added Pin To Net: NetName=NetD2_U_schakelaarDetectie1_1 Pin=D3_U_schakelaarDetectie1-1
+Added Pin To Net: NetName=NetD2_U_schakelaarDetectie1_1 Pin=L1_U_schakelaarDetectie1-6
+Added Net: Name=NetD2_U_schakelaarDetectie1_1
+Added Pin To Net: NetName=NetD2_U_schakelaarDetectie2_1 Pin=D2_U_schakelaarDetectie2-1
+Added Pin To Net: NetName=NetD2_U_schakelaarDetectie2_1 Pin=D3_U_schakelaarDetectie2-1
+Added Pin To Net: NetName=NetD2_U_schakelaarDetectie2_1 Pin=L1_U_schakelaarDetectie2-6
+Added Net: Name=NetD2_U_schakelaarDetectie2_1
+Added Pin To Net: NetName=NetF1_2 Pin=F1-2
+Added Pin To Net: NetName=NetF1_2 Pin=P7-1
+Added Net: Name=NetF1_2
+Added Pin To Net: NetName=NetL1_U_schakelaarDetectie1_4 Pin=L1_U_schakelaarDetectie1-4
+Added Pin To Net: NetName=NetL1_U_schakelaarDetectie1_4 Pin=L1_U_schakelaarDetectie1-5
+Added Net: Name=NetL1_U_schakelaarDetectie1_4
+Added Pin To Net: NetName=NetL1_U_schakelaarDetectie2_4 Pin=L1_U_schakelaarDetectie2-4
+Added Pin To Net: NetName=NetL1_U_schakelaarDetectie2_4 Pin=L1_U_schakelaarDetectie2-5
+Added Net: Name=NetL1_U_schakelaarDetectie2_4
+Added Pin To Net: NetName=NetP4_2 Pin=P4-2
+Added Pin To Net: NetName=NetP4_2 Pin=U1-2
+Added Net: Name=NetP4_2
+Added Pin To Net: NetName=NetP5_1 Pin=L1_U_schakelaarDetectie1-2
+Added Pin To Net: NetName=NetP5_1 Pin=P5-1
+Added Net: Name=NetP5_1
+Added Pin To Net: NetName=NetP5_2 Pin=L1_U_schakelaarDetectie2-2
+Added Pin To Net: NetName=NetP5_2 Pin=P5-2
+Added Net: Name=NetP5_2
+Added Pin To Net: NetName=NetP6_2 Pin=P6-2
+Added Pin To Net: NetName=NetP6_2 Pin=U2-2
+Added Net: Name=NetP6_2
+Added Pin To Net: NetName=NetR3_U_schakelaarDetectie1_2 Pin=R3_U_schakelaarDetectie1-2
+Added Pin To Net: NetName=NetR3_U_schakelaarDetectie1_2 Pin=R4_U_schakelaarDetectie1-1
+Added Net: Name=NetR3_U_schakelaarDetectie1_2
+Added Pin To Net: NetName=NetR3_U_schakelaarDetectie2_2 Pin=R3_U_schakelaarDetectie2-2
+Added Pin To Net: NetName=NetR3_U_schakelaarDetectie2_2 Pin=R4_U_schakelaarDetectie2-1
+Added Net: Name=NetR3_U_schakelaarDetectie2_2
+Added Pin To Net: NetName=PGC/SCL/SDO Pin=P3-5
+Added Net: Name=PGC/SCL/SDO
+Added Pin To Net: NetName=PGD/SDA/SCK Pin=P3-4
+Added Net: Name=PGD/SDA/SCK
+Added Pin To Net: NetName=VREF+/AN0/RA0 Pin=P2-3
+Added Net: Name=VREF+/AN0/RA0
+Added Pin To Net: NetName=VREF-/AN1/RA0 Pin=P2-1
+Added Net: Name=VREF-/AN1/RA0
+Added Class: Name=U_schakelaarDetectie1
+Added Class: Name=U_schakelaarDetectie2
+Added Class: Name=schakelaarDetectie
+Added Member To Class: ClassName=main Member=Component D1 60v 1A
+Added Member To Class: ClassName=main Member=Component F1 220VAC 0.4A
+Added Member To Class: ClassName=main Member=Component K1 Relay SPDT
+Added Member To Class: ClassName=main Member=Component P1 Pin Header
+Added Member To Class: ClassName=main Member=Component P2 Pin Header
+Added Member To Class: ClassName=main Member=Component P3 Pin Header
+Added Member To Class: ClassName=main Member=Component P4 12v PWM out
+Added Member To Class: ClassName=main Member=Component P5 FASE Ingang
+Added Member To Class: ClassName=main Member=Component P6 12v PWM out
+Added Member To Class: ClassName=main Member=Component P7 220VAC input
+Added Member To Class: ClassName=main Member=Component P8 220VAC output (to 12v transformer)
+Added Member To Class: ClassName=main Member=Component P9 12v geschakeld IN
+Added Member To Class: ClassName=main Member=Component Q1 w/internal Res
+Added Member To Class: ClassName=main Member=Component R1 RESISTOR
+Added Member To Class: ClassName=main Member=Component R2 RESISTOR
+Added Member To Class: ClassName=main Member=Component U1 IRF540PBF
+Added Member To Class: ClassName=main Member=Component U2 IRF540PBF
+Added Room: Name=main
+Added Room: Name=U_schakelaarDetectie1
+Added Room: Name=U_schakelaarDetectie2
