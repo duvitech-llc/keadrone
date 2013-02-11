@@ -1,0 +1,47 @@
+Removed Pin From Net: NetName=FU18 Pin=U1.1-46
+Change Component Designator: OldDesignator=C7.17 NewDesignator=C7.18
+Change Component Designator: OldDesignator=C8.17 NewDesignator=C8.18
+Change Component Designator: OldDesignator=C9.18 NewDesignator=C9.19
+Change Component Designator: OldDesignator=C10.21 NewDesignator=C10.22
+Change Component Designator: OldDesignator=C11.21 NewDesignator=C11.22
+Change Component Designator: OldDesignator=C12.21 NewDesignator=C12.22
+Change Component Designator: OldDesignator=C13.21 NewDesignator=C13.22
+Change Component Designator: OldDesignator=C19.20 NewDesignator=C19.21
+Change Component Designator: OldDesignator=C20.23 NewDesignator=C20.24
+Change Component Designator: OldDesignator=C21.23 NewDesignator=C21.24
+Change Component Designator: OldDesignator=C22.23 NewDesignator=C22.24
+Change Component Designator: OldDesignator=P1.17 NewDesignator=P1.18
+Change Component Designator: OldDesignator=P2.21 NewDesignator=P2.22
+Change Component Designator: OldDesignator=P7.22 NewDesignator=P7.23
+Change Component Designator: OldDesignator=P8.20 NewDesignator=P8.21
+Change Component Designator: OldDesignator=P9.20 NewDesignator=P9.21
+Change Component Designator: OldDesignator=P10 NewDesignator=P10.1
+Change Component Designator: OldDesignator=P11 NewDesignator=P11.1
+Change Component Designator: OldDesignator=R2.18 NewDesignator=R2.19
+Change Component Designator: OldDesignator=R3.18 NewDesignator=R3.19
+Change Component Designator: OldDesignator=R4.21 NewDesignator=R4.22
+Change Component Designator: OldDesignator=R5.21 NewDesignator=R5.22
+Change Component Designator: OldDesignator=U2.17 NewDesignator=U2.18
+Change Component Designator: OldDesignator=U3.21 NewDesignator=U3.22
+Change Component Designator: OldDesignator=U6.22 NewDesignator=U6.23
+Change Component Designator: OldDesignator=U7.23 NewDesignator=U7.24
+Change Component Designator: OldDesignator=U8.19 NewDesignator=U8.20
+Added Component: Designator=P4.17(PH1x3_2.54)
+Added Component: Designator=R6.17(R0805)
+Added Component: Designator=R7.17(R0805)
+Added Pin To Net: NetName=GND Pin=P4.17-1
+Added Pin To Net: NetName=5V0 Pin=P4.17-2
+Added Pin To Net: NetName=5V0 Pin=R7.17-2
+Change Net Name : Old Net Name=NetC11.21_2 New Net Name=NetC11.22_2
+Change Net Name : Old Net Name=NetC12.21_2 New Net Name=NetC12.22_2
+Added Pin To Net: NetName=NetP4.17_3 Pin=P4.17-3
+Added Pin To Net: NetName=NetP4.17_3 Pin=R6.17-1
+Added Pin To Net: NetName=NetP4.17_3 Pin=R7.17-1
+Added Net: Name=NetP4.17_3
+Added Pin To Net: NetName=SERVOSIG9 Pin=R6.17-2
+Added Pin To Net: NetName=SERVOSIG9 Pin=U1.1-46
+Added Net: Name=SERVOSIG9
+Change Class Name : Old Net Name=SERVOSIG[1..8] New Net Name=SERVOSIG[1..9]
+Added Class: Name=ServoConnector9
+Added Member To Class: ClassName=SERVOSIG[1..9] Member=Element[9]: SERVOSIG
+Added Room: Name=ServoConnector9

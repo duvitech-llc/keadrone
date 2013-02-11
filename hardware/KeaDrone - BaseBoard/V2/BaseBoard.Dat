@@ -1,0 +1,44 @@
+Field=Quantity~Integer~Quantity~62|Field=Designator~String~Designator~128|Field=Footprint~String~Footprint~123|Field=Supplier 1~String~Supplier 1~70|Field=Supplier 2~String~Supplier 2~70|Field=Supplier Currency 1~String~Supplier Currency 1~115|Field=Supplier Currency 2~String~Supplier Currency 2~115|Field=Supplier Order Qty 1~Integer~Supplier Order Qty 1~118|Field=Supplier Order Qty 2~Integer~Supplier Order Qty 2~118|Field=Supplier Part Number 1~String~Supplier Part Number 1~147|Field=Supplier Part Number 2~String~Supplier Part Number 2~132|Field=Supplier Subtotal 1~Float~Supplier Subtotal 1~112|Field=Supplier Subtotal 2~Float~Supplier Subtotal 2~112|Field=Supplier Unit Price 1~Float~Supplier Unit Price 1~119|Field=Supplier Unit Price 2~Float~Supplier Unit Price 2~119|Field=DesignItemId~String~DesignItemId~129|Field=Description~String~Description~100|ReportField=Currency~EUR|ReportField=ProductionQuantity~10|ReportField=ProjectFileName~BaseBoard.PrjPcb|ReportField=ProjectFullPath~C:\Users\admin\SecretSync\Root\USE\Hardware\prive\KeaDrone - BaseBoard\V2\BaseBoard.PrjPcb|ReportField=Title~Bill of Materials For Project [BaseBoard.PrjPcb] (No PCB Document Selected)|ReportField=TotalQuantity~106|ReportField=ReportTime~17:41:44|ReportField=ReportDate~12-6-2011|ReportField=ReportDateTime~12-6-2011 17:41:44|ReportField=OutputName~Bill of Materials|ReportField=OutputType~BOM_PartType|ReportField=GeneratorName~BOM|ReportField=GeneratorDescription~Bill of Materials|ReportField=VariantName~None|ReportField=Address1~3 Minna Close|ReportField=Address2~Belrose|ReportField=Address3~NSW 2085|ReportField=Address4~Australia|ReportField=ApprovedBy~|ReportField=Author~|ReportField=CheckedBy~|ReportField=CompanyName~|ReportField=CurrentDate~12-6-2011|ReportField=CurrentTime~17:41:21|ReportField=Date~|ReportField=DocumentFullPathAndName~C:\Users\admin\SecretSync\Root\USE\Hardware\prive\KeaDrone - BaseBoard\V2\main.SchDoc|ReportField=DocumentName~main.SchDoc|ReportField=DocumentNumber~|ReportField=DrawnBy~|ReportField=Engineer~|ReportField=ImagePath~|ReportField=ModifiedDate~25-5-2011|ReportField=Organization~Altium Limited|ReportField=PageSetup~Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=0.97|XCorrection=1.00|YCorrection=1.00|PrintKind=0|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=273|PrintQuality=-2|MediaType=1|DitherType=10|PaperKind=A4|PrintScaleMode=1|ReportField=ProjectName~BaseBoard.PrjPcb|ReportField=Revision~|ReportField=Rule~|ReportField=SheetNumber~|ReportField=SheetTotal~|ReportField=Time~|ReportField=Title~Main|ReportField=ConfigurationParameters~|ReportField=ConfiguratorName~|ReportField=IsUserConfigurable~|ReportField=VersionControl_RevNumber~|ReportField=DataSourceFileName~BaseBoard.PrjPcb|ReportField=DataSourceFullPath~C:\Users\admin\SecretSync\Root\USE\Hardware\prive\KeaDrone - BaseBoard\V2\BaseBoard.PrjPcb
+16|C1, C3, C7, C8, C11, C13, C16, C17, C18, C20, C21, C23, C25, C26, C30, C31|C0805|Farnell|Digi-Key|EUR|Loading...|160||1759266|478-1395-1-ND|1.76||0.01||100n|
+2|C2, C4|C0805|Farnell||EUR|Loading...|20||1759194||||||18p|
+2|C5, C6|C1210|Farnell|Farnell|EUR|Loading...|20||1759458|1759458|3.82||0.19||10uF-1210-X5R|
+4|C9, C12, C24, C29|C1206|Farnell|Farnell|EUR|Loading...|40||1759434|1759434|2.2||0.06||10uF|
+1|C10|C0805||Farnell|EUR|Loading...|10|||1692287|0.1||0.01||0.01uF-0805-X7R|
+2|C14, C15|C1210||Farnell|EUR|Loading...|20|||1414066|14.2||0.71||2.2uF-1210-X7R|
+1|C19|C0805|||Loading...|Loading...|||||||||10n|
+1|C22|C0805|||Loading...|Loading...|||||||||2n2|
+2|C27, C28|C0805|||Loading...|Loading...|||||||||22n|
+1|D1|SOD123W|Farnell|Farnell|EUR|Loading...|10||1829202|1829202|2.2||0.22||PMEG4030ER|
+5|D2, D3, D4, D5, D7|PLCC2|Farnell|Farnell|EUR|Loading...|50||1328317|1328317|3.9||0.08||Green-PLCC2|LED, Surface Mount LED Indicator
+1|D6|SOD123F|Farnell|Farnell|EUR|Loading...|10||1510687|1510687|2||0.2||PMEG3020EH|
+1|F1|F_2920L185|Farnell|Farnell|EUR|Loading...|10||1822228|1822228|8.8||0.88||2920L185|Fuse
+1|L1|Square_7.3x7.3x4.5|Farnell|Farnell|EUR|Loading...|10||1635989|1635989|18||1.8||15uH-Shield-1.6A-Wurth|Inductor
+1|P1|TB2_3.5|Farnell|Farnell|Loading...|Loading...|||||||||TB2|Con1x2
+9|P2, P4, P5, P6, P7, P8, P9, P16, P20|PH1x3_2.54|Farnell|Farnell|Loading...|Loading...|||||||||PH1x3|Con1x3
+3|P3, P15, P19|PH1x5_2.54|Farnell|Farnell|Loading...|Loading...|||||||||PH1x5|Con1x5
+2|P10, P11|PH1x2_2.54|Farnell|Farnell|Loading...|Loading...|||||||||PH1x2|Con1x2
+2|P12, P14|PH2x5_2.54|Farnell||Loading...|Loading...|||||||||PH2x5|Header, 5-Pin, Dual row
+1|P13|PH1x7_2.54|Farnell|Farnell|Loading...|Loading...|||||||||PH1x7|Con1x7
+1|P17|PH1x4_2.54|Farnell|Farnell|Loading...|Loading...|||||||||PH1x4|Con1x4
+1|P18|GPScon-BM06B-SRSS-TB|||Loading...|Loading...|||||||||GPS-LS20031|Header, 6-Pin; GPS; 1mm pitch; SMT; SH connector; Crimp
+1|R1|R0805|Farnell|Farnell|Loading...|Loading...|||||||||22K|Resistor
+9|R2, R7, R9, R12, R13, R16, R23, R28, R30|R0805|Farnell|Farnell|EUR|Loading...|90||1618240|1618240|11.34||0.13||100R|Resistor
+1|R3|R0805|Farnell|Farnell|EUR|Loading...|10||1618243|1618243|0.96||0.1||100K|Resistor
+9|R4, R10, R11, R14, R15, R18, R24, R29, R31|R0805|Farnell||EUR|Loading...|90||1618241||7.29||0.08||1K|Resistor
+1|R5|R0805|Farnell||EUR|Loading...|10||1618242||1.69||0.17||10K|Resistor
+5|R6, R17, R19, R21, R22|R0805|Farnell||EUR|Loading...|50||1577367||3.8||0.08||470R|Resistor
+1|R8|R0805|Farnell||EUR|Loading...|10||1618244||1.59||0.16||1M|Resistor
+1|R20|R0805|Farnell||EUR|Loading...|10||1618239||1.02||0.1||10R|Resistor
+1|R25|R0805|Farnell|Farnell|EUR|Loading...|10||1618236|1618236|1.43||0.14||1R|Resistor
+2|R26, R27|R0805|Farnell|Farnell|EUR|Loading...|20||1577368|1577368|2.02||0.1||4K7|Resistor
+3|SW1, SW2, SW4|SWITCH TACT|Farnell|Farnell|EUR|Loading...|30||1795335|1795335|3.96||0.13||Pushbutton TACT|Switch
+1|SW3|1MS1T1B5M1QE|Farnell||EUR|Loading...|10||9473378||13||1.3||Toggle-Sw_1MS1T1B5M1QE|Switch
+1|U1|TQFP-PT64_N|Digi-Key|Farnell|EUR|EUR|10|10|PIC32MX320F064H-80I/PT-ND|1523319|37.12|44.2|3.71|4.42|PIC32MX320F064H-80I/PT|High Performance 80 MHz MIPS-Based 32-Bit Flash Microcontroller, 64KB Program Memory, 64-pin TQFP
+1|U2|MRA08B_N|||||||||||||LM22674MR-5.0|Power, 500mA SIMPLE SWITCHER, Step-Down Voltage Regulator with Precision Enable
+3|U3, U7, U9|SOT-89-MB3_N|Digi-Key|Farnell|EUR|EUR|30|30|MCP1702T-3302E/MB-ND|1605558||13.5||0.45|MCP1702T-3302E/MB|Power, 250 mA Low Quiescent Current LDO Regulator, 3-Pin SOT-89, Extended Temperature, Tape and Reel
+1|U4|Keadrone_IMUv1|||Loading...|Loading...|||||||||Keadrone-imu-v1|
+1|U5|QFN50P400X400-24V2M - GYRO 3axis|Sparkfun||Loading...|Loading...|||ITG-3200||||||ITG-3200|Gyro, 3-axis
+1|U6|BMA180|Digikey|Digi-Key|Loading...|Loading...|||828-1019-1-ND|828-1019-1-ND|||||BMA180|
+1|U8|Zigbee_maxstream|||Loading...|Loading...|||||||||Zigbee-WRL-08690|Wireless, zigbee module from Maxstream;
+1|U10|BlueTooth_RN4x|||Loading...|Loading...|||||||||BlueTooth-RN42|Wireless, Bluetooth
+1|Y1|Osc-SMT-6x3.6x1.2|Farnell||EUR|Loading...|10||1611803||6.3||0.63||ABMM2-8.000MHZ-E2-T|Crystal Oscillator

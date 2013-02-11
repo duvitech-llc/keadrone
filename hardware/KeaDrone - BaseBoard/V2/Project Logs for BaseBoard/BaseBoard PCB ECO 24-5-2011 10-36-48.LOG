@@ -1,0 +1,2 @@
+Removed Pin From Net: NetName=INPUT 11.1V Pin=R2.19-1
+Added Pin To Net: NetName=INPUT 11.1V-AFTERSW Pin=R2.19-1

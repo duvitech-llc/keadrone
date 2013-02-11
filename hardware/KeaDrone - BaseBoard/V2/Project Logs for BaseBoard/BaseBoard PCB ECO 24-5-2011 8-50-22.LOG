@@ -1,0 +1,10 @@
+Removed Pin From Net: NetName=SERVOSIG9 Pin=U1.1-46
+Removed Pin From Net: NetName=SERVOSIG1 Pin=U1.1-49
+Removed Pin From Net: NetName=SERVOSIG2 Pin=U1.1-50
+Removed Pin From Net: NetName=SERVOSIG3 Pin=U1.1-51
+Removed Pin From Net: NetName=SERVOSIG4 Pin=U1.1-52
+Added Pin To Net: NetName=SERVOSIG1 Pin=U1.1-46
+Added Pin To Net: NetName=SERVOSIG2 Pin=U1.1-49
+Added Pin To Net: NetName=SERVOSIG3 Pin=U1.1-50
+Added Pin To Net: NetName=SERVOSIG4 Pin=U1.1-51
+Added Pin To Net: NetName=SERVOSIG9 Pin=U1.1-52
