@@ -63,7 +63,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document3]
-DocumentPath=pcb.PcbDoc
+DocumentPath=pcb_xl_15cm.PcbDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -125,75 +125,139 @@ DocumentPath=ProjectOutputs\Design Rule Check - pcb.html
 DItemRevisionGUID=
 
 [GeneratedDocument3]
-DocumentPath=pcb 4-4-2013 15-42-19.WAS
+DocumentPath=ProjectOutputs\Design Rule Check - pcb_xl_15cm.html
 DItemRevisionGUID=
 
 [GeneratedDocument4]
-DocumentPath=pcb 4-4-2013 15-42-25.WAS
+DocumentPath=pcb 4-4-2013 15-42-19.WAS
 DItemRevisionGUID=
 
 [GeneratedDocument5]
-DocumentPath=Gerber files\pcb-BoardEdgeRout.TXT
+DocumentPath=pcb 4-4-2013 15-42-25.WAS
 DItemRevisionGUID=
 
 [GeneratedDocument6]
-DocumentPath=Gerber files\pcb.DRR
+DocumentPath=Gerber files\pcb-BoardEdgeRout.TXT
 DItemRevisionGUID=
 
 [GeneratedDocument7]
-DocumentPath=Gerber files\pcb.EXTREP
+DocumentPath=Gerber files\pcb.DRR
 DItemRevisionGUID=
 
 [GeneratedDocument8]
-DocumentPath=Gerber files\pcb.GBL
+DocumentPath=Gerber files\pcb.EXTREP
 DItemRevisionGUID=
 
 [GeneratedDocument9]
-DocumentPath=Gerber files\pcb.GBO
+DocumentPath=Gerber files\pcb.GBL
 DItemRevisionGUID=
 
 [GeneratedDocument10]
-DocumentPath=Gerber files\pcb.GBS
+DocumentPath=Gerber files\pcb.GBO
 DItemRevisionGUID=
 
 [GeneratedDocument11]
-DocumentPath=Gerber files\pcb.GKO
+DocumentPath=Gerber files\pcb.GBS
 DItemRevisionGUID=
 
 [GeneratedDocument12]
-DocumentPath=Gerber files\pcb.GM30
+DocumentPath=Gerber files\pcb.GKO
 DItemRevisionGUID=
 
 [GeneratedDocument13]
-DocumentPath=Gerber files\pcb.GPB
+DocumentPath=Gerber files\pcb.GM30
 DItemRevisionGUID=
 
 [GeneratedDocument14]
-DocumentPath=Gerber files\pcb.GTL
+DocumentPath=Gerber files\pcb.GPB
 DItemRevisionGUID=
 
 [GeneratedDocument15]
-DocumentPath=Gerber files\pcb.GTO
+DocumentPath=Gerber files\pcb.GTL
 DItemRevisionGUID=
 
 [GeneratedDocument16]
-DocumentPath=Gerber files\pcb.GTS
+DocumentPath=Gerber files\pcb.GTO
 DItemRevisionGUID=
 
 [GeneratedDocument17]
-DocumentPath=Gerber files\pcb.LDP
+DocumentPath=Gerber files\pcb.GTS
 DItemRevisionGUID=
 
 [GeneratedDocument18]
-DocumentPath=pcb.PcbDoc.htm
+DocumentPath=Gerber files\pcb.LDP
 DItemRevisionGUID=
 
 [GeneratedDocument19]
-DocumentPath=Gerber files\pcb.REP
+DocumentPath=pcb.PcbDoc.htm
 DItemRevisionGUID=
 
 [GeneratedDocument20]
+DocumentPath=Gerber files\pcb.REP
+DItemRevisionGUID=
+
+[GeneratedDocument21]
 DocumentPath=Gerber files\pcb.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument22]
+DocumentPath=Gerber files\pcb_xl_15cm-BoardEdgeRout.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument23]
+DocumentPath=Gerber files\pcb_xl_15cm.DRR
+DItemRevisionGUID=
+
+[GeneratedDocument24]
+DocumentPath=Gerber files\pcb_xl_15cm.EXTREP
+DItemRevisionGUID=
+
+[GeneratedDocument25]
+DocumentPath=Gerber files\pcb_xl_15cm.GBL
+DItemRevisionGUID=
+
+[GeneratedDocument26]
+DocumentPath=Gerber files\pcb_xl_15cm.GBO
+DItemRevisionGUID=
+
+[GeneratedDocument27]
+DocumentPath=Gerber files\pcb_xl_15cm.GBS
+DItemRevisionGUID=
+
+[GeneratedDocument28]
+DocumentPath=Gerber files\pcb_xl_15cm.GKO
+DItemRevisionGUID=
+
+[GeneratedDocument29]
+DocumentPath=Gerber files\pcb_xl_15cm.GM30
+DItemRevisionGUID=
+
+[GeneratedDocument30]
+DocumentPath=Gerber files\pcb_xl_15cm.GPB
+DItemRevisionGUID=
+
+[GeneratedDocument31]
+DocumentPath=Gerber files\pcb_xl_15cm.GTL
+DItemRevisionGUID=
+
+[GeneratedDocument32]
+DocumentPath=Gerber files\pcb_xl_15cm.GTO
+DItemRevisionGUID=
+
+[GeneratedDocument33]
+DocumentPath=Gerber files\pcb_xl_15cm.GTS
+DItemRevisionGUID=
+
+[GeneratedDocument34]
+DocumentPath=Gerber files\pcb_xl_15cm.LDP
+DItemRevisionGUID=
+
+[GeneratedDocument35]
+DocumentPath=Gerber files\pcb_xl_15cm.REP
+DItemRevisionGUID=
+
+[GeneratedDocument36]
+DocumentPath=Gerber files\pcb_xl_15cm.TXT
 DItemRevisionGUID=
 
 [Configuration1]
@@ -215,6 +279,9 @@ CurrentRevision=
 Variant=[No Variations]
 GenerateBOM=0
 OutputJobsCount=0
+
+[Generic_EDE]
+OutputDir=ProjectOutputs
 
 [Generic_SmartPDF]
 AutoOpenFile=-1
@@ -249,9 +316,6 @@ SaveSettingsToOutJob=0
 
 [Generic_ScriptingSystem]
 StartProcName=FindAnnularRing_6C.pas>FindAnnularRingClass6C
-
-[Generic_EDE]
-OutputDir=ProjectOutputs
 
 [OutputGroup1]
 Name=Netlist Outputs

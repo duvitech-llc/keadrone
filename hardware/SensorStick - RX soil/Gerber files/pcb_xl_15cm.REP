@@ -1,9 +1,9 @@
 *************************************************************
-FileName = pcb.GBR
+FileName = pcb_xl_15cm.GBR
 AutoAperture = True
 *************************************************************
 Generating : Top Layer
-      File : pcb.GTL
+      File : pcb_xl_15cm.GTL
 
     Adding Layer      : Top Layer
 
@@ -33,12 +33,11 @@ Used DCodes :
     D29
     D30
     D31
-    D32
 *************************************************************
 
 *************************************************************
 Generating : Bottom Layer
-      File : pcb.GBL
+      File : pcb_xl_15cm.GBL
 
     Adding Layer      : Bottom Layer
 
@@ -57,12 +56,11 @@ Used DCodes :
     D31
     D32
     D33
-    D34
 *************************************************************
 
 *************************************************************
 Generating : Bottom Pad Master
-      File : pcb.GPB
+      File : pcb_xl_15cm.GPB
 
     Adding Layer      : Bottom Layer
 
@@ -76,27 +74,27 @@ Used DCodes :
     D28
     D29
     D30
-    D33
+    D32
 *************************************************************
 
 *************************************************************
 Generating : Top Overlay
-      File : pcb.GTO
+      File : pcb_xl_15cm.GTO
 
     Adding Layer      : Top Overlay
 
 
 Used DCodes :
     D23
+    D34
     D35
     D36
     D37
-    D38
 *************************************************************
 
 *************************************************************
 Generating : Top Solder
-      File : pcb.GTS
+      File : pcb_xl_15cm.GTS
 
     Adding Layer      : Top Solder
 
@@ -106,6 +104,7 @@ Generating : Top Solder
 
 
 Used DCodes :
+    D38
     D39
     D40
     D41
@@ -126,13 +125,11 @@ Used DCodes :
     D56
     D57
     D58
-    D59
-    D60
 *************************************************************
 
 *************************************************************
 Generating : Bottom Solder
-      File : pcb.GBS
+      File : pcb_xl_15cm.GBS
 
     Adding Layer      : Bottom Solder
 
@@ -142,6 +139,7 @@ Generating : Bottom Solder
 
 
 Used DCodes :
+    D51
     D52
     D53
     D54
@@ -150,40 +148,38 @@ Used DCodes :
     D57
     D58
     D59
-    D60
-    D61
 *************************************************************
 
 *************************************************************
 Generating : Bottom Overlay
-      File : pcb.GBO
+      File : pcb_xl_15cm.GBO
 
     Adding Layer      : Bottom Overlay
 
 
 Used DCodes :
-    D38
+    D37
 *************************************************************
 
 *************************************************************
 Generating : Mechanical 30
-      File : pcb.GM30
+      File : pcb_xl_15cm.GM30
 
     Adding Layer      : Mechanical 30
 
 
 Used DCodes :
-    D38
+    D37
 *************************************************************
 
 *************************************************************
 Generating : Keep-Out Layer
-      File : pcb.GKO
+      File : pcb_xl_15cm.GKO
 
     Adding Layer      : Keep-Out Layer
 
 
 Used DCodes :
-    D38
+    D37
 *************************************************************
 

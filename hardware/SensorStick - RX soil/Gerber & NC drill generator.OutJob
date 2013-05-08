@@ -17,7 +17,7 @@ RevisionNamingSchemeGUID=
 [OutputGroup1]
 Name=Gerber & NC drill generator.OutJob
 Description=
-TargetOutputMedium=Publish To PDF
+TargetOutputMedium=Generate Files
 VariantName=Variant of SensorStick - RX (minimal)
 VariantScope=1
 CurrentConfigurationName=
@@ -38,7 +38,7 @@ OutputName1=Composite Drawing
 OutputCategory1=Documentation
 OutputDocumentPath1=
 OutputVariantName1=
-OutputEnabled1=1
+OutputEnabled1=0
 OutputEnabled1_OutputMedium1=1
 OutputEnabled1_OutputMedium2=1
 OutputEnabled1_OutputMedium3=1
@@ -74,7 +74,7 @@ OutputName2=PCB 3D Prints
 OutputCategory2=Documentation
 OutputDocumentPath2=
 OutputVariantName2=
-OutputEnabled2=1
+OutputEnabled2=0
 OutputEnabled2_OutputMedium1=0
 OutputEnabled2_OutputMedium2=2
 OutputEnabled2_OutputMedium3=0
@@ -82,13 +82,13 @@ OutputEnabled2_OutputMedium4=0
 OutputDefault2=0
 PageOptions2=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=2.04|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-4|MediaType=1|DitherType=10|PaperKind=A4|PrintScaleMode=1
 Configuration2_Name1=OutputConfigurationParameter1
-Configuration2_Item1=Record=Pcb3DPrintView|ResX=150|ResY=150|ViewX=11417320|ViewY=39370055|LookAtX=49685040|LookAtY=46353412|LookAtZ=-1000|QuatX=0|QuatY=0|QuatZ=0|QuatW=1|Zoom=8.8138053147246E-6|UnitsPercent=True|UnitsDPI=True|LockResAspect=True|ViewConfigType=.config_3d|CustomCamera=False|ViewFromTop=True|ViewConfig= 
+Configuration2_Item1=Record=Pcb3DPrintView|ResX=150|ResY=150|ViewX=11417320|ViewY=39370055|LookAtX=49685040|LookAtY=46353412|LookAtZ=-1000|QuatX=0|QuatY=0|QuatZ=0|QuatW=1|Zoom=8.8138053147246E-6|UnitsPercent=True|UnitsDPI=True|LockResAspect=True|ViewConfigType=.config_3d|CustomCamera=False|ViewFromTop=True|ViewConfig=
 OutputType3=PCB Print
 OutputName3=PCB Prints
 OutputCategory3=Documentation
 OutputDocumentPath3=
 OutputVariantName3=
-OutputEnabled3=1
+OutputEnabled3=0
 OutputEnabled3_OutputMedium1=0
 OutputEnabled3_OutputMedium2=3
 OutputEnabled3_OutputMedium3=0
@@ -124,7 +124,7 @@ OutputName4=Schematic Prints
 OutputCategory4=Documentation
 OutputDocumentPath4=
 OutputVariantName4=
-OutputEnabled4=1
+OutputEnabled4=0
 OutputEnabled4_OutputMedium1=0
 OutputEnabled4_OutputMedium2=4
 OutputEnabled4_OutputMedium3=0
@@ -224,11 +224,11 @@ OutputName12=Gerber Files
 OutputCategory12=Fabrication
 OutputDocumentPath12=
 OutputVariantName12=
-OutputEnabled12=0
+OutputEnabled12=1
 OutputEnabled12_OutputMedium1=0
 OutputEnabled12_OutputMedium2=0
 OutputEnabled12_OutputMedium3=0
-OutputEnabled12_OutputMedium4=0
+OutputEnabled12_OutputMedium4=2
 OutputDefault12=0
 Configuration12_Name1=OutputConfigurationParameter1
 Configuration12_Item1=AddToAllPlots.Set=SerializeLayerHash.Version~2,ClassName~TLayerToBoolean|CentrePlots=False|DrillDrawingSymbol=GraphicsSymbol|DrillDrawingSymbolSize=500000|EmbeddedApertures=True|FilmBorderSize=10000000|FilmXSize=2000000000|FilmYSize=1598582680|FlashAllFills=False|FlashPadShapes=True|G54OnApertureChange=False|GenerateDRCRulesFile=False|GenerateReliefShapes=True|GerberUnit=Imperial|IncludeUnconnectedMidLayerPads=False|LeadingAndTrailingZeroesMode=SuppressLeadingZeroes|MaxApertureSize=2500000|MinusApertureTolerance=40|Mirror.Set=SerializeLayerHash.Version~2,ClassName~TLayerToBoolean|MirrorDrillDrawingPlots=False|MirrorDrillGuidePlots=False|NumberOfDecimals=5|OptimizeChangeLocationCommands=True|OriginPosition=Relative|Panelize=False|Plot.Set=SerializeLayerHash.Version~2,ClassName~TLayerToBoolean,16973830~1,16973834~1,16777217~1,16842751~1,16973835~1,16973831~1,16908318~1,16973837~1,16973849~1|PlotPositivePlaneLayers=False|PlotUsedDrillDrawingLayerPairs=False|PlotUsedDrillGuideLayerPairs=False|PlusApertureTolerance=40|Record=GerberView|SoftwareArcs=False|Sorted=False
@@ -249,7 +249,7 @@ OutputName14=NC Drill Files
 OutputCategory14=Fabrication
 OutputDocumentPath14=
 OutputVariantName14=
-OutputEnabled14=0
+OutputEnabled14=1
 OutputEnabled14_OutputMedium1=0
 OutputEnabled14_OutputMedium2=0
 OutputEnabled14_OutputMedium3=0
@@ -300,7 +300,7 @@ OutputName18=Bill of Materials
 OutputCategory18=Report
 OutputDocumentPath18=
 OutputVariantName18=Variant of SensorStick - RX (minimal)
-OutputEnabled18=1
+OutputEnabled18=0
 OutputEnabled18_OutputMedium1=0
 OutputEnabled18_OutputMedium2=5
 OutputEnabled18_OutputMedium3=0
@@ -314,7 +314,7 @@ Configuration18_Item2=OpenExported=False|AddToProject=False|ForceFit=False|NotFi
 Configuration18_Name3=GroupOrder
 Configuration18_Item3=Comment=True|Footprint=True
 Configuration18_Name4=OutputConfigurationParameter1
-Configuration18_Item4==Pcb3DPrintView|ResX=150|ResY=150|ViewX=11417320|ViewY=39370055|LookAtX=49685040|LookAtY=46353412|LookAtZ=-1000|QuatX=0|QuatY=0|QuatZ=0|QuatW=1|Zoom=8.8138053147246E-6|UnitsPercent=True|UnitsDPI=True|LockResAspect=True|ViewConfigType=.config_3d|CustomCamera=False|ViewFromTop=True|ViewConfig= 
+Configuration18_Item4==Pcb3DPrintView|ResX=150|ResY=150|ViewX=11417320|ViewY=39370055|LookAtX=49685040|LookAtY=46353412|LookAtZ=-1000|QuatX=0|QuatY=0|QuatZ=0|QuatW=1|Zoom=8.8138053147246E-6|UnitsPercent=True|UnitsDPI=True|LockResAspect=True|ViewConfigType=.config_3d|CustomCamera=False|ViewFromTop=True|ViewConfig=
 Configuration18_Name5=SortOrder
 Configuration18_Item5=Designator=Up|Comment=Up|Footprint=Up
 Configuration18_Name6=VisibleOrder

@@ -1,20 +1,20 @@
 Output: Gerber Files
 Type  : Gerber
-From  : Variant [Variant of SensorStick - RX (minimal)] of PCB Document [pcb.PcbDoc]
-   Generated File[pcb.GTL]
-   Generated File[pcb.GBL]
-   Generated File[pcb.GPB]
-   Generated File[pcb.GTO]
-   Generated File[pcb.GTS]
-   Generated File[pcb.GBS]
-   Generated File[pcb.GBO]
-   Generated File[pcb.GM30]
-   Generated File[pcb.GKO]
-   Generated File[pcb.EXTREP]
-   Generated File[pcb.REP]
+From  : Variant [Variant of SensorStick - RX (minimal)] of PCB Document [pcb_xl_15cm.PcbDoc]
+   Generated File[pcb_xl_15cm.GTL]
+   Generated File[pcb_xl_15cm.GBL]
+   Generated File[pcb_xl_15cm.GPB]
+   Generated File[pcb_xl_15cm.GTO]
+   Generated File[pcb_xl_15cm.GTS]
+   Generated File[pcb_xl_15cm.GBS]
+   Generated File[pcb_xl_15cm.GBO]
+   Generated File[pcb_xl_15cm.GM30]
+   Generated File[pcb_xl_15cm.GKO]
+   Generated File[pcb_xl_15cm.EXTREP]
+   Generated File[pcb_xl_15cm.REP]
 
 
 Files Generated   : 11
 Documents Printed : 0
 
-Finished Output Generation At 11:21:46 On 8/5/2013
+Finished Output Generation At 11:33:24 On 8/5/2013
