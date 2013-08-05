@@ -129,134 +129,62 @@ DocumentPath=ProjectOutputs\Design Rule Check - pcb_xl_15cm.html
 DItemRevisionGUID=
 
 [GeneratedDocument4]
-DocumentPath=pcb 4-4-2013 15-42-19.WAS
-DItemRevisionGUID=
-
-[GeneratedDocument5]
-DocumentPath=pcb 4-4-2013 15-42-25.WAS
-DItemRevisionGUID=
-
-[GeneratedDocument6]
-DocumentPath=Gerber files\pcb-BoardEdgeRout.TXT
-DItemRevisionGUID=
-
-[GeneratedDocument7]
-DocumentPath=Gerber files\pcb.DRR
-DItemRevisionGUID=
-
-[GeneratedDocument8]
-DocumentPath=Gerber files\pcb.EXTREP
-DItemRevisionGUID=
-
-[GeneratedDocument9]
-DocumentPath=Gerber files\pcb.GBL
-DItemRevisionGUID=
-
-[GeneratedDocument10]
-DocumentPath=Gerber files\pcb.GBO
-DItemRevisionGUID=
-
-[GeneratedDocument11]
-DocumentPath=Gerber files\pcb.GBS
-DItemRevisionGUID=
-
-[GeneratedDocument12]
-DocumentPath=Gerber files\pcb.GKO
-DItemRevisionGUID=
-
-[GeneratedDocument13]
-DocumentPath=Gerber files\pcb.GM30
-DItemRevisionGUID=
-
-[GeneratedDocument14]
-DocumentPath=Gerber files\pcb.GPB
-DItemRevisionGUID=
-
-[GeneratedDocument15]
-DocumentPath=Gerber files\pcb.GTL
-DItemRevisionGUID=
-
-[GeneratedDocument16]
-DocumentPath=Gerber files\pcb.GTO
-DItemRevisionGUID=
-
-[GeneratedDocument17]
-DocumentPath=Gerber files\pcb.GTS
-DItemRevisionGUID=
-
-[GeneratedDocument18]
-DocumentPath=Gerber files\pcb.LDP
-DItemRevisionGUID=
-
-[GeneratedDocument19]
-DocumentPath=pcb.PcbDoc.htm
-DItemRevisionGUID=
-
-[GeneratedDocument20]
-DocumentPath=Gerber files\pcb.REP
-DItemRevisionGUID=
-
-[GeneratedDocument21]
-DocumentPath=Gerber files\pcb.TXT
-DItemRevisionGUID=
-
-[GeneratedDocument22]
 DocumentPath=Gerber files\pcb_xl_15cm-BoardEdgeRout.TXT
 DItemRevisionGUID=
 
-[GeneratedDocument23]
+[GeneratedDocument5]
 DocumentPath=Gerber files\pcb_xl_15cm.DRR
 DItemRevisionGUID=
 
-[GeneratedDocument24]
+[GeneratedDocument6]
 DocumentPath=Gerber files\pcb_xl_15cm.EXTREP
 DItemRevisionGUID=
 
-[GeneratedDocument25]
+[GeneratedDocument7]
 DocumentPath=Gerber files\pcb_xl_15cm.GBL
 DItemRevisionGUID=
 
-[GeneratedDocument26]
+[GeneratedDocument8]
 DocumentPath=Gerber files\pcb_xl_15cm.GBO
 DItemRevisionGUID=
 
-[GeneratedDocument27]
+[GeneratedDocument9]
 DocumentPath=Gerber files\pcb_xl_15cm.GBS
 DItemRevisionGUID=
 
-[GeneratedDocument28]
+[GeneratedDocument10]
 DocumentPath=Gerber files\pcb_xl_15cm.GKO
 DItemRevisionGUID=
 
-[GeneratedDocument29]
+[GeneratedDocument11]
 DocumentPath=Gerber files\pcb_xl_15cm.GM30
 DItemRevisionGUID=
 
-[GeneratedDocument30]
+[GeneratedDocument12]
 DocumentPath=Gerber files\pcb_xl_15cm.GPB
 DItemRevisionGUID=
 
-[GeneratedDocument31]
+[GeneratedDocument13]
 DocumentPath=Gerber files\pcb_xl_15cm.GTL
 DItemRevisionGUID=
 
-[GeneratedDocument32]
+[GeneratedDocument14]
 DocumentPath=Gerber files\pcb_xl_15cm.GTO
 DItemRevisionGUID=
 
-[GeneratedDocument33]
+[GeneratedDocument15]
 DocumentPath=Gerber files\pcb_xl_15cm.GTS
 DItemRevisionGUID=
 
-[GeneratedDocument34]
+[GeneratedDocument16]
 DocumentPath=Gerber files\pcb_xl_15cm.LDP
 DItemRevisionGUID=
 
-[GeneratedDocument35]
+[GeneratedDocument17]
 DocumentPath=Gerber files\pcb_xl_15cm.REP
 DItemRevisionGUID=
 
-[GeneratedDocument36]
+[GeneratedDocument18]
 DocumentPath=Gerber files\pcb_xl_15cm.TXT
 DItemRevisionGUID=
 
