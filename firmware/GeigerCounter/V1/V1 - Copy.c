@@ -45,13 +45,13 @@ sensor;
 
 struct
 {
-    volatile unsigned int ldr;M
-    volatile float battVoltage;
-    volatile float bmpPressure;
-    volatile float bmpTemp;
-    volatile float dhtTemp;
-    volatile float dhtHum;
-    volatile Mint gmTubeVoltage;
+    unsigned int ldr;
+    float battVoltage;
+    float bmpPressure;
+    float bmpTemp;
+    float dhtTemp;
+    float dhtHum;
+    float gmTubeVoltage;
 } data;
 
 void fillData(void)
@@ -66,19 +66,13 @@ void fillData(void)
 void dataHandle(void)
 {
     // make a string for assembling the data to log:
-   String dataString = "";
+    String dataString = "";
 
     char convert[16];
     dataString += String(millis());
     dataString += ',';
-    dataString += "gmVolt:,";
-    dataString += String(data.gmTubeVoltage);
-    dataString += ',';
     dataString += "CPM:,";
     dataString += String(sumGetOneMinute());
-    dataString += ',';
-    dataString += "RAW:,";
-    dataString += String(gmGetRaw());
     dataString += ',';
     dataString += "Ldr:,";
     dataString += String(data.ldr);
@@ -87,29 +81,27 @@ void dataHandle(void)
     dtostrf(data.battVoltage, 5, 2, convert);
     dataString += convert;
     dataString += ',';
-    
-    sdPrintData(&dataString);
-    dataString = "";
-    
     dataString += "hPa:,";
     dtostrf(data.bmpPressure, 5, 2, convert);
     dataString += convert;
     dataString += ',';
-    dataString += "BmpT:,";
+    dataString += "BmpTemp:,";
     dtostrf(data.bmpTemp, 5, 2, convert);
     dataString += convert;
     dataString += ',';
-    dataString += "dhtT:,";
+    dataString += "dhtTemp:,";
     dtostrf(data.dhtTemp, 5, 2, convert);
     dataString += convert;
     dataString += ',';
     dataString += "Hum:,";
     dtostrf(data.dhtHum, 5, 2, convert);
     dataString += convert;
-    dataString += '\n';
-    
+    dataString += ',';
+    dataString += "gmVolt:,";
+    dataString += String((uint16_t) data.gmTubeVoltage);
+
     sdPrintData(&dataString);
-    sdPrintDataDone();
+
     Serial.println();
 }
 
@@ -236,7 +228,7 @@ void loop()
     val = val / 4;
     float gmTubeVoltage = val * (254.0 / 320.0);
 
-    data.gmTubeVoltage = (uint16_t)gmTubeVoltage;
+    data.gmTubeVoltage = gmTubeVoltage;
 
 #ifdef PCB_MOUNTED_WIRELESS_RFM12B
     RFM12B_loop();
@@ -281,7 +273,7 @@ void loop()
 #endif
 
 #else
-    delay(5000);
+    delay(2000);
 #endif
 
     // power to ext. units
@@ -307,7 +299,6 @@ void wakeUpNow() // here the interrupt is handled after wakeup
     power_timer1_enable();
     power_timer2_enable(); //Needed for asynchronous 32kHz operation
 }
-
 
 
 

@@ -1,12 +1,12 @@
 #ifdef PCB_MOUNTED_HUMSENS_DHT22
-//#include <JeeLib.h>
 
 #include <DHT22.h>
 #define DHT22_PIN 6
 
-//MilliTimer timer2;
-
 DHT22 myDHT22(DHT22_PIN);
+
+static float dhtTemp = 0;
+static float dhtHum = 0;
 
 void dht22_Loop(void){
   //if (!timer2.poll(2000)){
@@ -20,11 +20,13 @@ void dht22_Loop(void){
   switch(errorCode)
   {
   case DHT_ERROR_NONE:
-    Serial.print("Got Data ");
-    Serial.print(myDHT22.getTemperatureC());
-    Serial.print("C ");
-    Serial.print(myDHT22.getHumidity());
-    Serial.print("%");
+    //Serial.print("Got Data ");
+    dhtTemp = myDHT22.getTemperatureC();
+    //Serial.print(dhtTemp);
+    //Serial.print("C ");
+    dhtHum = myDHT22.getHumidity();
+    //Serial.print(dhtHum);
+    //Serial.print("%");
     sensor.humidity = myDHT22.getHumidity()*100.0;
     // discard digits, by cast to integer, after decimal point  
     sensor.temperature = myDHT22.getTemperatureC() * 100;
@@ -68,6 +70,15 @@ void dht22_Loop(void){
   }
 }
 
+float dhtGetTemp(void)
+{
+  return dhtTemp;
+}
+
+float dhtGetHum(void)
+{ 
+  return dhtHum;
+}
 
 
 #endif

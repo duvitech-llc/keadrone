@@ -13,7 +13,7 @@ void pwmSetup(void)
   OCR1B = 45;    // initial duty cycle for Pin 3 (0-199)
 
   // with 10Mohm at the converter, this will be exactly 400V at 5v inputvoltage
-  pwmVal = 760;
+  pwmVal = 840;
   analogWrite(pwmPin, (pwmVal));
 
 }

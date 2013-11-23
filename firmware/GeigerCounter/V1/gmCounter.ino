@@ -2,11 +2,18 @@ int pulse_counter = 0;
 int pulse_counter2 = 0;
 int pulse_counter_raw = 0;
 
+int pulse_raw = 0;
+
 void gmCounterSetup(void)
 {
     // attach interrupt at pin 2 for the geiger counter ticks
-  attachInterrupt(0, interrupt_handler, RISING);
+  attachInterrupt(1, interrupt_handler, RISING);
   
+}
+
+int gmGetRaw(void)
+{
+ return  pulse_raw;
 }
 
 #define SAMP_COUNT_PER_MINUTE  12
@@ -60,12 +67,12 @@ void gmLoop()
     Serial.print("$");
     Serial.print("RAW:");
     Serial.print(pulse_counter_raw);
+    pulse_raw = pulse_counter_raw;
     pulse_counter_raw =0;
     Serial.print(",");
 
     Serial.print("Counter");
     Serial.print(txCounter);
-
 
     Serial.print(",\n");
   }

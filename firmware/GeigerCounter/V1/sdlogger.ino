@@ -19,8 +19,7 @@ void sdInit(void)
   }
   else
   {
-    Serial.println("card initialized.");
-    delay(1500);  
+    Serial.println("card initialized."); 
 
     // Open up the file we're going to log to!
     dataFile = SD.open("datalog.txt", FILE_WRITE);
@@ -35,7 +34,7 @@ void sdInit(void)
   // sd end
 }
 
-void sdPrintData(String value)
+void sdPrintData(String *value)
 {
   if(initialized == false)
   {
@@ -50,33 +49,15 @@ void sdPrintData(String value)
     return; 
   }
   
-  dataFile.println(value);
-  Serial.print("sdWrites:");
-  Serial.println(value);
-  dataFile.flush();
-  /*
-    // make a string for assembling the data to log:
-   String dataString = "";
-   
-   dataString += String(millis());
-   dataString +=',';
-   dataString += String(1);
-   dataString +=',';
-   
-   dataFile.println(dataString);
-   // print to the serial port too:
-   Serial.println(dataString);
-   
-   // The following line will 'save' the file to the SD card after every
-   // line of data - this will use more power and slow down how much data
-   // you can read but it's safer! 
-   // If you want to speed up the system, remove the call to flush() and it
-   // will save the file only every 512 bytes - every time a sector on the 
-   // SD card is filled with data.
-   dataFile.flush();
-   
-   */
+  dataFile.print(*value);
+  Serial.print("*sdWrites:");
+  Serial.print(*value);
+  
+}
 
+void sdPrintDataDone(void)
+{
+  dataFile.flush();
 }
 
 
