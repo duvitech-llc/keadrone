@@ -29,6 +29,7 @@ PowerPortNamesTakePriority=1
 PushECOToAnnotationFile=1
 DItemRevisionGUID=
 ReportSuppressedErrorsInMessages=0
+OutputPath=ProjectOutputs
 
 [Document1]
 DocumentPath=Gerber & NC drill generator.OutJob
@@ -87,74 +88,62 @@ DocumentPath=ProjectOutputs\Design Rule Check - pcb.html
 DItemRevisionGUID=
 
 [GeneratedDocument3]
-DocumentPath=pcb 4-4-2013 15-42-19.WAS
-DItemRevisionGUID=
-
-[GeneratedDocument4]
-DocumentPath=pcb 4-4-2013 15-42-25.WAS
-DItemRevisionGUID=
-
-[GeneratedDocument5]
 DocumentPath=Gerber files\pcb-BoardEdgeRout.TXT
 DItemRevisionGUID=
 
-[GeneratedDocument6]
+[GeneratedDocument4]
 DocumentPath=Gerber files\pcb.DRR
 DItemRevisionGUID=
 
-[GeneratedDocument7]
+[GeneratedDocument5]
 DocumentPath=Gerber files\pcb.EXTREP
 DItemRevisionGUID=
 
-[GeneratedDocument8]
+[GeneratedDocument6]
 DocumentPath=Gerber files\pcb.GBL
 DItemRevisionGUID=
 
-[GeneratedDocument9]
+[GeneratedDocument7]
 DocumentPath=Gerber files\pcb.GBO
 DItemRevisionGUID=
 
-[GeneratedDocument10]
+[GeneratedDocument8]
 DocumentPath=Gerber files\pcb.GBS
 DItemRevisionGUID=
 
-[GeneratedDocument11]
+[GeneratedDocument9]
 DocumentPath=Gerber files\pcb.GKO
 DItemRevisionGUID=
 
-[GeneratedDocument12]
+[GeneratedDocument10]
 DocumentPath=Gerber files\pcb.GM30
 DItemRevisionGUID=
 
-[GeneratedDocument13]
+[GeneratedDocument11]
 DocumentPath=Gerber files\pcb.GPB
 DItemRevisionGUID=
 
-[GeneratedDocument14]
+[GeneratedDocument12]
 DocumentPath=Gerber files\pcb.GTL
 DItemRevisionGUID=
 
-[GeneratedDocument15]
+[GeneratedDocument13]
 DocumentPath=Gerber files\pcb.GTO
 DItemRevisionGUID=
 
-[GeneratedDocument16]
+[GeneratedDocument14]
 DocumentPath=Gerber files\pcb.GTS
 DItemRevisionGUID=
 
-[GeneratedDocument17]
+[GeneratedDocument15]
 DocumentPath=Gerber files\pcb.LDP
 DItemRevisionGUID=
 
-[GeneratedDocument18]
-DocumentPath=pcb.PcbDoc.htm
-DItemRevisionGUID=
-
-[GeneratedDocument19]
+[GeneratedDocument16]
 DocumentPath=Gerber files\pcb.REP
 DItemRevisionGUID=
 
-[GeneratedDocument20]
+[GeneratedDocument17]
 DocumentPath=Gerber files\pcb.TXT
 DItemRevisionGUID=
 
